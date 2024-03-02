@@ -1,3 +1,5 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{html,js,jsx}"],
@@ -11,6 +13,9 @@ module.exports = {
       lightGrayishBlue: "hsl(223, 64%, 98%)",
       white: "#fff",
       black: "#000"
+    },
+    fontFamily: {
+      sans: ['"Kumbh Sans"', ...defaultTheme.fontFamily.sans]
     },
     extend: {},
   },
