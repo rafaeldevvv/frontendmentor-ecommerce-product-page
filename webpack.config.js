@@ -1,9 +1,10 @@
 const path = require("path");
+const webpack = require("webpack");
 
 /** @type {import("@types/webpack").Configuration} */
 module.exports = {
    mode: "development",
-   entry: "./src/index.jsx",
+   entry: "./src/index",
    devtool: false,
    output: {
       path: path.resolve(__dirname, "dist"),
@@ -19,5 +20,9 @@ module.exports = {
             }
          }
       ]
-   }
+   },
+   resolve: {
+      extensions: [".js", ".jsx"],
+   },
+   plugins: [new webpack.ProvidePlugin({ React: require.resolve("react") })]
 }
