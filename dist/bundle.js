@@ -8133,9 +8133,16 @@ function App() {
     href: "#"
   }, "About")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
     href: "#"
-  }, "Contact"))))), /*#__PURE__*/React.createElement("main", null, /*#__PURE__*/React.createElement("article", null, /*#__PURE__*/React.createElement("h1", {
-    className: "text-4xl"
-  }, "Fall Limited Edition Sneakers"), /*#__PURE__*/React.createElement("p", null, "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they\u2019ll withstand everything the weather can offer."))));
+  }, "Contact"))))), /*#__PURE__*/React.createElement("main", null, /*#__PURE__*/React.createElement("article", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("img", {
+    src: "images/image-product-1-thumbnail.jpg",
+    alt: "Sneakers"
+  })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("header", null, /*#__PURE__*/React.createElement("p", null, "Sneaker Company"), /*#__PURE__*/React.createElement("h1", null, "Fall Limited Edition Sneakers")), /*#__PURE__*/React.createElement("p", null, "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they\u2019ll withstand everything the weather can offer."), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "$125.00 50%"), " ", /*#__PURE__*/React.createElement("s", null, "$250.00"), " "), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("button", {
+    type: "button"
+  }, "down"), /*#__PURE__*/React.createElement("span", null, "0"), /*#__PURE__*/React.createElement("button", {
+    type: "button"
+  }, "up")), /*#__PURE__*/React.createElement("button", {
+    type: "button"
+  }, "Add to cart")))));
 }
 
 /***/ }),
