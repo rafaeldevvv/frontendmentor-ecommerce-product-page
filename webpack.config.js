@@ -1,9 +1,12 @@
 const path = require("path");
 const webpack = require("webpack");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+const devMode = process.env.NODE_ENV !== "production";
 
 /** @type {import("@types/webpack").Configuration} */
 module.exports = {
-   mode: "development",
+   mode: devMode ? "development" : "production",
    entry: "./src/index",
    devtool: false,
    output: {
@@ -18,11 +21,15 @@ module.exports = {
             options: {
                presets: ["@babel/preset-env", "@babel/preset-react"]
             }
+         },
+         {
+            test: /\.css/,
+            use: [devMode ? "style-loader" : MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"],
          }
       ]
    },
    resolve: {
       extensions: [".js", ".jsx"],
    },
-   plugins: [new webpack.ProvidePlugin({ React: require.resolve("react") })]
+   plugins: [new webpack.ProvidePlugin({ React: require.resolve("react") })].concat(devMode ? [] : [new MiniCssExtractPlugin()]),
 }
