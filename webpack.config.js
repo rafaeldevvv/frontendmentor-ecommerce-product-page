@@ -26,6 +26,11 @@ module.exports = {
          {
             test: /\.css/,
             use: [devMode ? "style-loader" : MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"],
+         },
+         {
+            test: /\.svg$/i,
+            issuer: /\.[jt]sx?$/,
+            use: ["@svgr/webpack"]
          }
       ]
    },

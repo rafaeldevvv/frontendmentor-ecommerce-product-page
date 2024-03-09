@@ -2,6 +2,7 @@ import ImageViewer from "./ImageViewer";
 import ProductInfo from "./ProductInfo";
 import QuantityControl from "./QuantityControl";
 import Button from "./Button";
+import CartIcon from "../icons/icon-cart.svg";
 
 export default function ProductArticle({ product }) {
   const { images, name, company, description, price, discount } = product;
@@ -20,7 +21,9 @@ export default function ProductArticle({ product }) {
           discount={discount}
         />
         <QuantityControl />
-        <Button>Add to cart</Button>
+        <Button>
+          <CartIcon /> Add to cart
+        </Button>
       </div>
     </article>
   );

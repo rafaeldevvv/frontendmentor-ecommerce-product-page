@@ -2,6 +2,35 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/icons/icon-cart.svg":
+/*!*********************************!*\
+  !*** ./src/icons/icon-cart.svg ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _path;
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+var SvgIconCart = function SvgIconCart(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", _extends({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 22,
+    height: 20
+  }, props), _path || (_path = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+    fill: "#69707D",
+    d: "M20.925 3.641H3.863L3.61.816A.896.896 0 0 0 2.717 0H.897a.896.896 0 1 0 0 1.792h1l1.031 11.483c.073.828.52 1.726 1.291 2.336C2.83 17.385 4.099 20 6.359 20c1.875 0 3.197-1.87 2.554-3.642h4.905c-.642 1.77.677 3.642 2.555 3.642a2.72 2.72 0 0 0 2.717-2.717 2.72 2.72 0 0 0-2.717-2.717H6.365c-.681 0-1.274-.41-1.53-1.009l14.321-.842a.9.9 0 0 0 .817-.677l1.821-7.283a.897.897 0 0 0-.87-1.114ZM6.358 18.208a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85m10.015 0a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85m2.021-7.243-13.8.81-.57-6.341h15.753l-1.383 5.53Z"
+  })));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SvgIconCart);
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/runtime/api.js":
 /*!*****************************************************!*\
   !*** ./node_modules/css-loader/dist/runtime/api.js ***!
@@ -8288,7 +8317,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ProductInfo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProductInfo */ "./src/components/ProductInfo.jsx");
 /* harmony import */ var _QuantityControl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./QuantityControl */ "./src/components/QuantityControl.jsx");
 /* harmony import */ var _Button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Button */ "./src/components/Button.jsx");
+/* harmony import */ var _icons_icon_cart_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../icons/icon-cart.svg */ "./src/icons/icon-cart.svg");
 /* provided dependency */ var React = __webpack_require__(/*! ./node_modules/react/index.js */ "./node_modules/react/index.js");
+
 
 
 
@@ -8309,7 +8340,7 @@ function ProductArticle(_ref) {
     desc: description,
     price: price,
     discount: discount
-  }), /*#__PURE__*/React.createElement(_QuantityControl__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/React.createElement(_Button__WEBPACK_IMPORTED_MODULE_3__["default"], null, "Add to cart")));
+  }), /*#__PURE__*/React.createElement(_QuantityControl__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/React.createElement(_Button__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/React.createElement(_icons_icon_cart_svg__WEBPACK_IMPORTED_MODULE_4__["default"], null), " Add to cart")));
 }
 
 /***/ }),
