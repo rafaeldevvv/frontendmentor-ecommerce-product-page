@@ -8120,12 +8120,101 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ App)
 /* harmony export */ });
 /* harmony import */ var _output_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./output.css */ "./src/output.css");
+/* harmony import */ var _components_Footer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Footer */ "./src/components/Footer.jsx");
+/* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Header */ "./src/components/Header.jsx");
+/* harmony import */ var _components_ProductArticle__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/ProductArticle */ "./src/components/ProductArticle.jsx");
 /* provided dependency */ var React = __webpack_require__(/*! ./node_modules/react/index.js */ "./node_modules/react/index.js");
 
+
+
+
+var sneakers = {
+  name: "Fall Limited Edition Sneakers",
+  company: "Sneaker Company",
+  description: "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
+  price: 250,
+  discount: 50,
+  images: [["images/image-product-1.jpg", "A pair of white and beige sneakers against an orange background"], ["images/image-product-2.jpg", "A pair of light grey sneakers with white soles and orange accents, placed on top of two white rocks."], ["images/image-product-3.jpg", "A sneaker with white soles and orange and beige accents, placed on top of two white rocks."], ["images/image-product-4.jpg", "A stylish sneaker on white stones against an orange background."]]
+};
 function App() {
   return /*#__PURE__*/React.createElement("div", {
     className: ""
-  }, /*#__PURE__*/React.createElement("header", null, /*#__PURE__*/React.createElement("nav", null, /*#__PURE__*/React.createElement("ul", null, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
+  }, /*#__PURE__*/React.createElement(_components_Header__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/React.createElement("main", null, /*#__PURE__*/React.createElement(_components_ProductArticle__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    product: sneakers
+  })), /*#__PURE__*/React.createElement(_components_Footer__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+}
+
+/***/ }),
+
+/***/ "./src/components/Button.jsx":
+/*!***********************************!*\
+  !*** ./src/components/Button.jsx ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Button)
+/* harmony export */ });
+/* provided dependency */ var React = __webpack_require__(/*! ./node_modules/react/index.js */ "./node_modules/react/index.js");
+function Button(_ref) {
+  var label = _ref.label,
+    _ref$onClick = _ref.onClick,
+    onClick = _ref$onClick === void 0 ? function () {} : _ref$onClick,
+    _ref$type = _ref.type,
+    type = _ref$type === void 0 ? "button" : _ref$type,
+    children = _ref.children;
+  if (label) {
+    return /*#__PURE__*/React.createElement("button", {
+      type: type,
+      onClick: onClick,
+      "aria-label": label
+    }, children);
+  } else {
+    return /*#__PURE__*/React.createElement("button", {
+      type: type,
+      onClick: onClick
+    }, children);
+  }
+}
+
+/***/ }),
+
+/***/ "./src/components/Footer.jsx":
+/*!***********************************!*\
+  !*** ./src/components/Footer.jsx ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Footer)
+/* harmony export */ });
+/* provided dependency */ var React = __webpack_require__(/*! ./node_modules/react/index.js */ "./node_modules/react/index.js");
+function Footer() {
+  return /*#__PURE__*/React.createElement("footer", null, /*#__PURE__*/React.createElement("p", null, "Challenge by", " ", /*#__PURE__*/React.createElement("a", {
+    href: "https://www.frontendmentor.io?ref=challenge",
+    target: "_blank"
+  }, "Frontend Mentor"), ". Coded by ", /*#__PURE__*/React.createElement("a", {
+    href: "https://rafaeldevvv.github.io/portfolio"
+  }, "Rafael Maia"), "."));
+}
+
+/***/ }),
+
+/***/ "./src/components/Header.jsx":
+/*!***********************************!*\
+  !*** ./src/components/Header.jsx ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Header)
+/* harmony export */ });
+/* provided dependency */ var React = __webpack_require__(/*! ./node_modules/react/index.js */ "./node_modules/react/index.js");
+function Header() {
+  return /*#__PURE__*/React.createElement("header", null, /*#__PURE__*/React.createElement("nav", null, /*#__PURE__*/React.createElement("ul", null, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
     href: "#"
   }, "Men")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
     href: "#"
@@ -8133,16 +8222,140 @@ function App() {
     href: "#"
   }, "About")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
     href: "#"
-  }, "Contact"))))), /*#__PURE__*/React.createElement("main", null, /*#__PURE__*/React.createElement("article", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("img", {
-    src: "images/image-product-1-thumbnail.jpg",
-    alt: "Sneakers"
-  })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("header", null, /*#__PURE__*/React.createElement("p", null, "Sneaker Company"), /*#__PURE__*/React.createElement("h1", null, "Fall Limited Edition Sneakers")), /*#__PURE__*/React.createElement("p", null, "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they\u2019ll withstand everything the weather can offer."), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "$125.00 50%"), " ", /*#__PURE__*/React.createElement("s", null, "$250.00"), " "), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("button", {
-    type: "button"
-  }, "down"), /*#__PURE__*/React.createElement("span", null, "0"), /*#__PURE__*/React.createElement("button", {
-    type: "button"
-  }, "up")), /*#__PURE__*/React.createElement("button", {
-    type: "button"
-  }, "Add to cart")))));
+  }, "Contact")))));
+}
+
+/***/ }),
+
+/***/ "./src/components/ImageViewer.jsx":
+/*!****************************************!*\
+  !*** ./src/components/ImageViewer.jsx ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ ImageViewer)
+/* harmony export */ });
+/* provided dependency */ var React = __webpack_require__(/*! ./node_modules/react/index.js */ "./node_modules/react/index.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+/* images a is an array of tuples of type [src: string, alt: string] */
+function ImageViewer(_ref) {
+  var images = _ref.images;
+  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("ul", null, images.map(function (img) {
+    var _img = _slicedToArray(img, 2),
+      src = _img[0],
+      alt = _img[1];
+    return /*#__PURE__*/React.createElement("li", {
+      key: src
+    }, /*#__PURE__*/React.createElement("img", {
+      src: src,
+      alt: alt
+    }));
+  })), /*#__PURE__*/React.createElement("ul", null, images.map(function (img, index) {
+    var _img2 = _slicedToArray(img, 1),
+      src = _img2[0];
+    return /*#__PURE__*/React.createElement("li", {
+      key: src
+    }, /*#__PURE__*/React.createElement("button", {
+      type: "button",
+      "aria-label": "Switch to image ".concat(index + 1)
+    }, /*#__PURE__*/React.createElement("img", {
+      src: src.replace(/(\.\w+)$/, "-thumbnail$1"),
+      alt: "Image ".concat(index + 1, " of product")
+    })));
+  })));
+}
+
+/***/ }),
+
+/***/ "./src/components/ProductArticle.jsx":
+/*!*******************************************!*\
+  !*** ./src/components/ProductArticle.jsx ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ ProductArticle)
+/* harmony export */ });
+/* harmony import */ var _ImageViewer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ImageViewer */ "./src/components/ImageViewer.jsx");
+/* harmony import */ var _ProductInfo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProductInfo */ "./src/components/ProductInfo.jsx");
+/* harmony import */ var _QuantityControl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./QuantityControl */ "./src/components/QuantityControl.jsx");
+/* harmony import */ var _Button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Button */ "./src/components/Button.jsx");
+/* provided dependency */ var React = __webpack_require__(/*! ./node_modules/react/index.js */ "./node_modules/react/index.js");
+
+
+
+
+function ProductArticle(_ref) {
+  var product = _ref.product;
+  var images = product.images,
+    name = product.name,
+    company = product.company,
+    description = product.description,
+    price = product.price,
+    discount = product.discount;
+  return /*#__PURE__*/React.createElement("article", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(_ImageViewer__WEBPACK_IMPORTED_MODULE_0__["default"], {
+    images: images
+  })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(_ProductInfo__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    name: name,
+    company: company,
+    desc: description,
+    price: price,
+    discount: discount
+  }), /*#__PURE__*/React.createElement(_QuantityControl__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/React.createElement(_Button__WEBPACK_IMPORTED_MODULE_3__["default"], null, "Add to cart")));
+}
+
+/***/ }),
+
+/***/ "./src/components/ProductInfo.jsx":
+/*!****************************************!*\
+  !*** ./src/components/ProductInfo.jsx ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ ProductInfo)
+/* harmony export */ });
+/* provided dependency */ var React = __webpack_require__(/*! ./node_modules/react/index.js */ "./node_modules/react/index.js");
+function ProductInfo(_ref) {
+  var company = _ref.company,
+    name = _ref.name,
+    desc = _ref.desc,
+    price = _ref.price,
+    discount = _ref.discount;
+  var actualPrice = price * (discount / 100);
+  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("header", null, /*#__PURE__*/React.createElement("p", null, company), /*#__PURE__*/React.createElement("h1", null, name)), /*#__PURE__*/React.createElement("p", null, desc), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "$", actualPrice.toFixed(2), " ", discount, "%"), " ", /*#__PURE__*/React.createElement("s", null, "$", price.toFixed(2)), " "));
+}
+
+/***/ }),
+
+/***/ "./src/components/QuantityControl.jsx":
+/*!********************************************!*\
+  !*** ./src/components/QuantityControl.jsx ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ QuantityControl)
+/* harmony export */ });
+/* harmony import */ var _Button__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Button */ "./src/components/Button.jsx");
+/* provided dependency */ var React = __webpack_require__(/*! ./node_modules/react/index.js */ "./node_modules/react/index.js");
+
+function QuantityControl() {
+  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(_Button__WEBPACK_IMPORTED_MODULE_0__["default"], {
+    label: "less"
+  }, "-"), /*#__PURE__*/React.createElement("p", null), /*#__PURE__*/React.createElement(_Button__WEBPACK_IMPORTED_MODULE_0__["default"], {
+    label: "more"
+  }, "+"));
 }
 
 /***/ }),
