@@ -33,8 +33,8 @@ export default function App() {
             </header>
             <p>
               These low-profile sneakers are your perfect casual wear companion.
-              Featuring a durable rubber outer sole, they’ll withstand everything
-              the weather can offer.
+              Featuring a durable rubber outer sole, they’ll withstand
+              everything the weather can offer.
             </p>
             <p>
               <strong>$125.00 50%</strong> <s>$250.00</s> {/* check */}
@@ -48,6 +48,15 @@ export default function App() {
           </div>
         </article>
       </main>
+      <footer>
+        <p>
+          Challenge by{" "}
+          <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">
+            Frontend Mentor
+          </a>
+          . Coded by <a href="#">Rafael Maia</a>.
+        </p>
+      </footer>
     </div>
   );
 }
