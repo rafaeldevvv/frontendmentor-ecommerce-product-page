@@ -1,4 +1,9 @@
-export default function Button({ label, onClick = () => {}, type = "button", children }) {
+export default function Button({
+  label,
+  onClick = () => {},
+  type = "button",
+  children,
+}) {
   if (label) {
     return (
       <button type={type} onClick={onClick} aria-label={label}>

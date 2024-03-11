@@ -14,10 +14,24 @@ module.exports = {
       white: "#fff",
       black: "#000"
     },
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        xl: "64rem",
+      }
+    },
     fontFamily: {
       sans: ['"Kumbh Sans"', ...defaultTheme.fontFamily.sans]
     },
-    extend: {},
+    extend: {
+      lineHeight: {
+        '0': '0'
+      },
+      spacing: {
+        '18': '4.5rem'
+      }
+    },
   },
   plugins: [],
 }
