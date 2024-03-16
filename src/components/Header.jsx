@@ -7,8 +7,8 @@ import { useState, useRef } from "react";
 
 export default function Header() {
   return (
-    <header className="h-18 bg-white">
-      <div className="container flex justify-between h-full items-center">
+    <header className="h-18 bg-white border-b-2 border-solid border-lightGrayishBlue md:border-0 md:h-28 md:px-4">
+      <div className="container flex justify-between h-full items-center md:p-0 md:border-b-2 border-solid border-lightGrayishBlue">
         <div className="flex items-center gap-x-[clamp(1rem,5vw,3rem)] md:flex-row-reverse">
           <NavigationMenu />
           <div>

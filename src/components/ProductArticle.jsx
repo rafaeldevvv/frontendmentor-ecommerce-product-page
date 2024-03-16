@@ -7,7 +7,7 @@ export default function ProductArticle({ product }) {
   const { images, name, company, description, price, discount } = product;
 
   return (
-    <article className="md:grid md:grid-cols-2 sm:my-8 md:my-16 gap-x-[clamp(1rem,5vw,6rem)] md:container items-center">
+    <article className="md:grid md:grid-cols-2 sm:my-10 md:my-20 gap-x-[clamp(1rem,5vw,6rem)] md:container items-center">
       <div>
         <ImageViewer images={images} />
       </div>

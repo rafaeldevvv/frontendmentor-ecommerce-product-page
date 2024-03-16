@@ -8420,9 +8420,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function Header() {
   return /*#__PURE__*/React.createElement("header", {
-    className: "h-18 bg-white"
+    className: "h-18 bg-white border-b-2 border-solid border-lightGrayishBlue md:border-0 md:h-28 md:px-4"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "container flex justify-between h-full items-center"
+    className: "container flex justify-between h-full items-center md:p-0 md:border-b-2 border-solid border-lightGrayishBlue"
   }, /*#__PURE__*/React.createElement("div", {
     className: "flex items-center gap-x-[clamp(1rem,5vw,3rem)] md:flex-row-reverse"
   }, /*#__PURE__*/React.createElement(NavigationMenu, null), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(_icons_logo_svg__WEBPACK_IMPORTED_MODULE_0__["default"], null))), /*#__PURE__*/React.createElement("div", {
@@ -8609,7 +8609,7 @@ function ProductArticle(_ref) {
     price = product.price,
     discount = product.discount;
   return /*#__PURE__*/React.createElement("article", {
-    className: "md:grid md:grid-cols-2 sm:my-8 md:my-16 gap-x-[clamp(1rem,5vw,6rem)] md:container items-center"
+    className: "md:grid md:grid-cols-2 sm:my-10 md:my-20 gap-x-[clamp(1rem,5vw,6rem)] md:container items-center"
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(_ImageViewer__WEBPACK_IMPORTED_MODULE_0__["default"], {
     images: images
   })), /*#__PURE__*/React.createElement("div", {
@@ -9513,6 +9513,19 @@ video {
   border-radius: 0.375rem;
 }
 
+.border-b-2 {
+  border-bottom-width: 2px;
+}
+
+.border-solid {
+  border-style: solid;
+}
+
+.border-lightGrayishBlue {
+  --tw-border-opacity: 1;
+  border-color: hsl(223 64% 98% / var(--tw-border-opacity));
+}
+
 .bg-black {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
@@ -9749,9 +9762,9 @@ video {
     margin-right: auto;
   }
 
-  .sm\\:my-8 {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+  .sm\\:my-10 {
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
   }
 
   .sm\\:aspect-square {
@@ -9777,9 +9790,9 @@ video {
     position: static;
   }
 
-  .md\\:my-16 {
-    margin-top: 4rem;
-    margin-bottom: 4rem;
+  .md\\:my-20 {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
   }
 
   .md\\:mt-0 {
@@ -9802,6 +9815,10 @@ video {
     display: none;
   }
 
+  .md\\:h-28 {
+    height: 7rem;
+  }
+
   .md\\:h-full {
     height: 100%;
   }
@@ -9822,6 +9839,14 @@ video {
     flex-direction: row-reverse;
   }
 
+  .md\\:border-0 {
+    border-width: 0px;
+  }
+
+  .md\\:border-b-2 {
+    border-bottom-width: 2px;
+  }
+
   .md\\:p-0 {
     padding: 0px;
   }
@@ -9829,6 +9854,11 @@ video {
   .md\\:px-0 {
     padding-left: 0px;
     padding-right: 0px;
+  }
+
+  .md\\:px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   .md\\:text-sm {
