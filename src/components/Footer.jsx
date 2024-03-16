@@ -1,12 +1,23 @@
 export default function Footer() {
   return (
-    <footer>
-      <p>
+    <footer className="container p-8">
+      <p className="text-center">
         Challenge by{" "}
-        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">
+        <a
+          href="https://www.frontendmentor.io?ref=challenge"
+          target="_blank"
+          className="underline text-orange font-medium hover:no-underline"
+        >
           Frontend Mentor
         </a>
-        . Coded by <a href="https://rafaeldevvv.github.io/portfolio">Rafael Maia</a>.
+        . Coded by{" "}
+        <a
+          href="https://rafaeldevvv.github.io/portfolio"
+          className="underline text-orange font-medium hover:no-underline"
+        >
+          Rafael Maia
+        </a>
+        .
       </p>
     </footer>
   );

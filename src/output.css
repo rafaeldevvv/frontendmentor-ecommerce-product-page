@@ -836,6 +836,10 @@ video {
   padding: 1.5rem;
 }
 
+.p-8 {
+  padding: 2rem;
+}
+
 .px-1 {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
@@ -863,6 +867,10 @@ video {
   padding-top: 5rem;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -888,6 +896,10 @@ video {
 
 .font-extrabold {
   font-weight: 800;
+}
+
+.font-medium {
+  font-weight: 500;
 }
 
 .font-semibold {
@@ -947,6 +959,10 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.underline {
+  text-decoration-line: underline;
+}
+
 .line-through {
   text-decoration-line: line-through;
 }
@@ -981,6 +997,10 @@ video {
       max-width: 64rem;
     }
   }
+}
+
+.hover\:no-underline:hover {
+  text-decoration-line: none;
 }
 
 .hover\:opacity-60:hover {

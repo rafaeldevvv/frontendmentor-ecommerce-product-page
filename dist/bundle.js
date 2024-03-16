@@ -8371,11 +8371,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* provided dependency */ var React = __webpack_require__(/*! ./node_modules/react/index.js */ "./node_modules/react/index.js");
 function Footer() {
-  return /*#__PURE__*/React.createElement("footer", null, /*#__PURE__*/React.createElement("p", null, "Challenge by", " ", /*#__PURE__*/React.createElement("a", {
+  return /*#__PURE__*/React.createElement("footer", {
+    className: "container p-8"
+  }, /*#__PURE__*/React.createElement("p", {
+    className: "text-center"
+  }, "Challenge by", " ", /*#__PURE__*/React.createElement("a", {
     href: "https://www.frontendmentor.io?ref=challenge",
-    target: "_blank"
-  }, "Frontend Mentor"), ". Coded by ", /*#__PURE__*/React.createElement("a", {
-    href: "https://rafaeldevvv.github.io/portfolio"
+    target: "_blank",
+    className: "underline text-orange font-medium hover:no-underline"
+  }, "Frontend Mentor"), ". Coded by", " ", /*#__PURE__*/React.createElement("a", {
+    href: "https://rafaeldevvv.github.io/portfolio",
+    className: "underline text-orange font-medium hover:no-underline"
   }, "Rafael Maia"), "."));
 }
 
@@ -9554,6 +9560,10 @@ video {
   padding: 1.5rem;
 }
 
+.p-8 {
+  padding: 2rem;
+}
+
 .px-1 {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
@@ -9581,6 +9591,10 @@ video {
   padding-top: 5rem;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -9606,6 +9620,10 @@ video {
 
 .font-extrabold {
   font-weight: 800;
+}
+
+.font-medium {
+  font-weight: 500;
 }
 
 .font-semibold {
@@ -9665,6 +9683,10 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.underline {
+  text-decoration-line: underline;
+}
+
 .line-through {
   text-decoration-line: line-through;
 }
@@ -9699,6 +9721,10 @@ video {
       max-width: 64rem;
     }
   }
+}
+
+.hover\\:no-underline:hover {
+  text-decoration-line: none;
 }
 
 .hover\\:opacity-60:hover {
