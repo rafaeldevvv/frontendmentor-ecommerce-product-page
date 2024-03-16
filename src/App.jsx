@@ -33,7 +33,7 @@ const sneakers = {
 
 export default function App() {
   return (
-    <div className="">
+    <div className="grid content-between min-h-screen">
       <Header />
       <main>
         <ProductArticle product={sneakers} />

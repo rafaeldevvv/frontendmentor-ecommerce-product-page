@@ -23,7 +23,6 @@ var SvgIconCart = function SvgIconCart(props) {
     width: 22,
     height: 20
   }, props), _path || (_path = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
-    fill: "#69707D",
     d: "M20.925 3.641H3.863L3.61.816A.896.896 0 0 0 2.717 0H.897a.896.896 0 1 0 0 1.792h1l1.031 11.483c.073.828.52 1.726 1.291 2.336C2.83 17.385 4.099 20 6.359 20c1.875 0 3.197-1.87 2.554-3.642h4.905c-.642 1.77.677 3.642 2.555 3.642a2.72 2.72 0 0 0 2.717-2.717 2.72 2.72 0 0 0-2.717-2.717H6.365c-.681 0-1.274-.41-1.53-1.009l14.321-.842a.9.9 0 0 0 .817-.677l1.821-7.283a.897.897 0 0 0-.87-1.114ZM6.358 18.208a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85m10.015 0a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85m2.021-7.243-13.8.81-.57-6.341h15.753l-1.383 5.53Z"
   })));
 };
@@ -88,6 +87,68 @@ var SvgIconMenu = function SvgIconMenu(props) {
   })));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SvgIconMenu);
+
+/***/ }),
+
+/***/ "./src/icons/icon-next.svg":
+/*!*********************************!*\
+  !*** ./src/icons/icon-next.svg ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _path;
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+var SvgIconNext = function SvgIconNext(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", _extends({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 13,
+    height: 18
+  }, props), _path || (_path = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+    fill: "none",
+    stroke: "#1D2026",
+    strokeWidth: 3,
+    d: "m2 1 8 8-8 8"
+  })));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SvgIconNext);
+
+/***/ }),
+
+/***/ "./src/icons/icon-previous.svg":
+/*!*************************************!*\
+  !*** ./src/icons/icon-previous.svg ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _path;
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+var SvgIconPrevious = function SvgIconPrevious(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", _extends({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 12,
+    height: 18
+  }, props), _path || (_path = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+    fill: "none",
+    stroke: "#1D2026",
+    strokeWidth: 3,
+    d: "M11 1 3 9l8 8"
+  })));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SvgIconPrevious);
 
 /***/ }),
 
@@ -8256,7 +8317,7 @@ var sneakers = {
 };
 function App() {
   return /*#__PURE__*/React.createElement("div", {
-    className: ""
+    className: "grid content-between min-h-screen"
   }, /*#__PURE__*/React.createElement(_components_Header__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/React.createElement("main", null, /*#__PURE__*/React.createElement(_components_ProductArticle__WEBPACK_IMPORTED_MODULE_3__["default"], {
     product: sneakers
   })), /*#__PURE__*/React.createElement(_components_Footer__WEBPACK_IMPORTED_MODULE_1__["default"], null));
@@ -8364,7 +8425,9 @@ function Header() {
     className: "h-min leading-0"
   }, /*#__PURE__*/React.createElement(_Button__WEBPACK_IMPORTED_MODULE_2__["default"], {
     label: "Cart"
-  }, /*#__PURE__*/React.createElement(_icons_icon_cart_svg__WEBPACK_IMPORTED_MODULE_1__["default"], null))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("a", {
+  }, /*#__PURE__*/React.createElement(_icons_icon_cart_svg__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    className: "fill-gray"
+  }))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("a", {
     href: "https://rafaeldevvv.github.io/portfolio",
     target: "_blank",
     className: "rounded-full hover:outline-2 hover:outline-orange hover:outline block"
@@ -8444,8 +8507,11 @@ function NavigationMenu() {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ClickableThumbnail: () => (/* binding */ ClickableThumbnail),
 /* harmony export */   "default": () => (/* binding */ ImageViewer)
 /* harmony export */ });
+/* harmony import */ var _icons_icon_next_svg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../icons/icon-next.svg */ "./src/icons/icon-next.svg");
+/* harmony import */ var _icons_icon_previous_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../icons/icon-previous.svg */ "./src/icons/icon-previous.svg");
 /* provided dependency */ var React = __webpack_require__(/*! ./node_modules/react/index.js */ "./node_modules/react/index.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -8453,32 +8519,58 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
 /* images a is an array of tuples of type [src: string, alt: string] */
 function ImageViewer(_ref) {
   var images = _ref.images;
-  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("ul", null, images.map(function (img) {
+  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "relative w-fit mx-auto"
+  }, /*#__PURE__*/React.createElement("ul", null, images.map(function (img, index) {
     var _img = _slicedToArray(img, 2),
       src = _img[0],
       alt = _img[1];
     return /*#__PURE__*/React.createElement("li", {
-      key: src
+      key: src,
+      className: "".concat(index === 0 ? "" : "hidden")
     }, /*#__PURE__*/React.createElement("img", {
       src: src,
-      alt: alt
+      alt: alt,
+      className: "aspect-[4/3] w-full object-cover object-center sm:aspect-square sm:rounded-xl sm:max-w-lg sm:mx-auto"
     }));
-  })), /*#__PURE__*/React.createElement("ul", null, images.map(function (img, index) {
+  })), /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    "aria-label": "Previous image",
+    className: "absolute left-6 top-1/2 -translate-y-1/2 bg-white rounded-full aspect-square px-4 leading-0 md:hidden"
+  }, /*#__PURE__*/React.createElement(_icons_icon_previous_svg__WEBPACK_IMPORTED_MODULE_1__["default"], null)), /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    "aria-label": "Next image",
+    className: "absolute right-6 top-1/2 -translate-y-1/2 bg-white rounded-full aspect-square px-4 leading-0 md:hidden"
+  }, /*#__PURE__*/React.createElement(_icons_icon_next_svg__WEBPACK_IMPORTED_MODULE_0__["default"], null))), /*#__PURE__*/React.createElement("ul", {
+    className: "hidden md:flex gap-x-6 mt-6"
+  }, images.map(function (img, index) {
     var _img2 = _slicedToArray(img, 1),
       src = _img2[0];
     return /*#__PURE__*/React.createElement("li", {
       key: src
-    }, /*#__PURE__*/React.createElement("button", {
-      type: "button",
-      "aria-label": "Switch to image ".concat(index + 1)
-    }, /*#__PURE__*/React.createElement("img", {
-      src: src.replace(/(\.\w+)$/, "-thumbnail$1"),
-      alt: "Image ".concat(index + 1, " of product")
-    })));
+    }, /*#__PURE__*/React.createElement(ClickableThumbnail, {
+      imageNumber: index + 1,
+      src: src
+    }));
   })));
+}
+function ClickableThumbnail(_ref2) {
+  var imageNumber = _ref2.imageNumber,
+    src = _ref2.src;
+  return /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    "aria-label": "Switch to image ".concat(imageNumber),
+    className: "hover:opacity-60 transition-opacity rounded-lg overflow-hidden aspect-square block w-full"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: src.replace(/(\.\w+)$/, "-thumbnail$1"),
+    alt: "Image ".concat(imageNumber, " of product")
+  }));
 }
 
 /***/ }),
@@ -8496,10 +8588,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ImageViewer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ImageViewer */ "./src/components/ImageViewer.jsx");
 /* harmony import */ var _ProductInfo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProductInfo */ "./src/components/ProductInfo.jsx");
 /* harmony import */ var _QuantityControl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./QuantityControl */ "./src/components/QuantityControl.jsx");
-/* harmony import */ var _Button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Button */ "./src/components/Button.jsx");
-/* harmony import */ var _icons_icon_cart_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../icons/icon-cart.svg */ "./src/icons/icon-cart.svg");
+/* harmony import */ var _icons_icon_cart_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../icons/icon-cart.svg */ "./src/icons/icon-cart.svg");
 /* provided dependency */ var React = __webpack_require__(/*! ./node_modules/react/index.js */ "./node_modules/react/index.js");
-
 
 
 
@@ -8512,15 +8602,26 @@ function ProductArticle(_ref) {
     description = product.description,
     price = product.price,
     discount = product.discount;
-  return /*#__PURE__*/React.createElement("article", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(_ImageViewer__WEBPACK_IMPORTED_MODULE_0__["default"], {
+  return /*#__PURE__*/React.createElement("article", {
+    className: "md:grid md:grid-cols-2 sm:my-8 md:my-16 gap-x-[clamp(1rem,5vw,6rem)] md:container items-center"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(_ImageViewer__WEBPACK_IMPORTED_MODULE_0__["default"], {
     images: images
-  })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(_ProductInfo__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "p-6 sm:px-0 max-w-md mx-auto"
+  }, /*#__PURE__*/React.createElement(_ProductInfo__WEBPACK_IMPORTED_MODULE_1__["default"], {
     name: name,
     company: company,
     desc: description,
     price: price,
     discount: discount
-  }), /*#__PURE__*/React.createElement(_QuantityControl__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/React.createElement(_Button__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/React.createElement(_icons_icon_cart_svg__WEBPACK_IMPORTED_MODULE_4__["default"], null), " Add to cart")));
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "mt-8 md:grid gap-x-4 grid-cols-[2fr_3fr]"
+  }, /*#__PURE__*/React.createElement(_QuantityControl__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "text-white bg-orange rounded-md py-4 w-full flex items-center justify-center gap-x-4 fill-white mt-4 md:mt-0 hover:opacity-60 transition-opacity shadow-[0_15px_60px_-15px_theme(colors.orange)]"
+  }, /*#__PURE__*/React.createElement(_icons_icon_cart_svg__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    className: "fill-white"
+  }), /*#__PURE__*/React.createElement("span", null, "Add to cart")))));
 }
 
 /***/ }),
@@ -8543,7 +8644,28 @@ function ProductInfo(_ref) {
     price = _ref.price,
     discount = _ref.discount;
   var actualPrice = price * (discount / 100);
-  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("header", null, /*#__PURE__*/React.createElement("p", null, company), /*#__PURE__*/React.createElement("h1", null, name)), /*#__PURE__*/React.createElement("p", null, desc), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "$", actualPrice.toFixed(2), " ", discount, "%"), " ", /*#__PURE__*/React.createElement("s", null, "$", price.toFixed(2)), " "));
+  return /*#__PURE__*/React.createElement("div", {
+    className: "space-y-6"
+  }, /*#__PURE__*/React.createElement("header", null, /*#__PURE__*/React.createElement("p", {
+    className: "text-orange text-xs md:text-sm uppercase font-bold mb-4 tracking-widest"
+  }, company), /*#__PURE__*/React.createElement("h1", {
+    className: "text-[clamp(1.875rem,5vw,3rem)] text-black capitalize font-extrabold leading-none"
+  }, name)), /*#__PURE__*/React.createElement("p", {
+    className: "text-darkGrayishBlue text-md leading-relaxed"
+  }, desc), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("span", {
+    className: "sr-only"
+  }, "$\xA0", actualPrice, " with a discount of $", discount, "%"), /*#__PURE__*/React.createElement("span", {
+    "aria-hidden": "true",
+    className: "flex justify-between items-center md:block"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "flex gap-x-4 items-center"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "font-extrabold text-3xl"
+  }, "$", actualPrice.toFixed(2)), /*#__PURE__*/React.createElement("span", {
+    className: "font-bold text-md text-orange bg-paleOrange rounded px-1 block"
+  }, discount, "%")), /*#__PURE__*/React.createElement("span", {
+    className: "line-through text-grayishBlue font-semibold block"
+  }, "$", price.toFixed(2)))));
 }
 
 /***/ }),
@@ -8562,10 +8684,14 @@ __webpack_require__.r(__webpack_exports__);
 /* provided dependency */ var React = __webpack_require__(/*! ./node_modules/react/index.js */ "./node_modules/react/index.js");
 
 function QuantityControl() {
-  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(_Button__WEBPACK_IMPORTED_MODULE_0__["default"], {
-    label: "less"
-  }, "-"), /*#__PURE__*/React.createElement("p", null), /*#__PURE__*/React.createElement(_Button__WEBPACK_IMPORTED_MODULE_0__["default"], {
-    label: "more"
+  return /*#__PURE__*/React.createElement("div", {
+    className: "flex justify-between items-center bg-lightGrayishBlue rounded-lg md:w-full"
+  }, /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "text-orange font-extrabold text-2xl block aspect-square px-4 md:px-0 md:h-full rounded-lg transition-opacity hover:opacity-60"
+  }, "-"), /*#__PURE__*/React.createElement("p", null, "0"), /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "text-orange font-extrabold text-2xl block aspect-square px-4 md:px-0 md:h-full rounded-lg transition-opacity hover:opacity-60"
   }, "+"));
 }
 
@@ -9166,6 +9292,10 @@ video {
   position: fixed;
 }
 
+.absolute {
+  position: absolute;
+}
+
 .relative {
   position: relative;
 }
@@ -9182,8 +9312,20 @@ video {
   left: 0px;
 }
 
+.left-6 {
+  left: 1.5rem;
+}
+
+.right-6 {
+  right: 1.5rem;
+}
+
 .top-0 {
   top: 0px;
+}
+
+.top-1\\/2 {
+  top: 50%;
 }
 
 .z-30 {
@@ -9198,6 +9340,27 @@ video {
   z-index: 50;
 }
 
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.mt-6 {
+  margin-top: 1.5rem;
+}
+
+.mt-8 {
+  margin-top: 2rem;
+}
+
 .block {
   display: block;
 }
@@ -9206,8 +9369,16 @@ video {
   display: flex;
 }
 
+.grid {
+  display: grid;
+}
+
 .hidden {
   display: none;
+}
+
+.aspect-\\[4\\/3\\] {
+  aspect-ratio: 4/3;
 }
 
 .aspect-square {
@@ -9227,20 +9398,54 @@ video {
   height: min-content;
 }
 
+.min-h-screen {
+  min-height: 100vh;
+}
+
 .w-\\[clamp\\(1\\.6rem\\2c 6vw\\2c 3rem\\)\\] {
   width: clamp(1.6rem,6vw,3rem);
+}
+
+.w-fit {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.w-full {
+  width: 100%;
 }
 
 .min-w-4 {
   min-width: 1rem;
 }
 
+.max-w-md {
+  max-width: 28rem;
+}
+
+.-translate-y-1\\/2 {
+  --tw-translate-y: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.grid-cols-\\[2fr_3fr\\] {
+  grid-template-columns: 2fr 3fr;
+}
+
 .flex-col {
   flex-direction: column;
 }
 
+.content-between {
+  align-content: space-between;
+}
+
 .items-center {
   align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
 }
 
 .justify-between {
@@ -9249,6 +9454,16 @@ video {
 
 .gap-4 {
   gap: 1rem;
+}
+
+.gap-x-4 {
+  -moz-column-gap: 1rem;
+       column-gap: 1rem;
+}
+
+.gap-x-6 {
+  -moz-column-gap: 1.5rem;
+       column-gap: 1.5rem;
 }
 
 .gap-x-\\[clamp\\(\\.7rem\\2c 5vw\\2c 3rem\\)\\] {
@@ -9261,8 +9476,35 @@ video {
        column-gap: clamp(1rem,5vw,3rem);
 }
 
+.gap-x-\\[clamp\\(1rem\\2c 5vw\\2c 6rem\\)\\] {
+  -moz-column-gap: clamp(1rem,5vw,6rem);
+       column-gap: clamp(1rem,5vw,6rem);
+}
+
+.space-y-6 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.rounded {
+  border-radius: 0.25rem;
+}
+
 .rounded-full {
   border-radius: 9999px;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.rounded-md {
+  border-radius: 0.375rem;
 }
 
 .bg-black {
@@ -9270,9 +9512,61 @@ video {
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
 }
 
+.bg-lightGrayishBlue {
+  --tw-bg-opacity: 1;
+  background-color: hsl(223 64% 98% / var(--tw-bg-opacity));
+}
+
+.bg-orange {
+  --tw-bg-opacity: 1;
+  background-color: hsl(26 100% 55% / var(--tw-bg-opacity));
+}
+
+.bg-paleOrange {
+  --tw-bg-opacity: 1;
+  background-color: hsl(25 100% 94% / var(--tw-bg-opacity));
+}
+
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.fill-gray {
+  fill: #69707D;
+}
+
+.fill-white {
+  fill: #fff;
+}
+
+.object-cover {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.object-center {
+  -o-object-position: center;
+     object-position: center;
+}
+
+.p-6 {
+  padding: 1.5rem;
+}
+
+.px-1 {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .pl-4 {
@@ -9287,20 +9581,128 @@ video {
   padding-top: 5rem;
 }
 
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.text-\\[clamp\\(1\\.875rem\\2c 5vw\\2c 3rem\\)\\] {
+  font-size: clamp(1.875rem,5vw,3rem);
+}
+
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
 .font-bold {
   font-weight: 700;
+}
+
+.font-extrabold {
+  font-weight: 800;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.capitalize {
+  text-transform: capitalize;
 }
 
 .leading-0 {
   line-height: 0;
 }
 
+.leading-none {
+  line-height: 1;
+}
+
 .leading-normal {
   line-height: 1.5;
 }
 
+.leading-relaxed {
+  line-height: 1.625;
+}
+
+.tracking-widest {
+  letter-spacing: 0.1em;
+}
+
+.text-black {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.text-darkGrayishBlue {
+  --tw-text-opacity: 1;
+  color: hsl(219 9% 45% / var(--tw-text-opacity));
+}
+
+.text-grayishBlue {
+  --tw-text-opacity: 1;
+  color: hsl(220 14% 75% / var(--tw-text-opacity));
+}
+
+.text-orange {
+  --tw-text-opacity: 1;
+  color: hsl(26 100% 55% / var(--tw-text-opacity));
+}
+
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.line-through {
+  text-decoration-line: line-through;
+}
+
 .opacity-40 {
   opacity: 0.4;
+}
+
+.shadow-\\[0_15px_60px_-15px_theme\\(colors\\.orange\\)\\] {
+  --tw-shadow: 0 15px 60px -15px hsl(26, 100%, 55%);
+  --tw-shadow-colored: 0 15px 60px -15px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.transition-opacity {
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+@media (min-width: 768px) {
+  .md\\:container {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+
+  @media (min-width: 64rem) {
+    .md\\:container {
+      max-width: 64rem;
+    }
+  }
+}
+
+.hover\\:opacity-60:hover {
+  opacity: 0.6;
 }
 
 .hover\\:outline:hover {
@@ -9315,17 +9717,75 @@ video {
   outline-color: hsl(26, 100%, 55%);
 }
 
+@media (min-width: 640px) {
+  .sm\\:mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .sm\\:my-8 {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .sm\\:aspect-square {
+    aspect-ratio: 1 / 1;
+  }
+
+  .sm\\:max-w-lg {
+    max-width: 32rem;
+  }
+
+  .sm\\:rounded-xl {
+    border-radius: 0.75rem;
+  }
+
+  .sm\\:px-0 {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
 @media (min-width: 768px) {
   .md\\:static {
     position: static;
+  }
+
+  .md\\:my-16 {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+  }
+
+  .md\\:mt-0 {
+    margin-top: 0px;
+  }
+
+  .md\\:block {
+    display: block;
   }
 
   .md\\:flex {
     display: flex;
   }
 
+  .md\\:grid {
+    display: grid;
+  }
+
   .md\\:hidden {
     display: none;
+  }
+
+  .md\\:h-full {
+    height: 100%;
+  }
+
+  .md\\:w-full {
+    width: 100%;
+  }
+
+  .md\\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .md\\:flex-row {
@@ -9338,6 +9798,16 @@ video {
 
   .md\\:p-0 {
     padding: 0px;
+  }
+
+  .md\\:px-0 {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .md\\:text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
   }
 
   .md\\:font-normal {

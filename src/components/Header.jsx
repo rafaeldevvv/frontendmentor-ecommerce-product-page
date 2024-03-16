@@ -19,7 +19,7 @@ export default function Header() {
         <div className="flex items-center gap-x-[clamp(.7rem,5vw,3rem)]">
           <div className="h-min leading-0">
             <Button label="Cart">
-              <CartIcon />
+              <CartIcon className="fill-gray" />
             </Button>
           </div>
           <div>

@@ -2,7 +2,7 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,js,jsx}"],
+  content: ["./src/**/*.{html,js,jsx}", "./index.html"],
   theme: {
     colors: {
       orange: "hsl(26, 100%, 55%)",
@@ -11,6 +11,7 @@ module.exports = {
       grayishBlue: "hsl(220, 14%, 75%)",
       darkGrayishBlue: "hsl(219, 9%, 45%)",
       lightGrayishBlue: "hsl(223, 64%, 98%)",
+      gray: "#69707D",
       white: "#fff",
       black: "#000"
     },
