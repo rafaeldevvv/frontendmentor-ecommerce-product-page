@@ -7,9 +7,9 @@ import { useState, useRef } from "react";
 
 export default function Header() {
   return (
-    <header className="h-18 bg-white border-b-2 border-solid border-lightGrayishBlue md:border-0 md:h-28 md:px-4">
-      <div className="container flex justify-between h-full items-center px-5 md:p-0 md:border-b-2 border-solid border-lightGrayishBlue">
-        <div className="flex items-center gap-x-[clamp(1rem,5vw,3rem)] md:flex-row-reverse md:h-full">
+    <header className="h-18 border-b-2 border-solid border-lightGrayishBlue bg-white md:h-28 md:border-0 md:px-4">
+      <div className="container flex h-full items-center justify-between border-solid border-lightGrayishBlue px-5 md:border-b-2 md:p-0">
+        <div className="flex items-center gap-x-[clamp(1rem,5vw,3rem)] md:h-full md:flex-row-reverse">
           <NavigationMenu />
           <div>
             <Logo />
@@ -26,12 +26,12 @@ export default function Header() {
             <a
               href="https://rafaeldevvv.github.io/portfolio"
               target="_blank"
-              className="rounded-full hover:outline-2 hover:outline-orange hover:outline block"
+              className="block rounded-full hover:outline hover:outline-2 hover:outline-orange"
             >
               <img
                 src="images/image-avatar.png"
                 alt="Avatar"
-                className="w-[clamp(1.6rem,6vw,3rem)] min-w-4 aspect-square"
+                className="aspect-square w-[clamp(1.6rem,6vw,3rem)] min-w-4"
               />
               <span className="sr-only">Profile</span>
             </a>
@@ -51,7 +51,7 @@ export function NavigationMenu() {
   const links = ["Collections", "Men", "Women", "About", "Contact"];
 
   return (
-    <nav className="h-min leading-0 md:h-full md:flex md:place-items-center">
+    <nav className="h-min leading-0 md:flex md:h-full md:place-items-center">
       <button
         aria-label={btnLabel}
         title={btnLabel}
@@ -84,23 +84,23 @@ export function NavigationMenu() {
             window.removeEventListener("click", clickHandlerRef.current);
           }
         }}
-        className="md:hidden z-50 relative"
+        className="relative z-50 md:hidden"
       >
         {expanded ? <MenuIconClose /> : <MenuIconBurguer />}
       </button>
       {expanded && (
-        <div className="bg-black opacity-40 fixed inset-0 z-30 md:hidden"></div>
+        <div className="fixed inset-0 z-30 bg-black opacity-40 md:hidden"></div>
       )}
       <ul
         id="nav-menu"
-        className={`leading-normal fixed left-0 top-0 bottom-0 bg-white pt-20 pl-5 pr-32 z-40 ${
+        className={`fixed bottom-0 left-0 top-0 z-40 bg-white pl-5 pr-32 pt-20 leading-normal ${
           expanded ? "flex" : "hidden"
-        } flex-col md:static md:flex md:flex-row gap-4 md:gap-[clamp(0.8rem,3vw,2rem)] md:p-0 md:h-full md:items-center `}
+        } flex-col gap-4 md:static md:flex md:h-full md:flex-row md:items-center md:gap-[clamp(0.8rem,3vw,2rem)] md:p-0 `}
       >
         {links.map((l) => (
           <li
             key={l}
-            className="relative md:h-full md:hover:before:h-0.5 md:hover:before:bg-orange md:hover:before:absolute md:hover:before:inset-x-0 md:hover:before:top-full md:hover:before:block md:flex md:place-items-center md:focus-within:before:h-0.5 md:focus-within:before:bg-orange md:focus-within:before:absolute md:focus-within:before:inset-x-0 md:focus-within:before:top-full md:focus-within:before:block"
+            className="relative md:flex md:h-full md:place-items-center md:focus-within:before:absolute md:focus-within:before:inset-x-0 md:focus-within:before:top-full md:focus-within:before:block md:focus-within:before:h-0.5 md:focus-within:before:bg-orange md:hover:before:absolute md:hover:before:inset-x-0 md:hover:before:top-full md:hover:before:block md:hover:before:h-0.5 md:hover:before:bg-orange"
           >
             <a
               href="https://www.example.com"

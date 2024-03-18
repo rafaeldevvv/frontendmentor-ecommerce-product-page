@@ -6,14 +6,14 @@ export default function Footer() {
         <a
           href="https://www.frontendmentor.io?ref=challenge"
           target="_blank"
-          className="underline text-orange font-medium hover:no-underline"
+          className="font-medium text-orange underline hover:no-underline"
         >
           Frontend Mentor
         </a>
         . Coded by{" "}
         <a
           href="https://rafaeldevvv.github.io/portfolio"
-          className="underline text-orange font-medium hover:no-underline"
+          className="font-medium text-orange underline hover:no-underline"
         >
           Rafael Maia
         </a>

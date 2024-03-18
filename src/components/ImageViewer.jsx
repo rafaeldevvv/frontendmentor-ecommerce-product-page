@@ -5,7 +5,7 @@ import PreviousIcon from "../icons/icon-previous.svg";
 export default function ImageViewer({ images }) {
   return (
     <div>
-      <div className="relative w-fit mx-auto">
+      <div className="relative mx-auto w-fit">
         <ul>
           {images.map((img, index) => {
             const [src, alt] = img;
@@ -14,7 +14,7 @@ export default function ImageViewer({ images }) {
                 <img
                   src={src}
                   alt={alt}
-                  className="aspect-[4/3] w-full object-cover object-center sm:aspect-square sm:rounded-xl sm:max-w-lg sm:mx-auto"
+                  className="aspect-[4/3] w-full object-cover object-center sm:mx-auto sm:aspect-square sm:max-w-lg sm:rounded-xl"
                 />
               </li>
             );
@@ -23,19 +23,19 @@ export default function ImageViewer({ images }) {
         <button
           type="button"
           aria-label="Previous image"
-          className="absolute left-6 top-1/2 -translate-y-1/2 bg-white rounded-full aspect-square px-4 leading-0 md:hidden"
+          className="absolute left-6 top-1/2 aspect-square -translate-y-1/2 rounded-full bg-white px-4 leading-0 md:hidden"
         >
           {<PreviousIcon />}
         </button>
         <button
           type="button"
           aria-label="Next image"
-          className="absolute right-6 top-1/2 -translate-y-1/2 bg-white rounded-full aspect-square px-4 leading-0 md:hidden"
+          className="absolute right-6 top-1/2 aspect-square -translate-y-1/2 rounded-full bg-white px-4 leading-0 md:hidden"
         >
           {<NextIcon />}
         </button>
       </div>
-      <ul className="hidden md:flex gap-x-6 mt-6">
+      <ul className="mt-6 hidden gap-x-6 md:flex">
         {images.map((img, index) => {
           const [src] = img;
           return (
@@ -54,7 +54,7 @@ export function ClickableThumbnail({ imageNumber, src }) {
     <button
       type="button"
       aria-label={`Switch to image ${imageNumber}`}
-      className="hover:opacity-60 transition-opacity rounded-lg overflow-hidden aspect-square block w-full"
+      className="block aspect-square w-full overflow-hidden rounded-lg transition-opacity hover:opacity-60"
     >
       <img
         src={src.replace(/(\.\w+)$/, "-thumbnail$1")}

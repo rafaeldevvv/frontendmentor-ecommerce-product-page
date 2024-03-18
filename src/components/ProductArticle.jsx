@@ -7,11 +7,11 @@ export default function ProductArticle({ product }) {
   const { images, name, company, description, price, discount } = product;
 
   return (
-    <article className="md:grid md:grid-cols-2 sm:my-10 md:my-20 gap-x-[clamp(1rem,5vw,6rem)] md:container items-center">
+    <article className="items-center gap-x-[clamp(1rem,5vw,6rem)] md:container sm:my-10 md:my-20 md:grid md:grid-cols-2">
       <div>
         <ImageViewer images={images} />
       </div>
-      <div className="p-6 sm:px-0 max-w-md mx-auto">
+      <div className="mx-auto max-w-md p-6 sm:px-0">
         <ProductInfo
           name={name}
           company={company}
@@ -19,11 +19,11 @@ export default function ProductArticle({ product }) {
           price={price}
           discount={discount}
         />
-        <div className="mt-8 md:grid gap-x-4 grid-cols-[2fr_3fr]">
+        <div className="mt-8 grid-cols-[2fr_3fr] gap-x-4 md:grid">
           <QuantityControl />
           <button
             type="button"
-            className="text-white bg-orange rounded-md py-4 w-full flex items-center justify-center gap-x-4 fill-white mt-4 md:mt-0 hover:opacity-60 transition-opacity shadow-[0_15px_60px_-15px_theme(colors.orange)]"
+            className="mt-4 flex w-full items-center justify-center gap-x-4 rounded-md bg-orange fill-white py-4 text-white shadow-[0_15px_60px_-15px_theme(colors.orange)] transition-opacity hover:opacity-60 md:mt-0"
           >
             <CartIcon className="fill-white" />
             <span>Add to cart</span>
