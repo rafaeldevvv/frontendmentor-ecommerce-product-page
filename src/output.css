@@ -863,13 +863,18 @@ video {
   padding-right: 1rem;
 }
 
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
 
-.pl-4 {
-  padding-left: 1rem;
+.pl-5 {
+  padding-left: 1.25rem;
 }
 
 .pr-32 {
@@ -1115,6 +1120,18 @@ video {
     flex-direction: row-reverse;
   }
 
+  .md\:place-items-center {
+    place-items: center;
+  }
+
+  .md\:items-center {
+    align-items: center;
+  }
+
+  .md\:gap-\[clamp\(0\.8rem\2c 3vw\2c 2rem\)\] {
+    gap: clamp(0.8rem,3vw,2rem);
+  }
+
   .md\:border-0 {
     border-width: 0px;
   }
@@ -1142,7 +1159,96 @@ video {
     line-height: 1.25rem;
   }
 
-  .md\:font-normal {
-    font-weight: 400;
+  .md\:font-semibold {
+    font-weight: 600;
+  }
+
+  .md\:text-darkGrayishBlue {
+    --tw-text-opacity: 1;
+    color: hsl(219 9% 45% / var(--tw-text-opacity));
+  }
+
+  .md\:focus-within\:before\:absolute:focus-within::before {
+    content: var(--tw-content);
+    position: absolute;
+  }
+
+  .md\:focus-within\:before\:inset-x-0:focus-within::before {
+    content: var(--tw-content);
+    left: 0px;
+    right: 0px;
+  }
+
+  .md\:focus-within\:before\:top-full:focus-within::before {
+    content: var(--tw-content);
+    top: 100%;
+  }
+
+  .md\:focus-within\:before\:block:focus-within::before {
+    content: var(--tw-content);
+    display: block;
+  }
+
+  .md\:focus-within\:before\:h-0:focus-within::before {
+    content: var(--tw-content);
+    height: 0px;
+  }
+
+  .md\:focus-within\:before\:h-0\.5:focus-within::before {
+    content: var(--tw-content);
+    height: 0.125rem;
+  }
+
+  .md\:focus-within\:before\:bg-orange:focus-within::before {
+    content: var(--tw-content);
+    --tw-bg-opacity: 1;
+    background-color: hsl(26 100% 55% / var(--tw-bg-opacity));
+  }
+
+  .md\:hover\:text-black:hover {
+    --tw-text-opacity: 1;
+    color: rgb(0 0 0 / var(--tw-text-opacity));
+  }
+
+  .md\:hover\:before\:absolute:hover::before {
+    content: var(--tw-content);
+    position: absolute;
+  }
+
+  .md\:hover\:before\:inset-x-0:hover::before {
+    content: var(--tw-content);
+    left: 0px;
+    right: 0px;
+  }
+
+  .md\:hover\:before\:top-full:hover::before {
+    content: var(--tw-content);
+    top: 100%;
+  }
+
+  .md\:hover\:before\:block:hover::before {
+    content: var(--tw-content);
+    display: block;
+  }
+
+  .md\:hover\:before\:h-0:hover::before {
+    content: var(--tw-content);
+    height: 0px;
+  }
+
+  .md\:hover\:before\:h-0\.5:hover::before {
+    content: var(--tw-content);
+    height: 0.125rem;
+  }
+
+  .md\:hover\:before\:bg-orange:hover::before {
+    content: var(--tw-content);
+    --tw-bg-opacity: 1;
+    background-color: hsl(26 100% 55% / var(--tw-bg-opacity));
+  }
+
+  .md\:focus-visible\:text-black:focus-visible {
+    --tw-text-opacity: 1;
+    color: rgb(0 0 0 / var(--tw-text-opacity));
   }
 }

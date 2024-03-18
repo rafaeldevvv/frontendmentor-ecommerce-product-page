@@ -8,8 +8,8 @@ import { useState, useRef } from "react";
 export default function Header() {
   return (
     <header className="h-18 bg-white border-b-2 border-solid border-lightGrayishBlue md:border-0 md:h-28 md:px-4">
-      <div className="container flex justify-between h-full items-center md:p-0 md:border-b-2 border-solid border-lightGrayishBlue">
-        <div className="flex items-center gap-x-[clamp(1rem,5vw,3rem)] md:flex-row-reverse">
+      <div className="container flex justify-between h-full items-center px-5 md:p-0 md:border-b-2 border-solid border-lightGrayishBlue">
+        <div className="flex items-center gap-x-[clamp(1rem,5vw,3rem)] md:flex-row-reverse md:h-full">
           <NavigationMenu />
           <div>
             <Logo />
@@ -48,10 +48,10 @@ export function NavigationMenu() {
 
   const btnLabel = `${expanded ? "Close" : "Open"} main menu`;
 
-  const items = ["Collections", "Men", "Women", "About", "Contact"];
+  const links = ["Collections", "Men", "Women", "About", "Contact"];
 
   return (
-    <nav className="h-min leading-0">
+    <nav className="h-min leading-0 md:h-full md:flex md:place-items-center">
       <button
         aria-label={btnLabel}
         title={btnLabel}
@@ -93,13 +93,21 @@ export function NavigationMenu() {
       )}
       <ul
         id="nav-menu"
-        className={`leading-normal fixed left-0 top-0 bottom-0 bg-white pt-20 pl-4 pr-32 z-40 ${
+        className={`leading-normal fixed left-0 top-0 bottom-0 bg-white pt-20 pl-5 pr-32 z-40 ${
           expanded ? "flex" : "hidden"
-        } flex-col md:static md:flex md:flex-row gap-4 md:p-0`}
+        } flex-col md:static md:flex md:flex-row gap-4 md:gap-[clamp(0.8rem,3vw,2rem)] md:p-0 md:h-full md:items-center `}
       >
-        {items.map((i) => (
-          <li key={i} className="font-bold md:font-normal">
-            <a href="https://www.example.com">{i}</a>
+        {links.map((l) => (
+          <li
+            key={l}
+            className="relative md:h-full md:hover:before:h-0.5 md:hover:before:bg-orange md:hover:before:absolute md:hover:before:inset-x-0 md:hover:before:top-full md:hover:before:block md:flex md:place-items-center md:focus-within:before:h-0.5 md:focus-within:before:bg-orange md:focus-within:before:absolute md:focus-within:before:inset-x-0 md:focus-within:before:top-full md:focus-within:before:block"
+          >
+            <a
+              href="https://www.example.com"
+              className="font-bold md:font-semibold md:text-darkGrayishBlue md:hover:text-black md:focus-visible:text-black"
+            >
+              {l}
+            </a>
           </li>
         ))}
       </ul>

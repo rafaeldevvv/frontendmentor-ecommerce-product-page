@@ -8422,9 +8422,9 @@ function Header() {
   return /*#__PURE__*/React.createElement("header", {
     className: "h-18 bg-white border-b-2 border-solid border-lightGrayishBlue md:border-0 md:h-28 md:px-4"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "container flex justify-between h-full items-center md:p-0 md:border-b-2 border-solid border-lightGrayishBlue"
+    className: "container flex justify-between h-full items-center px-5 md:p-0 md:border-b-2 border-solid border-lightGrayishBlue"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "flex items-center gap-x-[clamp(1rem,5vw,3rem)] md:flex-row-reverse"
+    className: "flex items-center gap-x-[clamp(1rem,5vw,3rem)] md:flex-row-reverse md:h-full"
   }, /*#__PURE__*/React.createElement(NavigationMenu, null), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(_icons_logo_svg__WEBPACK_IMPORTED_MODULE_0__["default"], null))), /*#__PURE__*/React.createElement("div", {
     className: "flex items-center gap-x-[clamp(.7rem,5vw,3rem)]"
   }, /*#__PURE__*/React.createElement("div", {
@@ -8452,9 +8452,9 @@ function NavigationMenu() {
     setExpanded = _useState2[1];
   var clickHandlerRef = (0,react__WEBPACK_IMPORTED_MODULE_5__.useRef)(null);
   var btnLabel = "".concat(expanded ? "Close" : "Open", " main menu");
-  var items = ["Collections", "Men", "Women", "About", "Contact"];
+  var links = ["Collections", "Men", "Women", "About", "Contact"];
   return /*#__PURE__*/React.createElement("nav", {
-    className: "h-min leading-0"
+    className: "h-min leading-0 md:h-full md:flex md:place-items-center"
   }, /*#__PURE__*/React.createElement("button", {
     "aria-label": btnLabel,
     title: btnLabel,
@@ -8492,14 +8492,15 @@ function NavigationMenu() {
     className: "bg-black opacity-40 fixed inset-0 z-30 md:hidden"
   }), /*#__PURE__*/React.createElement("ul", {
     id: "nav-menu",
-    className: "leading-normal fixed left-0 top-0 bottom-0 bg-white pt-20 pl-4 pr-32 z-40 ".concat(expanded ? "flex" : "hidden", " flex-col md:static md:flex md:flex-row gap-4 md:p-0")
-  }, items.map(function (i) {
+    className: "leading-normal fixed left-0 top-0 bottom-0 bg-white pt-20 pl-5 pr-32 z-40 ".concat(expanded ? "flex" : "hidden", " flex-col md:static md:flex md:flex-row gap-4 md:gap-[clamp(0.8rem,3vw,2rem)] md:p-0 md:h-full md:items-center ")
+  }, links.map(function (l) {
     return /*#__PURE__*/React.createElement("li", {
-      key: i,
-      className: "font-bold md:font-normal"
+      key: l,
+      className: "relative md:h-full md:hover:before:h-0.5 md:hover:before:bg-orange md:hover:before:absolute md:hover:before:inset-x-0 md:hover:before:top-full md:hover:before:block md:flex md:place-items-center md:focus-within:before:h-0.5 md:focus-within:before:bg-orange md:focus-within:before:absolute md:focus-within:before:inset-x-0 md:focus-within:before:top-full md:focus-within:before:block"
     }, /*#__PURE__*/React.createElement("a", {
-      href: "https://www.example.com"
-    }, i));
+      href: "https://www.example.com",
+      className: "font-bold md:font-semibold md:text-darkGrayishBlue md:hover:text-black md:focus-visible:text-black"
+    }, l));
   })));
 }
 
@@ -9587,13 +9588,18 @@ video {
   padding-right: 1rem;
 }
 
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
 
-.pl-4 {
-  padding-left: 1rem;
+.pl-5 {
+  padding-left: 1.25rem;
 }
 
 .pr-32 {
@@ -9839,6 +9845,18 @@ video {
     flex-direction: row-reverse;
   }
 
+  .md\\:place-items-center {
+    place-items: center;
+  }
+
+  .md\\:items-center {
+    align-items: center;
+  }
+
+  .md\\:gap-\\[clamp\\(0\\.8rem\\2c 3vw\\2c 2rem\\)\\] {
+    gap: clamp(0.8rem,3vw,2rem);
+  }
+
   .md\\:border-0 {
     border-width: 0px;
   }
@@ -9866,8 +9884,97 @@ video {
     line-height: 1.25rem;
   }
 
-  .md\\:font-normal {
-    font-weight: 400;
+  .md\\:font-semibold {
+    font-weight: 600;
+  }
+
+  .md\\:text-darkGrayishBlue {
+    --tw-text-opacity: 1;
+    color: hsl(219 9% 45% / var(--tw-text-opacity));
+  }
+
+  .md\\:focus-within\\:before\\:absolute:focus-within::before {
+    content: var(--tw-content);
+    position: absolute;
+  }
+
+  .md\\:focus-within\\:before\\:inset-x-0:focus-within::before {
+    content: var(--tw-content);
+    left: 0px;
+    right: 0px;
+  }
+
+  .md\\:focus-within\\:before\\:top-full:focus-within::before {
+    content: var(--tw-content);
+    top: 100%;
+  }
+
+  .md\\:focus-within\\:before\\:block:focus-within::before {
+    content: var(--tw-content);
+    display: block;
+  }
+
+  .md\\:focus-within\\:before\\:h-0:focus-within::before {
+    content: var(--tw-content);
+    height: 0px;
+  }
+
+  .md\\:focus-within\\:before\\:h-0\\.5:focus-within::before {
+    content: var(--tw-content);
+    height: 0.125rem;
+  }
+
+  .md\\:focus-within\\:before\\:bg-orange:focus-within::before {
+    content: var(--tw-content);
+    --tw-bg-opacity: 1;
+    background-color: hsl(26 100% 55% / var(--tw-bg-opacity));
+  }
+
+  .md\\:hover\\:text-black:hover {
+    --tw-text-opacity: 1;
+    color: rgb(0 0 0 / var(--tw-text-opacity));
+  }
+
+  .md\\:hover\\:before\\:absolute:hover::before {
+    content: var(--tw-content);
+    position: absolute;
+  }
+
+  .md\\:hover\\:before\\:inset-x-0:hover::before {
+    content: var(--tw-content);
+    left: 0px;
+    right: 0px;
+  }
+
+  .md\\:hover\\:before\\:top-full:hover::before {
+    content: var(--tw-content);
+    top: 100%;
+  }
+
+  .md\\:hover\\:before\\:block:hover::before {
+    content: var(--tw-content);
+    display: block;
+  }
+
+  .md\\:hover\\:before\\:h-0:hover::before {
+    content: var(--tw-content);
+    height: 0px;
+  }
+
+  .md\\:hover\\:before\\:h-0\\.5:hover::before {
+    content: var(--tw-content);
+    height: 0.125rem;
+  }
+
+  .md\\:hover\\:before\\:bg-orange:hover::before {
+    content: var(--tw-content);
+    --tw-bg-opacity: 1;
+    background-color: hsl(26 100% 55% / var(--tw-bg-opacity));
+  }
+
+  .md\\:focus-visible\\:text-black:focus-visible {
+    --tw-text-opacity: 1;
+    color: rgb(0 0 0 / var(--tw-text-opacity));
   }
 }`, ""]);
 // Exports
