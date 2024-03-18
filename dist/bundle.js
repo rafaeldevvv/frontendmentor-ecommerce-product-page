@@ -8317,7 +8317,7 @@ var sneakers = {
 };
 function App() {
   return /*#__PURE__*/React.createElement("div", {
-    className: "grid content-between min-h-screen"
+    className: "grid min-h-screen content-between"
   }, /*#__PURE__*/React.createElement(_components_Header__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/React.createElement("main", null, /*#__PURE__*/React.createElement(_components_ProductArticle__WEBPACK_IMPORTED_MODULE_3__["default"], {
     product: sneakers
   })), /*#__PURE__*/React.createElement(_components_Footer__WEBPACK_IMPORTED_MODULE_1__["default"], null));
@@ -8378,10 +8378,10 @@ function Footer() {
   }, "Challenge by", " ", /*#__PURE__*/React.createElement("a", {
     href: "https://www.frontendmentor.io?ref=challenge",
     target: "_blank",
-    className: "underline text-orange font-medium hover:no-underline"
+    className: "font-medium text-orange underline hover:no-underline"
   }, "Frontend Mentor"), ". Coded by", " ", /*#__PURE__*/React.createElement("a", {
     href: "https://rafaeldevvv.github.io/portfolio",
-    className: "underline text-orange font-medium hover:no-underline"
+    className: "font-medium text-orange underline hover:no-underline"
   }, "Rafael Maia"), "."));
 }
 
@@ -8420,11 +8420,11 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function Header() {
   return /*#__PURE__*/React.createElement("header", {
-    className: "h-18 bg-white border-b-2 border-solid border-lightGrayishBlue md:border-0 md:h-28 md:px-4"
+    className: "h-18 border-b-2 border-solid border-lightGrayishBlue bg-white md:h-28 md:border-0 md:px-4"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "container flex justify-between h-full items-center px-5 md:p-0 md:border-b-2 border-solid border-lightGrayishBlue"
+    className: "container flex h-full items-center justify-between border-solid border-lightGrayishBlue px-5 md:border-b-2 md:p-0"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "flex items-center gap-x-[clamp(1rem,5vw,3rem)] md:flex-row-reverse md:h-full"
+    className: "flex items-center gap-x-[clamp(1rem,5vw,3rem)] md:h-full md:flex-row-reverse"
   }, /*#__PURE__*/React.createElement(NavigationMenu, null), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(_icons_logo_svg__WEBPACK_IMPORTED_MODULE_0__["default"], null))), /*#__PURE__*/React.createElement("div", {
     className: "flex items-center gap-x-[clamp(.7rem,5vw,3rem)]"
   }, /*#__PURE__*/React.createElement("div", {
@@ -8436,11 +8436,11 @@ function Header() {
   }))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("a", {
     href: "https://rafaeldevvv.github.io/portfolio",
     target: "_blank",
-    className: "rounded-full hover:outline-2 hover:outline-orange hover:outline block"
+    className: "block rounded-full hover:outline hover:outline-2 hover:outline-orange"
   }, /*#__PURE__*/React.createElement("img", {
     src: "images/image-avatar.png",
     alt: "Avatar",
-    className: "w-[clamp(1.6rem,6vw,3rem)] min-w-4 aspect-square"
+    className: "aspect-square w-[clamp(1.6rem,6vw,3rem)] min-w-4"
   }), /*#__PURE__*/React.createElement("span", {
     className: "sr-only"
   }, "Profile"))))));
@@ -8454,7 +8454,7 @@ function NavigationMenu() {
   var btnLabel = "".concat(expanded ? "Close" : "Open", " main menu");
   var links = ["Collections", "Men", "Women", "About", "Contact"];
   return /*#__PURE__*/React.createElement("nav", {
-    className: "h-min leading-0 md:h-full md:flex md:place-items-center"
+    className: "h-min leading-0 md:flex md:h-full md:place-items-center"
   }, /*#__PURE__*/React.createElement("button", {
     "aria-label": btnLabel,
     title: btnLabel,
@@ -8487,16 +8487,16 @@ function NavigationMenu() {
         window.removeEventListener("click", clickHandlerRef.current);
       }
     },
-    className: "md:hidden z-50 relative"
+    className: "relative z-50 md:hidden"
   }, expanded ? /*#__PURE__*/React.createElement(_icons_icon_close_svg__WEBPACK_IMPORTED_MODULE_4__["default"], null) : /*#__PURE__*/React.createElement(_icons_icon_menu_svg__WEBPACK_IMPORTED_MODULE_3__["default"], null)), expanded && /*#__PURE__*/React.createElement("div", {
-    className: "bg-black opacity-40 fixed inset-0 z-30 md:hidden"
+    className: "fixed inset-0 z-30 bg-black opacity-40 md:hidden"
   }), /*#__PURE__*/React.createElement("ul", {
     id: "nav-menu",
-    className: "leading-normal fixed left-0 top-0 bottom-0 bg-white pt-20 pl-5 pr-32 z-40 ".concat(expanded ? "flex" : "hidden", " flex-col md:static md:flex md:flex-row gap-4 md:gap-[clamp(0.8rem,3vw,2rem)] md:p-0 md:h-full md:items-center ")
+    className: "fixed bottom-0 left-0 top-0 z-40 bg-white pl-5 pr-32 pt-20 leading-normal ".concat(expanded ? "flex" : "hidden", " flex-col gap-4 md:static md:flex md:h-full md:flex-row md:items-center md:gap-[clamp(0.8rem,3vw,2rem)] md:p-0 ")
   }, links.map(function (l) {
     return /*#__PURE__*/React.createElement("li", {
       key: l,
-      className: "relative md:h-full md:hover:before:h-0.5 md:hover:before:bg-orange md:hover:before:absolute md:hover:before:inset-x-0 md:hover:before:top-full md:hover:before:block md:flex md:place-items-center md:focus-within:before:h-0.5 md:focus-within:before:bg-orange md:focus-within:before:absolute md:focus-within:before:inset-x-0 md:focus-within:before:top-full md:focus-within:before:block"
+      className: "relative md:flex md:h-full md:place-items-center md:focus-within:before:absolute md:focus-within:before:inset-x-0 md:focus-within:before:top-full md:focus-within:before:block md:focus-within:before:h-0.5 md:focus-within:before:bg-orange md:hover:before:absolute md:hover:before:inset-x-0 md:hover:before:top-full md:hover:before:block md:hover:before:h-0.5 md:hover:before:bg-orange"
     }, /*#__PURE__*/React.createElement("a", {
       href: "https://www.example.com",
       className: "font-bold md:font-semibold md:text-darkGrayishBlue md:hover:text-black md:focus-visible:text-black"
@@ -8533,7 +8533,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function ImageViewer(_ref) {
   var images = _ref.images;
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-    className: "relative w-fit mx-auto"
+    className: "relative mx-auto w-fit"
   }, /*#__PURE__*/React.createElement("ul", null, images.map(function (img, index) {
     var _img = _slicedToArray(img, 2),
       src = _img[0],
@@ -8544,18 +8544,18 @@ function ImageViewer(_ref) {
     }, /*#__PURE__*/React.createElement("img", {
       src: src,
       alt: alt,
-      className: "aspect-[4/3] w-full object-cover object-center sm:aspect-square sm:rounded-xl sm:max-w-lg sm:mx-auto"
+      className: "aspect-[4/3] w-full object-cover object-center sm:mx-auto sm:aspect-square sm:max-w-lg sm:rounded-xl"
     }));
   })), /*#__PURE__*/React.createElement("button", {
     type: "button",
     "aria-label": "Previous image",
-    className: "absolute left-6 top-1/2 -translate-y-1/2 bg-white rounded-full aspect-square px-4 leading-0 md:hidden"
+    className: "absolute left-6 top-1/2 aspect-square -translate-y-1/2 rounded-full bg-white px-4 leading-0 md:hidden"
   }, /*#__PURE__*/React.createElement(_icons_icon_previous_svg__WEBPACK_IMPORTED_MODULE_1__["default"], null)), /*#__PURE__*/React.createElement("button", {
     type: "button",
     "aria-label": "Next image",
-    className: "absolute right-6 top-1/2 -translate-y-1/2 bg-white rounded-full aspect-square px-4 leading-0 md:hidden"
+    className: "absolute right-6 top-1/2 aspect-square -translate-y-1/2 rounded-full bg-white px-4 leading-0 md:hidden"
   }, /*#__PURE__*/React.createElement(_icons_icon_next_svg__WEBPACK_IMPORTED_MODULE_0__["default"], null))), /*#__PURE__*/React.createElement("ul", {
-    className: "hidden md:flex gap-x-6 mt-6"
+    className: "mt-6 hidden gap-x-6 md:flex"
   }, images.map(function (img, index) {
     var _img2 = _slicedToArray(img, 1),
       src = _img2[0];
@@ -8573,7 +8573,7 @@ function ClickableThumbnail(_ref2) {
   return /*#__PURE__*/React.createElement("button", {
     type: "button",
     "aria-label": "Switch to image ".concat(imageNumber),
-    className: "hover:opacity-60 transition-opacity rounded-lg overflow-hidden aspect-square block w-full"
+    className: "block aspect-square w-full overflow-hidden rounded-lg transition-opacity hover:opacity-60"
   }, /*#__PURE__*/React.createElement("img", {
     src: src.replace(/(\.\w+)$/, "-thumbnail$1"),
     alt: "Image ".concat(imageNumber, " of product")
@@ -8610,11 +8610,11 @@ function ProductArticle(_ref) {
     price = product.price,
     discount = product.discount;
   return /*#__PURE__*/React.createElement("article", {
-    className: "md:grid md:grid-cols-2 sm:my-10 md:my-20 gap-x-[clamp(1rem,5vw,6rem)] md:container items-center"
+    className: "items-center gap-x-[clamp(1rem,5vw,6rem)] md:container sm:my-10 md:my-20 md:grid md:grid-cols-2"
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(_ImageViewer__WEBPACK_IMPORTED_MODULE_0__["default"], {
     images: images
   })), /*#__PURE__*/React.createElement("div", {
-    className: "p-6 sm:px-0 max-w-md mx-auto"
+    className: "mx-auto max-w-md p-6 sm:px-0"
   }, /*#__PURE__*/React.createElement(_ProductInfo__WEBPACK_IMPORTED_MODULE_1__["default"], {
     name: name,
     company: company,
@@ -8622,10 +8622,10 @@ function ProductArticle(_ref) {
     price: price,
     discount: discount
   }), /*#__PURE__*/React.createElement("div", {
-    className: "mt-8 md:grid gap-x-4 grid-cols-[2fr_3fr]"
+    className: "mt-8 grid-cols-[2fr_3fr] gap-x-4 md:grid"
   }, /*#__PURE__*/React.createElement(_QuantityControl__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/React.createElement("button", {
     type: "button",
-    className: "text-white bg-orange rounded-md py-4 w-full flex items-center justify-center gap-x-4 fill-white mt-4 md:mt-0 hover:opacity-60 transition-opacity shadow-[0_15px_60px_-15px_theme(colors.orange)]"
+    className: "mt-4 flex w-full items-center justify-center gap-x-4 rounded-md bg-orange fill-white py-4 text-white shadow-[0_15px_60px_-15px_theme(colors.orange)] transition-opacity hover:opacity-60 md:mt-0"
   }, /*#__PURE__*/React.createElement(_icons_icon_cart_svg__WEBPACK_IMPORTED_MODULE_3__["default"], {
     className: "fill-white"
   }), /*#__PURE__*/React.createElement("span", null, "Add to cart")))));
@@ -8654,24 +8654,24 @@ function ProductInfo(_ref) {
   return /*#__PURE__*/React.createElement("div", {
     className: "space-y-6"
   }, /*#__PURE__*/React.createElement("header", null, /*#__PURE__*/React.createElement("p", {
-    className: "text-orange text-xs md:text-sm uppercase font-bold mb-4 tracking-widest"
+    className: "mb-4 text-xs font-bold uppercase tracking-widest text-orange md:text-sm"
   }, company), /*#__PURE__*/React.createElement("h1", {
-    className: "text-[clamp(1.875rem,5vw,3rem)] text-black capitalize font-extrabold leading-none"
+    className: "text-[clamp(1.875rem,5vw,3rem)] font-extrabold capitalize leading-none text-black"
   }, name)), /*#__PURE__*/React.createElement("p", {
-    className: "text-darkGrayishBlue text-md leading-relaxed"
+    className: "text-md leading-relaxed text-darkGrayishBlue"
   }, desc), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("span", {
     className: "sr-only"
   }, "$\xA0", actualPrice, " with a discount of $", discount, "%"), /*#__PURE__*/React.createElement("span", {
     "aria-hidden": "true",
-    className: "flex justify-between items-center md:block"
+    className: "flex items-center justify-between md:block"
   }, /*#__PURE__*/React.createElement("span", {
-    className: "flex gap-x-4 items-center"
+    className: "flex items-center gap-x-4"
   }, /*#__PURE__*/React.createElement("span", {
-    className: "font-extrabold text-3xl"
+    className: "text-3xl font-extrabold"
   }, "$", actualPrice.toFixed(2)), /*#__PURE__*/React.createElement("span", {
-    className: "font-bold text-md text-orange bg-paleOrange rounded px-1 block"
+    className: "text-md block rounded bg-paleOrange px-1 font-bold text-orange"
   }, discount, "%")), /*#__PURE__*/React.createElement("span", {
-    className: "line-through text-grayishBlue font-semibold block"
+    className: "block font-semibold text-grayishBlue line-through"
   }, "$", price.toFixed(2)))));
 }
 
@@ -8687,18 +8687,40 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ QuantityControl)
 /* harmony export */ });
-/* harmony import */ var _Button__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Button */ "./src/components/Button.jsx");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* provided dependency */ var React = __webpack_require__(/*! ./node_modules/react/index.js */ "./node_modules/react/index.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function QuantityControl() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+    _useState2 = _slicedToArray(_useState, 2),
+    quantity = _useState2[0],
+    setQuantity = _useState2[1];
   return /*#__PURE__*/React.createElement("div", {
-    className: "flex justify-between items-center bg-lightGrayishBlue rounded-lg md:w-full"
+    className: "flex items-center justify-between rounded-lg bg-lightGrayishBlue md:w-full"
   }, /*#__PURE__*/React.createElement("button", {
     type: "button",
-    className: "text-orange font-extrabold text-2xl block aspect-square px-4 md:px-0 md:h-full rounded-lg transition-opacity hover:opacity-60"
-  }, "-"), /*#__PURE__*/React.createElement("p", null, "0"), /*#__PURE__*/React.createElement("button", {
+    className: "block aspect-square rounded-lg px-4 text-2xl font-extrabold text-orange transition-opacity hover:opacity-60 md:h-full md:px-0",
+    onClick: function onClick() {
+      return setQuantity(Math.max(0, quantity - 1));
+    },
+    "aria-label": "less"
+  }, "-"), /*#__PURE__*/React.createElement("p", {
+    "aria-live": "polite",
+    className: "font-bold"
+  }, quantity), /*#__PURE__*/React.createElement("button", {
     type: "button",
-    className: "text-orange font-extrabold text-2xl block aspect-square px-4 md:px-0 md:h-full rounded-lg transition-opacity hover:opacity-60"
+    className: "block aspect-square rounded-lg px-4 text-2xl font-extrabold text-orange transition-opacity hover:opacity-60 md:h-full md:px-0",
+    onClick: function onClick() {
+      return setQuantity(quantity + 1);
+    },
+    "aria-label": "more"
   }, "+"));
 }
 
@@ -8747,7 +8769,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*
 
 ::before,
 ::after {
-  --tw-content: '';
+  --tw-content: "";
 }
 
 /*
@@ -8769,9 +8791,10 @@ html,
   -moz-tab-size: 4;
   /* 3 */
   -o-tab-size: 4;
-     tab-size: 4;
+  tab-size: 4;
   /* 3 */
-  font-family: "Kumbh Sans", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "Kumbh Sans", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   /* 4 */
   font-feature-settings: normal;
   /* 5 */
@@ -8814,7 +8837,7 @@ Add the correct text decoration in Chrome, Edge, and Safari.
 
 abbr:where([title]) {
   -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted;
+  text-decoration: underline dotted;
 }
 
 /*
@@ -8860,7 +8883,8 @@ code,
 kbd,
 samp,
 pre {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
   /* 1 */
   font-feature-settings: normal;
   /* 2 */
@@ -8959,9 +8983,9 @@ select {
 */
 
 button,
-[type='button'],
-[type='reset'],
-[type='submit'] {
+[type="button"],
+[type="reset"],
+[type="submit"] {
   -webkit-appearance: button;
   /* 1 */
   background-color: transparent;
@@ -9008,7 +9032,7 @@ Correct the cursor style of increment and decrement buttons in Safari.
 2. Correct the outline style in Safari.
 */
 
-[type='search'] {
+[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
   outline-offset: -2px;
@@ -9101,6 +9125,14 @@ textarea {
 2. Set the default placeholder color to the user's configured gray 400 color.
 */
 
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+  opacity: 1;
+  /* 1 */
+  color: #9ca3af;
+  /* 2 */
+}
+
 input::-moz-placeholder, textarea::-moz-placeholder {
   opacity: 1;
   /* 1 */
@@ -9169,7 +9201,9 @@ video {
   display: none;
 }
 
-*, ::before, ::after {
+*,
+::before,
+::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
   --tw-translate-x: 0;
@@ -9410,7 +9444,7 @@ video {
 }
 
 .w-\\[clamp\\(1\\.6rem\\2c 6vw\\2c 3rem\\)\\] {
-  width: clamp(1.6rem,6vw,3rem);
+  width: clamp(1.6rem, 6vw, 3rem);
 }
 
 .w-fit {
@@ -9432,7 +9466,9 @@ video {
 
 .-translate-y-1\\/2 {
   --tw-translate-y: -50%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .grid-cols-\\[2fr_3fr\\] {
@@ -9465,27 +9501,27 @@ video {
 
 .gap-x-4 {
   -moz-column-gap: 1rem;
-       column-gap: 1rem;
+  column-gap: 1rem;
 }
 
 .gap-x-6 {
   -moz-column-gap: 1.5rem;
-       column-gap: 1.5rem;
+  column-gap: 1.5rem;
 }
 
 .gap-x-\\[clamp\\(\\.7rem\\2c 5vw\\2c 3rem\\)\\] {
-  -moz-column-gap: clamp(.7rem,5vw,3rem);
-       column-gap: clamp(.7rem,5vw,3rem);
+  -moz-column-gap: clamp(0.7rem, 5vw, 3rem);
+  column-gap: clamp(0.7rem, 5vw, 3rem);
 }
 
 .gap-x-\\[clamp\\(1rem\\2c 5vw\\2c 3rem\\)\\] {
-  -moz-column-gap: clamp(1rem,5vw,3rem);
-       column-gap: clamp(1rem,5vw,3rem);
+  -moz-column-gap: clamp(1rem, 5vw, 3rem);
+  column-gap: clamp(1rem, 5vw, 3rem);
 }
 
 .gap-x-\\[clamp\\(1rem\\2c 5vw\\2c 6rem\\)\\] {
-  -moz-column-gap: clamp(1rem,5vw,6rem);
-       column-gap: clamp(1rem,5vw,6rem);
+  -moz-column-gap: clamp(1rem, 5vw, 6rem);
+  column-gap: clamp(1rem, 5vw, 6rem);
 }
 
 .space-y-6 > :not([hidden]) ~ :not([hidden]) {
@@ -9553,7 +9589,7 @@ video {
 }
 
 .fill-gray {
-  fill: #69707D;
+  fill: #69707d;
 }
 
 .fill-white {
@@ -9562,12 +9598,12 @@ video {
 
 .object-cover {
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .object-center {
   -o-object-position: center;
-     object-position: center;
+  object-position: center;
 }
 
 .p-6 {
@@ -9625,7 +9661,7 @@ video {
 }
 
 .text-\\[clamp\\(1\\.875rem\\2c 5vw\\2c 3rem\\)\\] {
-  font-size: clamp(1.875rem,5vw,3rem);
+  font-size: clamp(1.875rem, 5vw, 3rem);
 }
 
 .text-xs {
@@ -9717,7 +9753,8 @@ video {
 .shadow-\\[0_15px_60px_-15px_theme\\(colors\\.orange\\)\\] {
   --tw-shadow: 0 15px 60px -15px hsl(26, 100%, 55%);
   --tw-shadow-colored: 0 15px 60px -15px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 .transition-opacity {
@@ -9854,7 +9891,7 @@ video {
   }
 
   .md\\:gap-\\[clamp\\(0\\.8rem\\2c 3vw\\2c 2rem\\)\\] {
-    gap: clamp(0.8rem,3vw,2rem);
+    gap: clamp(0.8rem, 3vw, 2rem);
   }
 
   .md\\:border-0 {
@@ -9976,7 +10013,8 @@ video {
     --tw-text-opacity: 1;
     color: rgb(0 0 0 / var(--tw-text-opacity));
   }
-}`, ""]);
+}
+`, ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
