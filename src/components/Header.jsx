@@ -1,9 +1,9 @@
 import Logo from "../icons/logo.svg";
 import CartIcon from "../icons/icon-cart.svg";
-import Button from "./Button";
 import MenuIconBurguer from "../icons/icon-menu.svg";
 import MenuIconClose from "../icons/icon-close.svg";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
+import Cart from "./Cart";
 
 export default function Header() {
   return (
@@ -17,11 +17,7 @@ export default function Header() {
         </div>
 
         <div className="flex items-center gap-x-[clamp(.7rem,5vw,3rem)]">
-          <div className="h-min leading-0">
-            <Button label="Cart">
-              <CartIcon className="fill-gray" />
-            </Button>
-          </div>
+          <CartWidget />
           <div>
             <a
               href="https://rafaeldevvv.github.io/portfolio"
@@ -112,5 +108,73 @@ export function NavigationMenu() {
         ))}
       </ul>
     </nav>
+  );
+}
+
+export function CartWidget() {
+  const [expanded, setExpanded] = useState(false),
+    [pos, setPos] = useState({ x: 0, y: 0 });
+  const buttonRef = useRef(null),
+    cartWrapperRef = useRef(null);
+
+  useEffect(() => {
+    function handleClick(e) {
+      const wrapper = cartWrapperRef.current;
+      if (!expanded || !wrapper) return;
+
+      if (!wrapper.contains(e.target) && wrapper !== e.target) {
+        setExpanded(false);
+      }
+    }
+    function updateCartPosition() {
+      const btn = buttonRef.current,
+        wrapper = cartWrapperRef.current;
+      if (!wrapper) return;
+      const { x, height, y, width: btnWidth } = btn.getBoundingClientRect(),
+        { width: wrapperWidth } = wrapper.getBoundingClientRect();
+      let leftPos = x + btnWidth / 2 - wrapperWidth / 2;
+      if (leftPos + wrapperWidth > innerWidth) {
+        leftPos = innerWidth - wrapperWidth;
+      }
+      setPos({ x: leftPos, y: y + height + 25 });
+    }
+    updateCartPosition();
+    window.addEventListener("scroll", updateCartPosition);
+    window.addEventListener("resize", updateCartPosition);
+    window.addEventListener("click", handleClick);
+    return () => {
+      window.removeEventListener("scroll", updateCartPosition);
+      window.removeEventListener("resize", updateCartPosition);
+      window.removeEventListener("click", handleClick);
+    };
+  }, [buttonRef, cartWrapperRef, expanded]);
+
+  return (
+    <div className="relative leading-0">
+      <button
+        aria-label="Cart"
+        type="button"
+        aria-haspopup="menu"
+        aria-controls="cart"
+        aria-expanded={expanded}
+        onClick={(e) => {
+          e.stopPropagation();
+          setExpanded(!expanded);
+        }}
+        className="h-min fill-gray hover:fill-black"
+        ref={buttonRef}
+      >
+        <CartIcon />
+      </button>
+      {expanded && (
+        <div
+          className="fixed z-40 w-[min(20rem,80vw)] leading-normal"
+          style={{ left: pos.x + "px", top: pos.y + "px" }}
+          ref={cartWrapperRef}
+        >
+          <Cart />
+        </div>
+      )}
+    </div>
   );
 }

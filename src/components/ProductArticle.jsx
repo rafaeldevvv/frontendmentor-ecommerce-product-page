@@ -3,7 +3,7 @@ import ProductInfo from "./ProductInfo";
 import QuantityControl from "./QuantityControl";
 import CartIcon from "../icons/icon-cart.svg";
 
-export default function ProductArticle({ product }) {
+export default function ProductArticle({ product, onAddProduct }) {
   const { images, name, company, description, price, discount } = product;
 
   return (
@@ -24,6 +24,7 @@ export default function ProductArticle({ product }) {
           <button
             type="button"
             className="mt-4 flex w-full items-center justify-center gap-x-4 rounded-md bg-orange fill-white py-4 text-white shadow-[0_15px_60px_-15px_theme(colors.orange)] transition-opacity hover:opacity-60 md:mt-0"
+            
           >
             <CartIcon className="fill-white" />
             <span>Add to cart</span>

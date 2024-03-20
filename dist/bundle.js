@@ -60,6 +60,39 @@ var SvgIconClose = function SvgIconClose(props) {
 
 /***/ }),
 
+/***/ "./src/icons/icon-delete.svg":
+/*!***********************************!*\
+  !*** ./src/icons/icon-delete.svg ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _defs, _use;
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+var SvgIconDelete = function SvgIconDelete(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", _extends({
+    xmlns: "http://www.w3.org/2000/svg",
+    xmlnsXlink: "http://www.w3.org/1999/xlink",
+    width: 14,
+    height: 16
+  }, props), _defs || (_defs = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("defs", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+    id: "icon-delete_svg__a",
+    d: "M0 2.625V1.75C0 1.334.334 1 .75 1h3.5l.294-.584A.74.74 0 0 1 5.213 0h3.571a.75.75 0 0 1 .672.416L9.75 1h3.5c.416 0 .75.334.75.75v.875a.376.376 0 0 1-.375.375H.375A.376.376 0 0 1 0 2.625m13 1.75V14.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 1 14.5V4.375C1 4.169 1.169 4 1.375 4h11.25c.206 0 .375.169.375.375M4.5 6.5c0-.275-.225-.5-.5-.5s-.5.225-.5.5v7c0 .275.225.5.5.5s.5-.225.5-.5zm3 0c0-.275-.225-.5-.5-.5s-.5.225-.5.5v7c0 .275.225.5.5.5s.5-.225.5-.5zm3 0c0-.275-.225-.5-.5-.5s-.5.225-.5.5v7c0 .275.225.5.5.5s.5-.225.5-.5z"
+  }))), _use || (_use = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("use", {
+    xlinkHref: "#icon-delete_svg__a",
+    fill: "#C3CAD9"
+  })));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SvgIconDelete);
+
+/***/ }),
+
 /***/ "./src/icons/icon-menu.svg":
 /*!*********************************!*\
   !*** ./src/icons/icon-menu.svg ***!
@@ -8309,6 +8342,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var sneakers = {
   name: "Fall Limited Edition Sneakers",
+  id: 0,
   company: "Sneaker Company",
   description: "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
   price: 250,
@@ -8325,36 +8359,76 @@ function App() {
 
 /***/ }),
 
-/***/ "./src/components/Button.jsx":
-/*!***********************************!*\
-  !*** ./src/components/Button.jsx ***!
-  \***********************************/
+/***/ "./src/components/Cart.jsx":
+/*!*********************************!*\
+  !*** ./src/components/Cart.jsx ***!
+  \*********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Button)
+/* harmony export */   ProductItem: () => (/* binding */ ProductItem),
+/* harmony export */   "default": () => (/* binding */ Cart)
 /* harmony export */ });
+/* harmony import */ var _icons_icon_delete_svg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../icons/icon-delete.svg */ "./src/icons/icon-delete.svg");
 /* provided dependency */ var React = __webpack_require__(/*! ./node_modules/react/index.js */ "./node_modules/react/index.js");
-function Button(_ref) {
-  var label = _ref.label,
-    _ref$onClick = _ref.onClick,
-    onClick = _ref$onClick === void 0 ? function () {} : _ref$onClick,
-    _ref$type = _ref.type,
-    type = _ref$type === void 0 ? "button" : _ref$type,
-    children = _ref.children;
-  if (label) {
-    return /*#__PURE__*/React.createElement("button", {
-      type: type,
-      onClick: onClick,
-      "aria-label": label
-    }, children);
+
+function Cart(_ref) {
+  var products = _ref.products;
+  var contents;
+  if (!products || products.length === 0) {
+    contents = /*#__PURE__*/React.createElement("div", {
+      className: "flex place-items-center font-bold text-darkGrayishBlue"
+    }, /*#__PURE__*/React.createElement("p", null, "Your cart is empty"));
   } else {
-    return /*#__PURE__*/React.createElement("button", {
-      type: type,
-      onClick: onClick
-    }, children);
+    contents = /*#__PURE__*/React.createElement("div", {
+      className: "grid grid-rows-[max-content_min-content]"
+    }, /*#__PURE__*/React.createElement("ul", {
+      className: "mb-6 space-y-4 overflow-y-auto"
+    }, products.map(function (p) {
+      return /*#__PURE__*/React.createElement("li", {
+        key: p.name
+      }, /*#__PURE__*/React.createElement(ProductItem, {
+        product: p
+      }));
+    })), /*#__PURE__*/React.createElement("a", {
+      type: "button",
+      className: "mt-4 block w-full rounded-md bg-orange py-4 text-center text-white transition-opacity hover:opacity-60 md:mt-0"
+    }, "Checkout"));
   }
+  return /*#__PURE__*/React.createElement("section", {
+    "aria-labelledby": "cart-heading",
+    className: "grid max-h-96 min-h-52 grid-rows-[min-content_min-content_1fr] rounded-md bg-white p-4 drop-shadow-xl",
+    id: "cart"
+  }, /*#__PURE__*/React.createElement("h2", {
+    id: "cart-heading"
+  }, "Cart"), /*#__PURE__*/React.createElement("div", {
+    className: "h-0.5 bg-lightGrayishBlue"
+  }), contents);
+}
+function ProductItem(_ref2) {
+  var product = _ref2.product;
+  var price = product.price,
+    images = product.images,
+    name = product.name,
+    quantity = product.quantity;
+  var formattedPrice = "$" + price.toFixed(2),
+    formattedTotal = "$" + (price * quantity).toFixed(2);
+  return /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center gap-x-4"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("img", {
+    src: images[0][0].replace(/\.(\w+)$/, "-thumbnail.$1"),
+    alt: images[0][1],
+    className: "rounded"
+  })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", null, name), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("span", {
+    className: "sr-only"
+  }, quantity, " items for $", formattedPrice, " each, $", formattedTotal, " total"), /*#__PURE__*/React.createElement("span", {
+    "aria-hidden": "true"
+  }, "$", formattedPrice, " x ", quantity), " ", /*#__PURE__*/React.createElement("strong", null, formattedTotal))), /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    "aria-label": "delete",
+    className: "h-min w-min leading-0"
+  }, /*#__PURE__*/React.createElement(_icons_icon_delete_svg__WEBPACK_IMPORTED_MODULE_0__["default"], null)));
 }
 
 /***/ }),
@@ -8395,16 +8469,17 @@ function Footer() {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   CartWidget: () => (/* binding */ CartWidget),
 /* harmony export */   NavigationMenu: () => (/* binding */ NavigationMenu),
 /* harmony export */   "default": () => (/* binding */ Header)
 /* harmony export */ });
 /* harmony import */ var _icons_logo_svg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../icons/logo.svg */ "./src/icons/logo.svg");
 /* harmony import */ var _icons_icon_cart_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../icons/icon-cart.svg */ "./src/icons/icon-cart.svg");
-/* harmony import */ var _Button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Button */ "./src/components/Button.jsx");
-/* harmony import */ var _icons_icon_menu_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../icons/icon-menu.svg */ "./src/icons/icon-menu.svg");
-/* harmony import */ var _icons_icon_close_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../icons/icon-close.svg */ "./src/icons/icon-close.svg");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _icons_icon_menu_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../icons/icon-menu.svg */ "./src/icons/icon-menu.svg");
+/* harmony import */ var _icons_icon_close_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../icons/icon-close.svg */ "./src/icons/icon-close.svg");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _Cart__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Cart */ "./src/components/Cart.jsx");
 /* provided dependency */ var React = __webpack_require__(/*! ./node_modules/react/index.js */ "./node_modules/react/index.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -8427,13 +8502,7 @@ function Header() {
     className: "flex items-center gap-x-[clamp(1rem,5vw,3rem)] md:h-full md:flex-row-reverse"
   }, /*#__PURE__*/React.createElement(NavigationMenu, null), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(_icons_logo_svg__WEBPACK_IMPORTED_MODULE_0__["default"], null))), /*#__PURE__*/React.createElement("div", {
     className: "flex items-center gap-x-[clamp(.7rem,5vw,3rem)]"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "h-min leading-0"
-  }, /*#__PURE__*/React.createElement(_Button__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    label: "Cart"
-  }, /*#__PURE__*/React.createElement(_icons_icon_cart_svg__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    className: "fill-gray"
-  }))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("a", {
+  }, /*#__PURE__*/React.createElement(CartWidget, null), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("a", {
     href: "https://rafaeldevvv.github.io/portfolio",
     target: "_blank",
     className: "block rounded-full hover:outline hover:outline-2 hover:outline-orange"
@@ -8446,11 +8515,11 @@ function Header() {
   }, "Profile"))))));
 }
 function NavigationMenu() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)(false),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
     expanded = _useState2[0],
     setExpanded = _useState2[1];
-  var clickHandlerRef = (0,react__WEBPACK_IMPORTED_MODULE_5__.useRef)(null);
+  var clickHandlerRef = (0,react__WEBPACK_IMPORTED_MODULE_4__.useRef)(null);
   var btnLabel = "".concat(expanded ? "Close" : "Open", " main menu");
   var links = ["Collections", "Men", "Women", "About", "Contact"];
   return /*#__PURE__*/React.createElement("nav", {
@@ -8488,7 +8557,7 @@ function NavigationMenu() {
       }
     },
     className: "relative z-50 md:hidden"
-  }, expanded ? /*#__PURE__*/React.createElement(_icons_icon_close_svg__WEBPACK_IMPORTED_MODULE_4__["default"], null) : /*#__PURE__*/React.createElement(_icons_icon_menu_svg__WEBPACK_IMPORTED_MODULE_3__["default"], null)), expanded && /*#__PURE__*/React.createElement("div", {
+  }, expanded ? /*#__PURE__*/React.createElement(_icons_icon_close_svg__WEBPACK_IMPORTED_MODULE_3__["default"], null) : /*#__PURE__*/React.createElement(_icons_icon_menu_svg__WEBPACK_IMPORTED_MODULE_2__["default"], null)), expanded && /*#__PURE__*/React.createElement("div", {
     className: "fixed inset-0 z-30 bg-black opacity-40 md:hidden"
   }), /*#__PURE__*/React.createElement("ul", {
     id: "nav-menu",
@@ -8502,6 +8571,81 @@ function NavigationMenu() {
       className: "font-bold md:font-semibold md:text-darkGrayishBlue md:hover:text-black md:focus-visible:text-black"
     }, l));
   })));
+}
+function CartWidget() {
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(false),
+    _useState4 = _slicedToArray(_useState3, 2),
+    expanded = _useState4[0],
+    setExpanded = _useState4[1],
+    _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)({
+      x: 0,
+      y: 0
+    }),
+    _useState6 = _slicedToArray(_useState5, 2),
+    pos = _useState6[0],
+    setPos = _useState6[1];
+  var buttonRef = (0,react__WEBPACK_IMPORTED_MODULE_4__.useRef)(null),
+    cartWrapperRef = (0,react__WEBPACK_IMPORTED_MODULE_4__.useRef)(null);
+  (0,react__WEBPACK_IMPORTED_MODULE_4__.useEffect)(function () {
+    function handleClick(e) {
+      var wrapper = cartWrapperRef.current;
+      if (!expanded || !wrapper) return;
+      if (!wrapper.contains(e.target) && wrapper !== e.target) {
+        setExpanded(false);
+      }
+    }
+    function updateCartPosition() {
+      var btn = buttonRef.current,
+        wrapper = cartWrapperRef.current;
+      if (!wrapper) return;
+      var _btn$getBoundingClien = btn.getBoundingClientRect(),
+        x = _btn$getBoundingClien.x,
+        height = _btn$getBoundingClien.height,
+        y = _btn$getBoundingClien.y,
+        btnWidth = _btn$getBoundingClien.width,
+        _wrapper$getBoundingC = wrapper.getBoundingClientRect(),
+        wrapperWidth = _wrapper$getBoundingC.width;
+      var leftPos = x + btnWidth / 2 - wrapperWidth / 2;
+      if (leftPos + wrapperWidth > innerWidth) {
+        leftPos = innerWidth - wrapperWidth;
+      }
+      setPos({
+        x: leftPos,
+        y: y + height + 25
+      });
+    }
+    updateCartPosition();
+    window.addEventListener("scroll", updateCartPosition);
+    window.addEventListener("resize", updateCartPosition);
+    window.addEventListener("click", handleClick);
+    return function () {
+      window.removeEventListener("scroll", updateCartPosition);
+      window.removeEventListener("resize", updateCartPosition);
+      window.removeEventListener("click", handleClick);
+    };
+  }, [buttonRef, cartWrapperRef, expanded]);
+  return /*#__PURE__*/React.createElement("div", {
+    className: "relative leading-0"
+  }, /*#__PURE__*/React.createElement("button", {
+    "aria-label": "Cart",
+    type: "button",
+    "aria-haspopup": "menu",
+    "aria-controls": "cart",
+    "aria-expanded": expanded,
+    onClick: function onClick(e) {
+      e.stopPropagation();
+      setExpanded(!expanded);
+    },
+    className: "h-min fill-gray hover:fill-black",
+    ref: buttonRef
+  }, /*#__PURE__*/React.createElement(_icons_icon_cart_svg__WEBPACK_IMPORTED_MODULE_1__["default"], null)), expanded && /*#__PURE__*/React.createElement("div", {
+    className: "fixed z-40 w-[min(20rem,80vw)] leading-normal",
+    style: {
+      left: pos.x + "px",
+      top: pos.y + "px"
+    },
+    ref: cartWrapperRef
+  }, /*#__PURE__*/React.createElement(_Cart__WEBPACK_IMPORTED_MODULE_5__["default"], null)));
 }
 
 /***/ }),
@@ -8769,7 +8913,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*
 
 ::before,
 ::after {
-  --tw-content: "";
+  --tw-content: '';
 }
 
 /*
@@ -8791,10 +8935,9 @@ html,
   -moz-tab-size: 4;
   /* 3 */
   -o-tab-size: 4;
-  tab-size: 4;
+     tab-size: 4;
   /* 3 */
-  font-family: "Kumbh Sans", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "Kumbh Sans", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   /* 4 */
   font-feature-settings: normal;
   /* 5 */
@@ -8837,7 +8980,7 @@ Add the correct text decoration in Chrome, Edge, and Safari.
 
 abbr:where([title]) {
   -webkit-text-decoration: underline dotted;
-  text-decoration: underline dotted;
+          text-decoration: underline dotted;
 }
 
 /*
@@ -8883,8 +9026,7 @@ code,
 kbd,
 samp,
 pre {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   /* 1 */
   font-feature-settings: normal;
   /* 2 */
@@ -8983,9 +9125,9 @@ select {
 */
 
 button,
-[type="button"],
-[type="reset"],
-[type="submit"] {
+[type='button'],
+[type='reset'],
+[type='submit'] {
   -webkit-appearance: button;
   /* 1 */
   background-color: transparent;
@@ -9032,7 +9174,7 @@ Correct the cursor style of increment and decrement buttons in Safari.
 2. Correct the outline style in Safari.
 */
 
-[type="search"] {
+[type='search'] {
   -webkit-appearance: textfield;
   /* 1 */
   outline-offset: -2px;
@@ -9125,14 +9267,6 @@ textarea {
 2. Set the default placeholder color to the user's configured gray 400 color.
 */
 
-input::-moz-placeholder,
-textarea::-moz-placeholder {
-  opacity: 1;
-  /* 1 */
-  color: #9ca3af;
-  /* 2 */
-}
-
 input::-moz-placeholder, textarea::-moz-placeholder {
   opacity: 1;
   /* 1 */
@@ -9201,9 +9335,7 @@ video {
   display: none;
 }
 
-*,
-::before,
-::after {
+*, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
   --tw-translate-x: 0;
@@ -9390,6 +9522,10 @@ video {
   margin-bottom: 1rem;
 }
 
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
 .mt-4 {
   margin-top: 1rem;
 }
@@ -9414,6 +9550,10 @@ video {
   display: grid;
 }
 
+.contents {
+  display: contents;
+}
+
 .hidden {
   display: none;
 }
@@ -9424,6 +9564,14 @@ video {
 
 .aspect-square {
   aspect-ratio: 1 / 1;
+}
+
+.h-0 {
+  height: 0px;
+}
+
+.h-0\\.5 {
+  height: 0.125rem;
 }
 
 .h-18 {
@@ -9439,12 +9587,24 @@ video {
   height: min-content;
 }
 
+.max-h-96 {
+  max-height: 24rem;
+}
+
+.min-h-52 {
+  min-height: 13rem;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
 
 .w-\\[clamp\\(1\\.6rem\\2c 6vw\\2c 3rem\\)\\] {
-  width: clamp(1.6rem, 6vw, 3rem);
+  width: clamp(1.6rem,6vw,3rem);
+}
+
+.w-\\[min\\(20rem\\2c 80vw\\)\\] {
+  width: min(20rem,80vw);
 }
 
 .w-fit {
@@ -9454,6 +9614,11 @@ video {
 
 .w-full {
   width: 100%;
+}
+
+.w-min {
+  width: -moz-min-content;
+  width: min-content;
 }
 
 .min-w-4 {
@@ -9466,17 +9631,31 @@ video {
 
 .-translate-y-1\\/2 {
   --tw-translate-y: -50%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
-    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
-    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.resize {
+  resize: both;
 }
 
 .grid-cols-\\[2fr_3fr\\] {
   grid-template-columns: 2fr 3fr;
 }
 
+.grid-rows-\\[max-content_min-content\\] {
+  grid-template-rows: max-content min-content;
+}
+
+.grid-rows-\\[min-content_min-content_1fr\\] {
+  grid-template-rows: min-content min-content 1fr;
+}
+
 .flex-col {
   flex-direction: column;
+}
+
+.place-items-center {
+  place-items: center;
 }
 
 .content-between {
@@ -9501,27 +9680,33 @@ video {
 
 .gap-x-4 {
   -moz-column-gap: 1rem;
-  column-gap: 1rem;
+       column-gap: 1rem;
 }
 
 .gap-x-6 {
   -moz-column-gap: 1.5rem;
-  column-gap: 1.5rem;
+       column-gap: 1.5rem;
 }
 
 .gap-x-\\[clamp\\(\\.7rem\\2c 5vw\\2c 3rem\\)\\] {
-  -moz-column-gap: clamp(0.7rem, 5vw, 3rem);
-  column-gap: clamp(0.7rem, 5vw, 3rem);
+  -moz-column-gap: clamp(.7rem,5vw,3rem);
+       column-gap: clamp(.7rem,5vw,3rem);
 }
 
 .gap-x-\\[clamp\\(1rem\\2c 5vw\\2c 3rem\\)\\] {
-  -moz-column-gap: clamp(1rem, 5vw, 3rem);
-  column-gap: clamp(1rem, 5vw, 3rem);
+  -moz-column-gap: clamp(1rem,5vw,3rem);
+       column-gap: clamp(1rem,5vw,3rem);
 }
 
 .gap-x-\\[clamp\\(1rem\\2c 5vw\\2c 6rem\\)\\] {
-  -moz-column-gap: clamp(1rem, 5vw, 6rem);
-  column-gap: clamp(1rem, 5vw, 6rem);
+  -moz-column-gap: clamp(1rem,5vw,6rem);
+       column-gap: clamp(1rem,5vw,6rem);
+}
+
+.space-y-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1rem * var(--tw-space-y-reverse));
 }
 
 .space-y-6 > :not([hidden]) ~ :not([hidden]) {
@@ -9532,6 +9717,10 @@ video {
 
 .overflow-hidden {
   overflow: hidden;
+}
+
+.overflow-y-auto {
+  overflow-y: auto;
 }
 
 .rounded {
@@ -9589,7 +9778,7 @@ video {
 }
 
 .fill-gray {
-  fill: #69707d;
+  fill: #69707D;
 }
 
 .fill-white {
@@ -9598,12 +9787,16 @@ video {
 
 .object-cover {
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 
 .object-center {
   -o-object-position: center;
-  object-position: center;
+     object-position: center;
+}
+
+.p-4 {
+  padding: 1rem;
 }
 
 .p-6 {
@@ -9661,7 +9854,7 @@ video {
 }
 
 .text-\\[clamp\\(1\\.875rem\\2c 5vw\\2c 3rem\\)\\] {
-  font-size: clamp(1.875rem, 5vw, 3rem);
+  font-size: clamp(1.875rem,5vw,3rem);
 }
 
 .text-xs {
@@ -9753,8 +9946,12 @@ video {
 .shadow-\\[0_15px_60px_-15px_theme\\(colors\\.orange\\)\\] {
   --tw-shadow: 0 15px 60px -15px hsl(26, 100%, 55%);
   --tw-shadow-colored: 0 15px 60px -15px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
-    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.drop-shadow-xl {
+  --tw-drop-shadow: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
 .transition-opacity {
@@ -9777,6 +9974,10 @@ video {
       max-width: 64rem;
     }
   }
+}
+
+.hover\\:fill-black:hover {
+  fill: #000;
 }
 
 .hover\\:no-underline:hover {
@@ -9891,7 +10092,7 @@ video {
   }
 
   .md\\:gap-\\[clamp\\(0\\.8rem\\2c 3vw\\2c 2rem\\)\\] {
-    gap: clamp(0.8rem, 3vw, 2rem);
+    gap: clamp(0.8rem,3vw,2rem);
   }
 
   .md\\:border-0 {
