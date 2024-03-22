@@ -2,10 +2,10 @@ import Logo from "../icons/logo.svg";
 import CartIcon from "../icons/icon-cart.svg";
 import MenuIconBurguer from "../icons/icon-menu.svg";
 import MenuIconClose from "../icons/icon-close.svg";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import Cart from "./Cart";
 
-export default function Header() {
+export default function Header({ cartProducts, onDeleteProduct }) {
   return (
     <header className="h-18 border-b-2 border-solid border-lightGrayishBlue bg-white md:h-28 md:border-0 md:px-4">
       <div className="container flex h-full items-center justify-between border-solid border-lightGrayishBlue px-5 md:border-b-2 md:p-0">
@@ -17,7 +17,10 @@ export default function Header() {
         </div>
 
         <div className="flex items-center gap-x-[clamp(.7rem,5vw,3rem)]">
-          <CartWidget />
+          <CartWidget
+            products={cartProducts}
+            onDeleteProduct={onDeleteProduct}
+          />
           <div>
             <a
               href="https://rafaeldevvv.github.io/portfolio"
@@ -40,11 +43,35 @@ export default function Header() {
 
 export function NavigationMenu() {
   const [expanded, setExpanded] = useState(false);
-  const clickHandlerRef = useRef(null);
+  const clickHandlerRef = useRef(null),
+    btnLabel = `${expanded ? "Close" : "Open"} main menu`,
+    links = ["Collections", "Men", "Women", "About", "Contact"];
 
-  const btnLabel = `${expanded ? "Close" : "Open"} main menu`;
-
-  const links = ["Collections", "Men", "Women", "About", "Contact"];
+  const onToggleMenu = useCallback(() => {
+    const nextExpanded = !expanded;
+    setExpanded(nextExpanded);
+    if (nextExpanded) {
+      let firstTouch = true;
+      /** @param {Event} e */
+      function handleClick(e) {
+        if (firstTouch) {
+          firstTouch = false;
+          return;
+        }
+        e.stopPropagation();
+        const nav = document.querySelector("#nav-menu"),
+          target = e.target;
+        if (target.id !== "nav-menu" && !nav.contains(target)) {
+          window.removeEventListener("click", handleClick);
+          setExpanded(false);
+        }
+      }
+      window.addEventListener("click", handleClick);
+      clickHandlerRef.current = handleClick;
+    } else {
+      window.removeEventListener("click", clickHandlerRef.current);
+    }
+  }, [expanded, clickHandlerRef]);
 
   return (
     <nav className="h-min leading-0 md:flex md:h-full md:place-items-center">
@@ -55,31 +82,7 @@ export function NavigationMenu() {
         aria-haspopup="menu"
         aria-controls="nav-menu"
         type="button"
-        onClick={() => {
-          const nextExpanded = !expanded;
-          setExpanded(nextExpanded);
-          if (nextExpanded) {
-            let firstTouch = true;
-            /** @param {Event} e */
-            function handleClick(e) {
-              if (firstTouch) {
-                firstTouch = false;
-                return;
-              }
-              e.stopPropagation();
-              const nav = document.querySelector("#nav-menu"),
-                target = e.target;
-              if (target.id !== "nav-menu" && !nav.contains(target)) {
-                window.removeEventListener("click", handleClick);
-                setExpanded(false);
-              }
-            }
-            window.addEventListener("click", handleClick);
-            clickHandlerRef.current = handleClick;
-          } else {
-            window.removeEventListener("click", clickHandlerRef.current);
-          }
-        }}
+        onClick={onToggleMenu}
         className="relative z-50 md:hidden"
       >
         {expanded ? <MenuIconClose /> : <MenuIconBurguer />}
@@ -111,7 +114,7 @@ export function NavigationMenu() {
   );
 }
 
-export function CartWidget() {
+export function CartWidget({ products, onDeleteProduct }) {
   const [expanded, setExpanded] = useState(false),
     [pos, setPos] = useState({ x: 0, y: 0 });
   const buttonRef = useRef(null),
@@ -149,10 +152,16 @@ export function CartWidget() {
     };
   }, [buttonRef, cartWrapperRef, expanded]);
 
+  const cartItemCount = products.reduce(
+    (count, product) => count + product.quantity,
+    0,
+  );
+  const btnLabel =
+    products.length > 0 ? `Cart (${cartItemCount} items)` : "Cart";
   return (
     <div className="relative leading-0">
       <button
-        aria-label="Cart"
+        aria-label={btnLabel}
         type="button"
         aria-haspopup="menu"
         aria-controls="cart"
@@ -161,18 +170,23 @@ export function CartWidget() {
           e.stopPropagation();
           setExpanded(!expanded);
         }}
-        className="h-min fill-gray hover:fill-black"
+        className="relative h-min fill-gray hover:fill-black"
         ref={buttonRef}
       >
         <CartIcon />
+        {products.length > 0 && (
+          <span className="absolute right-0 top-0 block -translate-y-1/2 translate-x-1/2 rounded-xl bg-orange px-1 py-0.5 text-[0.5rem] leading-none text-white">
+            {cartItemCount}
+          </span>
+        )}
       </button>
       {expanded && (
         <div
-          className="fixed z-40 w-[min(20rem,80vw)] leading-normal"
+          className="w-[min(21rem,80vw)] fixed z-40 leading-normal"
           style={{ left: pos.x + "px", top: pos.y + "px" }}
           ref={cartWrapperRef}
         >
-          <Cart />
+          <Cart products={products} onDeleteProduct={onDeleteProduct} />
         </div>
       )}
     </div>

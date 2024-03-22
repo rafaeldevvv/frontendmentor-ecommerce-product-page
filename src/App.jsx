@@ -3,6 +3,7 @@ import "./output.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import ProductArticle from "./components/ProductArticle";
+import { useCallback, useState, StrictMode } from "react";
 
 const sneakers = {
   name: "Fall Limited Edition Sneakers",
@@ -33,13 +34,42 @@ const sneakers = {
 };
 
 export default function App() {
+  const [cartProducts, setCartProducts] = useState([]);
+
+  const onAddProduct = useCallback(
+    (id, quantity) => {
+      const productIndex = cartProducts.findIndex((p) => p.id === id);
+      if (productIndex >= 0) {
+        setCartProducts(
+          cartProducts.map((p) => {
+            if (p.id === id) {
+              return { ...p, quantity: p.quantity + quantity };
+            } else {
+              return p;
+            }
+          }),
+        );
+      } else {
+        /* I know this isn't ideal for a real ecommerce site, but we have only one product any way */
+        setCartProducts([...cartProducts, { ...sneakers, quantity }]);
+      }
+    },
+    [cartProducts],
+  );
+
+  const onDeleteProduct = useCallback((id) => {
+    setCartProducts(cartProducts.filter((p) => p.id !== id));
+  });
+
   return (
-    <div className="grid min-h-screen content-between">
-      <Header />
-      <main>
-        <ProductArticle product={sneakers} />
-      </main>
-      <Footer />
-    </div>
+    <StrictMode>
+      <div className="grid min-h-screen content-between">
+        <Header cartProducts={cartProducts} onDeleteProduct={onDeleteProduct} />
+        <main>
+          <ProductArticle product={sneakers} onAddProduct={onAddProduct} />
+        </main>
+        <Footer />
+      </div>
+    </StrictMode>
   );
 }
