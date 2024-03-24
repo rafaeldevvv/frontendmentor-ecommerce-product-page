@@ -137,9 +137,9 @@ export function CartWidget({ products, onDeleteProduct }) {
         { width: wrapperWidth } = wrapper.getBoundingClientRect();
       let leftPos = x + btnWidth / 2 - wrapperWidth / 2;
       if (leftPos + wrapperWidth > innerWidth) {
-        leftPos = innerWidth - wrapperWidth;
+        leftPos = innerWidth - wrapperWidth - .025 * innerWidth;
       }
-      setPos({ x: leftPos, y: y + height + 25 });
+      setPos({ x: leftPos, y: y + height + 35 });
     }
     updateCartPosition();
     window.addEventListener("scroll", updateCartPosition);
@@ -182,7 +182,7 @@ export function CartWidget({ products, onDeleteProduct }) {
       </button>
       {expanded && (
         <div
-          className="w-[min(21rem,80vw)] fixed z-40 leading-normal"
+          className="w-[min(21rem,95vw)] fixed z-40 leading-normal"
           style={{ left: pos.x + "px", top: pos.y + "px" }}
           ref={cartWrapperRef}
         >

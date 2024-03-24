@@ -8690,11 +8690,11 @@ function CartWidget(_ref2) {
         wrapperWidth = _wrapper$getBoundingC.width;
       var leftPos = x + btnWidth / 2 - wrapperWidth / 2;
       if (leftPos + wrapperWidth > innerWidth) {
-        leftPos = innerWidth - wrapperWidth;
+        leftPos = innerWidth - wrapperWidth - .025 * innerWidth;
       }
       setPos({
         x: leftPos,
-        y: y + height + 25
+        y: y + height + 35
       });
     }
     updateCartPosition();
@@ -8728,7 +8728,7 @@ function CartWidget(_ref2) {
   }, /*#__PURE__*/React.createElement(_icons_icon_cart_svg__WEBPACK_IMPORTED_MODULE_1__["default"], null), products.length > 0 && /*#__PURE__*/React.createElement("span", {
     className: "absolute right-0 top-0 block -translate-y-1/2 translate-x-1/2 rounded-xl bg-orange px-1 py-0.5 text-[0.5rem] leading-none text-white"
   }, cartItemCount)), expanded && /*#__PURE__*/React.createElement("div", {
-    className: "w-[min(21rem,80vw)] fixed z-40 leading-normal",
+    className: "w-[min(21rem,95vw)] fixed z-40 leading-normal",
     style: {
       left: pos.x + "px",
       top: pos.y + "px"
@@ -9810,8 +9810,8 @@ video {
   width: clamp(1.6rem,6vw,3rem);
 }
 
-.w-\\[min\\(21rem\\2c 80vw\\)\\] {
-  width: min(21rem,80vw);
+.w-\\[min\\(21rem\\2c 95vw\\)\\] {
+  width: min(21rem,95vw);
 }
 
 .w-fit {

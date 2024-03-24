@@ -716,8 +716,8 @@ video {
   width: clamp(1.6rem,6vw,3rem);
 }
 
-.w-\[min\(21rem\2c 80vw\)\] {
-  width: min(21rem,80vw);
+.w-\[min\(21rem\2c 95vw\)\] {
+  width: min(21rem,95vw);
 }
 
 .w-fit {
