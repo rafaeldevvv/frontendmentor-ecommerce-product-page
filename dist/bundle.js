@@ -8751,10 +8751,15 @@ function CartWidget(_ref2) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   ClickableThumbnail: () => (/* binding */ ClickableThumbnail),
+/* harmony export */   NextButton: () => (/* binding */ NextButton),
+/* harmony export */   PreviousButton: () => (/* binding */ PreviousButton),
 /* harmony export */   "default": () => (/* binding */ ImageViewer)
 /* harmony export */ });
 /* harmony import */ var _icons_icon_next_svg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../icons/icon-next.svg */ "./src/icons/icon-next.svg");
 /* harmony import */ var _icons_icon_previous_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../icons/icon-previous.svg */ "./src/icons/icon-previous.svg");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _sr_announcer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./sr-announcer */ "./src/components/sr-announcer.js");
 /* provided dependency */ var React = __webpack_require__(/*! ./node_modules/react/index.js */ "./node_modules/react/index.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -8765,9 +8770,20 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
 /* images a is an array of tuples of type [src: string, alt: string] */
 function ImageViewer(_ref) {
-  var images = _ref.images;
+  var images = _ref.images,
+    onOpenLightbox = _ref.onOpenLightbox;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(0),
+    _useState2 = _slicedToArray(_useState, 2),
+    currentImg = _useState2[0],
+    setCurrentImg = _useState2[1];
+  var changeImg = (0,react__WEBPACK_IMPORTED_MODULE_2__.useCallback)(function (nextImg) {
+    setCurrentImg(nextImg);
+    (0,_sr_announcer__WEBPACK_IMPORTED_MODULE_3__.announcePolitely)("Switched to image " + (nextImg + 1));
+  }, []);
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     className: "relative mx-auto w-fit"
   }, /*#__PURE__*/React.createElement("ul", null, images.map(function (img, index) {
@@ -8776,21 +8792,31 @@ function ImageViewer(_ref) {
       alt = _img[1];
     return /*#__PURE__*/React.createElement("li", {
       key: src,
-      className: "".concat(index === 0 ? "" : "hidden")
-    }, /*#__PURE__*/React.createElement("img", {
+      className: "".concat(index === currentImg ? "" : "hidden")
+    }, onOpenLightbox !== undefined ? /*#__PURE__*/React.createElement("button", {
+      type: "button",
+      className: "block",
+      onClick: onOpenLightbox
+    }, /*#__PURE__*/React.createElement("span", {
+      className: "sr-only"
+    }, "Open lightbox"), /*#__PURE__*/React.createElement("img", {
+      src: src,
+      alt: alt,
+      className: "aspect-[4/3] w-full object-cover object-center sm:mx-auto sm:aspect-square sm:max-w-lg sm:rounded-xl"
+    })) : /*#__PURE__*/React.createElement("img", {
       src: src,
       alt: alt,
       className: "aspect-[4/3] w-full object-cover object-center sm:mx-auto sm:aspect-square sm:max-w-lg sm:rounded-xl"
     }));
-  })), /*#__PURE__*/React.createElement("button", {
-    type: "button",
-    "aria-label": "Previous image",
-    className: "absolute left-6 top-1/2 aspect-square -translate-y-1/2 rounded-full bg-white px-4 leading-0 md:hidden"
-  }, /*#__PURE__*/React.createElement(_icons_icon_previous_svg__WEBPACK_IMPORTED_MODULE_1__["default"], null)), /*#__PURE__*/React.createElement("button", {
-    type: "button",
-    "aria-label": "Next image",
-    className: "absolute right-6 top-1/2 aspect-square -translate-y-1/2 rounded-full bg-white px-4 leading-0 md:hidden"
-  }, /*#__PURE__*/React.createElement(_icons_icon_next_svg__WEBPACK_IMPORTED_MODULE_0__["default"], null))), /*#__PURE__*/React.createElement("ul", {
+  })), /*#__PURE__*/React.createElement(PreviousButton, {
+    onClick: function onClick() {
+      changeImg(currentImg === 0 ? images.length - 1 : currentImg - 1);
+    }
+  }), /*#__PURE__*/React.createElement(NextButton, {
+    onClick: function onClick() {
+      changeImg((currentImg + 1) % images.length);
+    }
+  })), /*#__PURE__*/React.createElement("ul", {
     className: "mt-6 hidden gap-x-6 md:flex"
   }, images.map(function (img, index) {
     var _img2 = _slicedToArray(img, 1),
@@ -8799,20 +8825,48 @@ function ImageViewer(_ref) {
       key: src
     }, /*#__PURE__*/React.createElement(ClickableThumbnail, {
       imageNumber: index + 1,
-      src: src
+      src: src,
+      active: index === currentImg,
+      onClick: function onClick() {
+        return changeImg(index);
+      }
     }));
   })));
 }
-function ClickableThumbnail(_ref2) {
-  var imageNumber = _ref2.imageNumber,
-    src = _ref2.src;
+function PreviousButton(_ref2) {
+  var onClick = _ref2.onClick;
+  return /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    "aria-label": "Previous image",
+    className: "absolute left-6 top-1/2 aspect-square -translate-y-1/2 rounded-full bg-white px-4 leading-0 md:hidden",
+    onClick: onClick
+  }, /*#__PURE__*/React.createElement(_icons_icon_previous_svg__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+}
+function NextButton(_ref3) {
+  var onClick = _ref3.onClick;
+  return /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    "aria-label": "Next image",
+    className: "absolute right-6 top-1/2 aspect-square -translate-y-1/2 rounded-full bg-white px-4 leading-0 md:hidden",
+    onClick: onClick
+  }, /*#__PURE__*/React.createElement(_icons_icon_next_svg__WEBPACK_IMPORTED_MODULE_0__["default"], null));
+}
+var activeThumbnailStyles = "outline outline-2 outline-orange",
+  thumbnailStyles = "transition-opacity hover:opacity-60";
+function ClickableThumbnail(_ref4) {
+  var imageNumber = _ref4.imageNumber,
+    src = _ref4.src,
+    active = _ref4.active,
+    onClick = _ref4.onClick;
   return /*#__PURE__*/React.createElement("button", {
     type: "button",
     "aria-label": "Switch to image ".concat(imageNumber),
-    className: "block aspect-square w-full overflow-hidden rounded-lg transition-opacity hover:opacity-60"
+    className: "block aspect-square w-full overflow-hidden rounded-lg ".concat(active ? activeThumbnailStyles : thumbnailStyles),
+    onClick: onClick
   }, /*#__PURE__*/React.createElement("img", {
     src: src.replace(/(\.\w+)$/, "-thumbnail$1"),
-    alt: "Image ".concat(imageNumber, " of product")
+    alt: "Image ".concat(imageNumber, " of product"),
+    className: active ? "opacity-60" : ""
   }));
 }
 
@@ -10137,14 +10191,36 @@ video {
   opacity: 0.4;
 }
 
+.opacity-60 {
+  opacity: 0.6;
+}
+
+.shadow {
+  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
 .shadow-\\[0_15px_60px_-15px_theme\\(colors\\.orange\\)\\] {
   --tw-shadow: 0 15px 60px -15px hsl(26, 100%, 55%);
   --tw-shadow-colored: 0 15px 60px -15px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+.outline {
+  outline-style: solid;
+}
+
+.outline-2 {
+  outline-width: 2px;
+}
+
 .outline-offset-2 {
   outline-offset: 2px;
+}
+
+.outline-orange {
+  outline-color: hsl(26, 100%, 55%);
 }
 
 .drop-shadow-xl {
