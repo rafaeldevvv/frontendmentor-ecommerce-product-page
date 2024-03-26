@@ -48,10 +48,10 @@ function _extends() { _extends = Object.assign ? Object.assign.bind() : function
 var SvgIconClose = function SvgIconClose(props) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", _extends({
     xmlns: "http://www.w3.org/2000/svg",
-    width: 14,
-    height: 15
+    width: ".93em",
+    height: "1em",
+    viewBox: "0 0 14 15"
   }, props), _path || (_path = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
-    fill: "#69707D",
     fillRule: "evenodd",
     d: "m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596z"
   })));
@@ -134,7 +134,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _path;
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 var SvgIconNext = function SvgIconNext(props) {
@@ -142,12 +141,13 @@ var SvgIconNext = function SvgIconNext(props) {
     xmlns: "http://www.w3.org/2000/svg",
     width: 13,
     height: 18
-  }, props), _path || (_path = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+  }, props), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
     fill: "none",
-    stroke: "#1D2026",
-    strokeWidth: 3,
-    d: "m2 1 8 8-8 8"
-  })));
+    d: "m2 1 8 8-8 8",
+    style: {
+      strokeWidth: 3
+    }
+  }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SvgIconNext);
 
@@ -165,7 +165,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _path;
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 var SvgIconPrevious = function SvgIconPrevious(props) {
@@ -173,12 +172,13 @@ var SvgIconPrevious = function SvgIconPrevious(props) {
     xmlns: "http://www.w3.org/2000/svg",
     width: 12,
     height: 18
-  }, props), _path || (_path = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+  }, props), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
     fill: "none",
-    stroke: "#1D2026",
-    strokeWidth: 3,
-    d: "M11 1 3 9l8 8"
-  })));
+    d: "M11 1 3 9l8 8",
+    style: {
+      strokeWidth: 3
+    }
+  }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SvgIconPrevious);
 
@@ -8333,9 +8333,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _output_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./output.css */ "./src/output.css");
 /* harmony import */ var _components_Footer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Footer */ "./src/components/Footer.jsx");
 /* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Header */ "./src/components/Header.jsx");
-/* harmony import */ var _components_ProductArticle__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/ProductArticle */ "./src/components/ProductArticle.jsx");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _components_Lightbox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Lightbox */ "./src/components/Lightbox.jsx");
+/* harmony import */ var _components_ProductArticle__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/ProductArticle */ "./src/components/ProductArticle.jsx");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _components_sr_announcer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/sr-announcer */ "./src/components/sr-announcer.js");
 /* provided dependency */ var React = __webpack_require__(/*! ./node_modules/react/index.js */ "./node_modules/react/index.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
@@ -8358,6 +8360,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
 var sneakers = {
   name: "Fall Limited Edition Sneakers",
   id: 0,
@@ -8368,11 +8372,15 @@ var sneakers = {
   images: [["images/image-product-1.jpg", "A pair of white and beige sneakers against an orange background"], ["images/image-product-2.jpg", "A pair of light grey sneakers with white soles and orange accents, placed on top of two white rocks."], ["images/image-product-3.jpg", "A sneaker with white soles and orange and beige accents, placed on top of two white rocks."], ["images/image-product-4.jpg", "A stylish sneaker on white stones against an orange background."]]
 };
 function App() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)([]),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)([]),
     _useState2 = _slicedToArray(_useState, 2),
     cartProducts = _useState2[0],
     setCartProducts = _useState2[1];
-  var onAddProduct = (0,react__WEBPACK_IMPORTED_MODULE_4__.useCallback)(function (id, quantity) {
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)(false),
+    _useState4 = _slicedToArray(_useState3, 2),
+    isLightboxVisible = _useState4[0],
+    setIsLightboxVisible = _useState4[1];
+  var onAddProduct = (0,react__WEBPACK_IMPORTED_MODULE_5__.useCallback)(function (id, quantity) {
     var productIndex = cartProducts.findIndex(function (p) {
       return p.id === id;
     });
@@ -8393,20 +8401,31 @@ function App() {
       })]));
     }
   }, [cartProducts]);
-  var onDeleteProduct = (0,react__WEBPACK_IMPORTED_MODULE_4__.useCallback)(function (id) {
-    setCartProducts(cartProducts.filter(function (p) {
+  var onDeleteProduct = (0,react__WEBPACK_IMPORTED_MODULE_5__.useCallback)(function (id) {
+    var nextProducts = cartProducts.filter(function (p) {
       return p.id !== id;
-    }));
+    });
+    setCartProducts(nextProducts);
+    if (nextProducts.length === 0) (0,_components_sr_announcer__WEBPACK_IMPORTED_MODULE_6__.announcePolitely)("Your cart is empty");
   });
-  return /*#__PURE__*/React.createElement(react__WEBPACK_IMPORTED_MODULE_4__.StrictMode, null, /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement(react__WEBPACK_IMPORTED_MODULE_5__.StrictMode, null, /*#__PURE__*/React.createElement("div", {
     className: "grid min-h-screen content-between"
   }, /*#__PURE__*/React.createElement(_components_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {
     cartProducts: cartProducts,
     onDeleteProduct: onDeleteProduct
-  }), /*#__PURE__*/React.createElement("main", null, /*#__PURE__*/React.createElement(_components_ProductArticle__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }), /*#__PURE__*/React.createElement("main", null, /*#__PURE__*/React.createElement(_components_ProductArticle__WEBPACK_IMPORTED_MODULE_4__["default"], {
     product: sneakers,
-    onAddProduct: onAddProduct
-  })), /*#__PURE__*/React.createElement(_components_Footer__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
+    onAddProduct: onAddProduct,
+    onOpenLightbox: function onOpenLightbox() {
+      return setIsLightboxVisible(true);
+    }
+  })), /*#__PURE__*/React.createElement(_components_Footer__WEBPACK_IMPORTED_MODULE_1__["default"], null)), /*#__PURE__*/React.createElement(_components_Lightbox__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    open: isLightboxVisible,
+    images: sneakers.images,
+    onClose: function onClose() {
+      return setIsLightboxVisible(false);
+    }
+  }));
 }
 
 /***/ }),
@@ -8423,7 +8442,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ Cart)
 /* harmony export */ });
 /* harmony import */ var _icons_icon_delete_svg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../icons/icon-delete.svg */ "./src/icons/icon-delete.svg");
+/* harmony import */ var _sr_announcer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./sr-announcer */ "./src/components/sr-announcer.js");
 /* provided dependency */ var React = __webpack_require__(/*! ./node_modules/react/index.js */ "./node_modules/react/index.js");
+
 
 function Cart(_ref) {
   var products = _ref.products,
@@ -8502,6 +8523,7 @@ function CartItem(_ref2) {
     onClick: function onClick(e) {
       e.stopPropagation();
       onDelete(item.id);
+      (0,_sr_announcer__WEBPACK_IMPORTED_MODULE_1__.announcePolitely)("Item deleted");
     }
   }, /*#__PURE__*/React.createElement(_icons_icon_delete_svg__WEBPACK_IMPORTED_MODULE_0__["default"], null)));
 }
@@ -8690,7 +8712,7 @@ function CartWidget(_ref2) {
         wrapperWidth = _wrapper$getBoundingC.width;
       var leftPos = x + btnWidth / 2 - wrapperWidth / 2;
       if (leftPos + wrapperWidth > innerWidth) {
-        leftPos = innerWidth - wrapperWidth - .025 * innerWidth;
+        leftPos = innerWidth - wrapperWidth - 0.025 * innerWidth;
       }
       setPos({
         x: leftPos,
@@ -8710,7 +8732,7 @@ function CartWidget(_ref2) {
   var cartItemCount = products.reduce(function (count, product) {
     return count + product.quantity;
   }, 0);
-  var btnLabel = products.length > 0 ? "Cart (".concat(cartItemCount, " items)") : "Cart";
+  var btnLabel = (expanded ? "Close" : "Open") + (products.length > 0 ? "cart (".concat(cartItemCount, " items)") : "cart");
   return /*#__PURE__*/React.createElement("div", {
     className: "relative leading-0"
   }, /*#__PURE__*/React.createElement("button", {
@@ -8728,7 +8750,7 @@ function CartWidget(_ref2) {
   }, /*#__PURE__*/React.createElement(_icons_icon_cart_svg__WEBPACK_IMPORTED_MODULE_1__["default"], null), products.length > 0 && /*#__PURE__*/React.createElement("span", {
     className: "absolute right-0 top-0 block -translate-y-1/2 translate-x-1/2 rounded-xl bg-orange px-1 py-0.5 text-[0.5rem] leading-none text-white"
   }, cartItemCount)), expanded && /*#__PURE__*/React.createElement("div", {
-    className: "w-[min(21rem,95vw)] fixed z-40 leading-normal",
+    className: "fixed z-40 w-[min(21rem,95vw)] leading-normal",
     style: {
       left: pos.x + "px",
       top: pos.y + "px"
@@ -8750,6 +8772,7 @@ function CartWidget(_ref2) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   BigImage: () => (/* binding */ BigImage),
 /* harmony export */   ClickableThumbnail: () => (/* binding */ ClickableThumbnail),
 /* harmony export */   NextButton: () => (/* binding */ NextButton),
 /* harmony export */   PreviousButton: () => (/* binding */ PreviousButton),
@@ -8775,49 +8798,66 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 /* images a is an array of tuples of type [src: string, alt: string] */
 function ImageViewer(_ref) {
   var images = _ref.images,
-    onOpenLightbox = _ref.onOpenLightbox;
+    onOpenLightbox = _ref.onOpenLightbox,
+    _ref$showSideButtonsA = _ref.showSideButtonsAlways,
+    showSideButtonsAlways = _ref$showSideButtonsA === void 0 ? false : _ref$showSideButtonsA;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(0),
     _useState2 = _slicedToArray(_useState, 2),
     currentImg = _useState2[0],
     setCurrentImg = _useState2[1];
   var changeImg = (0,react__WEBPACK_IMPORTED_MODULE_2__.useCallback)(function (nextImg) {
     setCurrentImg(nextImg);
-    (0,_sr_announcer__WEBPACK_IMPORTED_MODULE_3__.announcePolitely)("Switched to image " + (nextImg + 1));
+    (0,_sr_announcer__WEBPACK_IMPORTED_MODULE_3__.announcePolitely)("Selected image " + (nextImg + 1));
   }, []);
-  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-    className: "relative mx-auto w-fit"
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false),
+    _useState4 = _slicedToArray(_useState3, 2),
+    isMobile = _useState4[0],
+    setIsMobile = _useState4[1];
+  (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
+    var mql = matchMedia("(max-width:768px)");
+    setIsMobile(mql.matches);
+    mql.onchange = function (e) {
+      setIsMobile(e.matches);
+    };
+    return function () {
+      mql.onchange = null;
+    };
+  }, []);
+  var imagesIds = images.map(function (_ref2) {
+    var _ref3 = _slicedToArray(_ref2, 1),
+      src = _ref3[0];
+    return src.replace(/\W/, "-").replace(/^-+/, "");
+  });
+  return /*#__PURE__*/React.createElement("div", {
+    className: "select-none"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "relative mx-auto w-fit md:w-full"
   }, /*#__PURE__*/React.createElement("ul", null, images.map(function (img, index) {
     var _img = _slicedToArray(img, 2),
       src = _img[0],
       alt = _img[1];
     return /*#__PURE__*/React.createElement("li", {
       key: src,
-      className: "".concat(index === currentImg ? "" : "hidden")
-    }, onOpenLightbox !== undefined ? /*#__PURE__*/React.createElement("button", {
-      type: "button",
-      className: "block",
-      onClick: onOpenLightbox
-    }, /*#__PURE__*/React.createElement("span", {
-      className: "sr-only"
-    }, "Open lightbox"), /*#__PURE__*/React.createElement("img", {
+      className: "".concat(index === currentImg ? "" : "hidden"),
+      id: imagesIds[index]
+    }, /*#__PURE__*/React.createElement(BigImage, {
       src: src,
       alt: alt,
-      className: "aspect-[4/3] w-full object-cover object-center sm:mx-auto sm:aspect-square sm:max-w-lg sm:rounded-xl"
-    })) : /*#__PURE__*/React.createElement("img", {
-      src: src,
-      alt: alt,
-      className: "aspect-[4/3] w-full object-cover object-center sm:mx-auto sm:aspect-square sm:max-w-lg sm:rounded-xl"
+      onOpenLightbox: onOpenLightbox,
+      isMobile: isMobile
     }));
   })), /*#__PURE__*/React.createElement(PreviousButton, {
     onClick: function onClick() {
       changeImg(currentImg === 0 ? images.length - 1 : currentImg - 1);
-    }
+    },
+    showAlways: showSideButtonsAlways
   }), /*#__PURE__*/React.createElement(NextButton, {
     onClick: function onClick() {
       changeImg((currentImg + 1) % images.length);
-    }
+    },
+    showAlways: showSideButtonsAlways
   })), /*#__PURE__*/React.createElement("ul", {
-    className: "mt-6 hidden gap-x-6 md:flex"
+    className: "mt-8 hidden justify-center gap-x-8 md:flex"
   }, images.map(function (img, index) {
     var _img2 = _slicedToArray(img, 1),
       src = _img2[0];
@@ -8829,45 +8869,139 @@ function ImageViewer(_ref) {
       active: index === currentImg,
       onClick: function onClick() {
         return changeImg(index);
-      }
+      },
+      controls: imagesIds[index]
     }));
   })));
 }
-function PreviousButton(_ref2) {
-  var onClick = _ref2.onClick;
+function PreviousButton(_ref4) {
+  var onClick = _ref4.onClick,
+    _ref4$showAlways = _ref4.showAlways,
+    showAlways = _ref4$showAlways === void 0 ? false : _ref4$showAlways;
   return /*#__PURE__*/React.createElement("button", {
     type: "button",
     "aria-label": "Previous image",
-    className: "absolute left-6 top-1/2 aspect-square -translate-y-1/2 rounded-full bg-white px-4 leading-0 md:hidden",
+    className: "stroke-darkGray absolute left-6 top-1/2 aspect-square -translate-y-1/2 rounded-full bg-white px-4 leading-0 hover:stroke-orange focus-visible:stroke-orange ".concat(showAlways ? "md:left-0 md:-translate-x-1/2" : "md:hidden", " "),
     onClick: onClick
   }, /*#__PURE__*/React.createElement(_icons_icon_previous_svg__WEBPACK_IMPORTED_MODULE_1__["default"], null));
 }
-function NextButton(_ref3) {
-  var onClick = _ref3.onClick;
+function NextButton(_ref5) {
+  var onClick = _ref5.onClick,
+    _ref5$showAlways = _ref5.showAlways,
+    showAlways = _ref5$showAlways === void 0 ? false : _ref5$showAlways;
   return /*#__PURE__*/React.createElement("button", {
     type: "button",
     "aria-label": "Next image",
-    className: "absolute right-6 top-1/2 aspect-square -translate-y-1/2 rounded-full bg-white px-4 leading-0 md:hidden",
+    className: "stroke-darkGray absolute right-6 top-1/2 aspect-square -translate-y-1/2 rounded-full bg-white px-4 leading-0 hover:stroke-orange focus-visible:stroke-orange ".concat(showAlways ? "md:right-0 md:translate-x-1/2" : "md:hidden", " "),
     onClick: onClick
   }, /*#__PURE__*/React.createElement(_icons_icon_next_svg__WEBPACK_IMPORTED_MODULE_0__["default"], null));
 }
-var activeThumbnailStyles = "outline outline-2 outline-orange",
-  thumbnailStyles = "transition-opacity hover:opacity-60";
-function ClickableThumbnail(_ref4) {
-  var imageNumber = _ref4.imageNumber,
-    src = _ref4.src,
-    active = _ref4.active,
-    onClick = _ref4.onClick;
+function BigImage(_ref6) {
+  var isMobile = _ref6.isMobile,
+    onOpenLightbox = _ref6.onOpenLightbox,
+    src = _ref6.src,
+    alt = _ref6.alt;
+  return onOpenLightbox !== undefined && !isMobile ? /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "block",
+    onClick: onOpenLightbox
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "sr-only"
+  }, "Open lightbox"), /*#__PURE__*/React.createElement("img", {
+    src: src,
+    alt: alt,
+    className: "aspect-[4/3] w-full object-cover object-center sm:mx-auto sm:aspect-square sm:max-w-lg md:max-w-none sm:rounded-xl"
+  })) : /*#__PURE__*/React.createElement("img", {
+    src: src,
+    alt: alt,
+    className: "aspect-[4/3] w-full object-cover object-center sm:mx-auto sm:aspect-square sm:max-w-lg md:max-w-none sm:rounded-xl"
+  });
+}
+var activeThumbnailStyles = "outline outline-2 outline-orange";
+function ClickableThumbnail(_ref7) {
+  var imageNumber = _ref7.imageNumber,
+    src = _ref7.src,
+    active = _ref7.active,
+    onClick = _ref7.onClick,
+    controls = _ref7.controls;
   return /*#__PURE__*/React.createElement("button", {
     type: "button",
     "aria-label": "Switch to image ".concat(imageNumber),
-    className: "block aspect-square w-full overflow-hidden rounded-lg ".concat(active ? activeThumbnailStyles : thumbnailStyles),
-    onClick: onClick
+    className: "group block aspect-square w-full max-w-24 overflow-hidden rounded-lg bg-white ".concat(active ? activeThumbnailStyles : ""),
+    onClick: onClick,
+    "aria-controls": controls,
+    "aria-expanded": active,
+    tabIndex: active ? -1 : 0
   }, /*#__PURE__*/React.createElement("img", {
     src: src.replace(/(\.\w+)$/, "-thumbnail$1"),
     alt: "Image ".concat(imageNumber, " of product"),
-    className: active ? "opacity-60" : ""
+    className: active ? "opacity-60" : "transition-opacity group-hover:opacity-60 group-focus-visible:opacity-60"
   }));
+}
+
+/***/ }),
+
+/***/ "./src/components/Lightbox.jsx":
+/*!*************************************!*\
+  !*** ./src/components/Lightbox.jsx ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Lightbox)
+/* harmony export */ });
+/* harmony import */ var _ImageViewer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ImageViewer */ "./src/components/ImageViewer.jsx");
+/* harmony import */ var _icons_icon_close_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../icons/icon-close.svg */ "./src/icons/icon-close.svg");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* provided dependency */ var React = __webpack_require__(/*! ./node_modules/react/index.js */ "./node_modules/react/index.js");
+
+
+
+function Lightbox(_ref) {
+  var onClose = _ref.onClose,
+    images = _ref.images,
+    open = _ref.open;
+  var dialogRef = (0,react__WEBPACK_IMPORTED_MODULE_2__.useRef)(null);
+  (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
+    var dialog = dialogRef.current;
+    if (open) {
+      dialog.showModal();
+      document.body.style.overflowY = "hidden";
+      /* this is a padding that replaces the scroll so we don't have a layout shift */
+      document.body.style.paddingRight = innerWidth - document.documentElement.clientWidth + "px";
+    } else {
+      dialog.close();
+      document.body.style.overflowY = "auto";
+      document.body.style.paddingRight = "0";
+    }
+  }, [open]);
+  return /*#__PURE__*/React.createElement("dialog", {
+    className: "inset-0 m-0 h-screen max-h-none w-screen max-w-none bg-black bg-opacity-60",
+    ref: dialogRef,
+    onClick: onClose
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex min-h-screen items-center"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "mx-auto max-w-xl py-8",
+    onClick: function onClick(e) {
+      return e.stopPropagation();
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "mb-6"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "float-right block fill-white text-2xl hover:fill-orange focus-visible:fill-orange focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white",
+    type: "button",
+    "aria-label": "Close lightbox",
+    autoFocus: true,
+    onClick: onClose
+  }, /*#__PURE__*/React.createElement(_icons_icon_close_svg__WEBPACK_IMPORTED_MODULE_1__["default"], null)), /*#__PURE__*/React.createElement("span", {
+    className: "clear-right block"
+  })), /*#__PURE__*/React.createElement(_ImageViewer__WEBPACK_IMPORTED_MODULE_0__["default"], {
+    images: images,
+    showSideButtonsAlways: true
+  }))));
 }
 
 /***/ }),
@@ -8904,7 +9038,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function ProductArticle(_ref) {
   var product = _ref.product,
-    onAddProduct = _ref.onAddProduct;
+    onAddProduct = _ref.onAddProduct,
+    onOpenLightbox = _ref.onOpenLightbox;
   var images = product.images,
     name = product.name,
     company = product.company,
@@ -8925,7 +9060,8 @@ function ProductArticle(_ref) {
   return /*#__PURE__*/React.createElement("article", {
     className: "items-center gap-x-[clamp(1rem,5vw,6rem)] md:container sm:my-10 md:my-20 md:grid md:grid-cols-2"
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(_ImageViewer__WEBPACK_IMPORTED_MODULE_0__["default"], {
-    images: images
+    images: images,
+    onOpenLightbox: onOpenLightbox
   })), /*#__PURE__*/React.createElement("div", {
     className: "mx-auto max-w-md p-6 sm:px-0"
   }, /*#__PURE__*/React.createElement(_ProductInfo__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -9720,6 +9856,18 @@ video {
   z-index: 50;
 }
 
+.float-right {
+  float: right;
+}
+
+.clear-right {
+  clear: right;
+}
+
+.m-0 {
+  margin: 0px;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -9735,10 +9883,6 @@ video {
 
 .mt-4 {
   margin-top: 1rem;
-}
-
-.mt-6 {
-  margin-top: 1.5rem;
 }
 
 .mt-8 {
@@ -9794,8 +9938,16 @@ video {
   height: min-content;
 }
 
+.h-screen {
+  height: 100vh;
+}
+
 .max-h-96 {
   max-height: 24rem;
+}
+
+.max-h-none {
+  max-height: none;
 }
 
 .min-h-52 {
@@ -9828,6 +9980,10 @@ video {
   width: min-content;
 }
 
+.w-screen {
+  width: 100vw;
+}
+
 .min-w-4 {
   min-width: 1rem;
 }
@@ -9836,8 +9992,20 @@ video {
   max-width: 3rem;
 }
 
+.max-w-24 {
+  max-width: 6rem;
+}
+
 .max-w-md {
   max-width: 28rem;
+}
+
+.max-w-none {
+  max-width: none;
+}
+
+.max-w-xl {
+  max-width: 36rem;
 }
 
 .-translate-y-1\\/2 {
@@ -9848,6 +10016,12 @@ video {
 .translate-x-1\\/2 {
   --tw-translate-x: 50%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.select-none {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 .resize {
@@ -9899,9 +10073,9 @@ video {
        column-gap: 1rem;
 }
 
-.gap-x-6 {
-  -moz-column-gap: 1.5rem;
-       column-gap: 1.5rem;
+.gap-x-8 {
+  -moz-column-gap: 2rem;
+       column-gap: 2rem;
 }
 
 .gap-x-\\[clamp\\(\\.7rem\\2c 5vw\\2c 3rem\\)\\] {
@@ -9974,7 +10148,7 @@ video {
 
 .bg-black {
   --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+  background-color: hsl(0 0% 0% / var(--tw-bg-opacity));
 }
 
 .bg-lightGrayishBlue {
@@ -9994,19 +10168,27 @@ video {
 
 .bg-white {
   --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  background-color: hsl(0 0% 100% / var(--tw-bg-opacity));
+}
+
+.bg-opacity-60 {
+  --tw-bg-opacity: 0.6;
 }
 
 .fill-gray {
-  fill: #69707D;
+  fill: hsl(219, 9%, 45%);
 }
 
 .fill-lightGray {
-  fill: #C3CAD9;
+  fill: hsl(221, 22%, 81%);
 }
 
 .fill-white {
-  fill: #fff;
+  fill: hsl(0 0% 100%);
+}
+
+.stroke-darkGray {
+  stroke: hsl(220, 13%, 13%);
 }
 
 .object-cover {
@@ -10064,6 +10246,11 @@ video {
 .py-5 {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
+}
+
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .pl-5 {
@@ -10156,7 +10343,7 @@ video {
 
 .text-black {
   --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity));
+  color: hsl(0 0% 0% / var(--tw-text-opacity));
 }
 
 .text-darkGrayishBlue {
@@ -10176,7 +10363,7 @@ video {
 
 .text-white {
   --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
+  color: hsl(0 0% 100% / var(--tw-text-opacity));
 }
 
 .underline {
@@ -10255,7 +10442,15 @@ video {
 }
 
 .hover\\:fill-black:hover {
-  fill: #000;
+  fill: hsl(0 0% 0%);
+}
+
+.hover\\:fill-orange:hover {
+  fill: hsl(26, 100%, 55%);
+}
+
+.hover\\:stroke-orange:hover {
+  stroke: hsl(26, 100%, 55%);
 }
 
 .hover\\:no-underline:hover {
@@ -10279,7 +10474,27 @@ video {
 }
 
 .focus-visible\\:fill-black:focus-visible {
-  fill: #000;
+  fill: hsl(0 0% 0%);
+}
+
+.focus-visible\\:fill-orange:focus-visible {
+  fill: hsl(26, 100%, 55%);
+}
+
+.focus-visible\\:stroke-orange:focus-visible {
+  stroke: hsl(26, 100%, 55%);
+}
+
+.focus-visible\\:outline-2:focus-visible {
+  outline-width: 2px;
+}
+
+.focus-visible\\:outline-offset-4:focus-visible {
+  outline-offset: 4px;
+}
+
+.focus-visible\\:outline-white:focus-visible {
+  outline-color: hsl(0 0% 100%);
 }
 
 .active\\:scale-75:active {
@@ -10292,6 +10507,14 @@ video {
   --tw-scale-x: .95;
   --tw-scale-y: .95;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.group:hover .group-hover\\:opacity-60 {
+  opacity: 0.6;
+}
+
+.group:focus-visible .group-focus-visible\\:opacity-60 {
+  opacity: 0.6;
 }
 
 @media (min-width: 640px) {
@@ -10326,6 +10549,14 @@ video {
 @media (min-width: 768px) {
   .md\\:static {
     position: static;
+  }
+
+  .md\\:left-0 {
+    left: 0px;
+  }
+
+  .md\\:right-0 {
+    right: 0px;
   }
 
   .md\\:my-20 {
@@ -10363,6 +10594,20 @@ video {
 
   .md\\:w-full {
     width: 100%;
+  }
+
+  .md\\:max-w-none {
+    max-width: none;
+  }
+
+  .md\\:-translate-x-1\\/2 {
+    --tw-translate-x: -50%;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
+  .md\\:translate-x-1\\/2 {
+    --tw-translate-x: 50%;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 
   .md\\:grid-cols-2 {
@@ -10464,7 +10709,7 @@ video {
 
   .md\\:hover\\:text-black:hover {
     --tw-text-opacity: 1;
-    color: rgb(0 0 0 / var(--tw-text-opacity));
+    color: hsl(0 0% 0% / var(--tw-text-opacity));
   }
 
   .md\\:hover\\:before\\:absolute:hover::before {
@@ -10506,7 +10751,7 @@ video {
 
   .md\\:focus-visible\\:text-black:focus-visible {
     --tw-text-opacity: 1;
-    color: rgb(0 0 0 / var(--tw-text-opacity));
+    color: hsl(0 0% 0% / var(--tw-text-opacity));
   }
 }
 `, ""]);

@@ -137,7 +137,7 @@ export function CartWidget({ products, onDeleteProduct }) {
         { width: wrapperWidth } = wrapper.getBoundingClientRect();
       let leftPos = x + btnWidth / 2 - wrapperWidth / 2;
       if (leftPos + wrapperWidth > innerWidth) {
-        leftPos = innerWidth - wrapperWidth - .025 * innerWidth;
+        leftPos = innerWidth - wrapperWidth - 0.025 * innerWidth;
       }
       setPos({ x: leftPos, y: y + height + 35 });
     }
@@ -157,7 +157,8 @@ export function CartWidget({ products, onDeleteProduct }) {
     0,
   );
   const btnLabel =
-    products.length > 0 ? `Cart (${cartItemCount} items)` : "Cart";
+    (expanded ? "Close" : "Open") +
+    (products.length > 0 ? `cart (${cartItemCount} items)` : "cart");
   return (
     <div className="relative leading-0">
       <button
@@ -182,7 +183,7 @@ export function CartWidget({ products, onDeleteProduct }) {
       </button>
       {expanded && (
         <div
-          className="w-[min(21rem,95vw)] fixed z-40 leading-normal"
+          className="fixed z-40 w-[min(21rem,95vw)] leading-normal"
           style={{ left: pos.x + "px", top: pos.y + "px" }}
           ref={cartWrapperRef}
         >

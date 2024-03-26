@@ -11,10 +11,12 @@ module.exports = {
       grayishBlue: "hsl(220, 14%, 75%)",
       darkGrayishBlue: "hsl(219, 9%, 45%)",
       lightGrayishBlue: "hsl(223, 64%, 98%)",
-      gray: "#69707D",
-      lightGray: "#C3CAD9",
-      white: "#fff",
-      black: "#000"
+      gray: "hsl(219, 9%, 45%)",
+      lightGray: "hsl(221, 22%, 81%)",
+      darkGray: "hsl(220, 13%, 13%)",
+      white: "hsl(0 0% 100%)",
+      black: "hsl(0 0% 0%)",
+      transparent: "hsl(0 0% 0% / 0)",
     },
     container: {
       center: true,

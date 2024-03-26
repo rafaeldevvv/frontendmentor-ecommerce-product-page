@@ -2,8 +2,10 @@ import "./output.css";
 
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import Lightbox from "./components/Lightbox";
 import ProductArticle from "./components/ProductArticle";
 import { useCallback, useState, StrictMode } from "react";
+import { announcePolitely } from "./components/sr-announcer";
 
 const sneakers = {
   name: "Fall Limited Edition Sneakers",
@@ -35,6 +37,7 @@ const sneakers = {
 
 export default function App() {
   const [cartProducts, setCartProducts] = useState([]);
+  const [isLightboxVisible, setIsLightboxVisible] = useState(false);
 
   const onAddProduct = useCallback(
     (id, quantity) => {
@@ -58,7 +61,9 @@ export default function App() {
   );
 
   const onDeleteProduct = useCallback((id) => {
-    setCartProducts(cartProducts.filter((p) => p.id !== id));
+    const nextProducts = cartProducts.filter((p) => p.id !== id);
+    setCartProducts(nextProducts);
+    if (nextProducts.length === 0) announcePolitely("Your cart is empty");
   });
 
   return (
@@ -66,10 +71,19 @@ export default function App() {
       <div className="grid min-h-screen content-between">
         <Header cartProducts={cartProducts} onDeleteProduct={onDeleteProduct} />
         <main>
-          <ProductArticle product={sneakers} onAddProduct={onAddProduct} />
+          <ProductArticle
+            product={sneakers}
+            onAddProduct={onAddProduct}
+            onOpenLightbox={() => setIsLightboxVisible(true)}
+          />
         </main>
         <Footer />
       </div>
+      <Lightbox
+        open={isLightboxVisible}
+        images={sneakers.images}
+        onClose={() => setIsLightboxVisible(false)}
+      />
     </StrictMode>
   );
 }

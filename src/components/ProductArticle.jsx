@@ -5,7 +5,11 @@ import CartIcon from "../icons/icon-cart.svg";
 import { useState, useCallback } from "react";
 import { announcePolitely } from "./sr-announcer";
 
-export default function ProductArticle({ product, onAddProduct }) {
+export default function ProductArticle({
+  product,
+  onAddProduct,
+  onOpenLightbox,
+}) {
   const { images, name, company, description, price, discount, id } = product;
 
   const [quantity, setQuantity] = useState(0);
@@ -18,7 +22,7 @@ export default function ProductArticle({ product, onAddProduct }) {
   return (
     <article className="items-center gap-x-[clamp(1rem,5vw,6rem)] md:container sm:my-10 md:my-20 md:grid md:grid-cols-2">
       <div>
-        <ImageViewer images={images} />
+        <ImageViewer images={images} onOpenLightbox={onOpenLightbox} />
       </div>
       <div className="mx-auto max-w-md p-6 sm:px-0">
         <ProductInfo

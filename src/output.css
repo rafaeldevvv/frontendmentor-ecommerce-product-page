@@ -626,6 +626,18 @@ video {
   z-index: 50;
 }
 
+.float-right {
+  float: right;
+}
+
+.clear-right {
+  clear: right;
+}
+
+.m-0 {
+  margin: 0px;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -641,10 +653,6 @@ video {
 
 .mt-4 {
   margin-top: 1rem;
-}
-
-.mt-6 {
-  margin-top: 1.5rem;
 }
 
 .mt-8 {
@@ -700,8 +708,16 @@ video {
   height: min-content;
 }
 
+.h-screen {
+  height: 100vh;
+}
+
 .max-h-96 {
   max-height: 24rem;
+}
+
+.max-h-none {
+  max-height: none;
 }
 
 .min-h-52 {
@@ -734,6 +750,10 @@ video {
   width: min-content;
 }
 
+.w-screen {
+  width: 100vw;
+}
+
 .min-w-4 {
   min-width: 1rem;
 }
@@ -742,8 +762,20 @@ video {
   max-width: 3rem;
 }
 
+.max-w-24 {
+  max-width: 6rem;
+}
+
 .max-w-md {
   max-width: 28rem;
+}
+
+.max-w-none {
+  max-width: none;
+}
+
+.max-w-xl {
+  max-width: 36rem;
 }
 
 .-translate-y-1\/2 {
@@ -754,6 +786,12 @@ video {
 .translate-x-1\/2 {
   --tw-translate-x: 50%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.select-none {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 .resize {
@@ -805,9 +843,9 @@ video {
        column-gap: 1rem;
 }
 
-.gap-x-6 {
-  -moz-column-gap: 1.5rem;
-       column-gap: 1.5rem;
+.gap-x-8 {
+  -moz-column-gap: 2rem;
+       column-gap: 2rem;
 }
 
 .gap-x-\[clamp\(\.7rem\2c 5vw\2c 3rem\)\] {
@@ -880,7 +918,7 @@ video {
 
 .bg-black {
   --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+  background-color: hsl(0 0% 0% / var(--tw-bg-opacity));
 }
 
 .bg-lightGrayishBlue {
@@ -900,19 +938,27 @@ video {
 
 .bg-white {
   --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  background-color: hsl(0 0% 100% / var(--tw-bg-opacity));
+}
+
+.bg-opacity-60 {
+  --tw-bg-opacity: 0.6;
 }
 
 .fill-gray {
-  fill: #69707D;
+  fill: hsl(219, 9%, 45%);
 }
 
 .fill-lightGray {
-  fill: #C3CAD9;
+  fill: hsl(221, 22%, 81%);
 }
 
 .fill-white {
-  fill: #fff;
+  fill: hsl(0 0% 100%);
+}
+
+.stroke-darkGray {
+  stroke: hsl(220, 13%, 13%);
 }
 
 .object-cover {
@@ -970,6 +1016,11 @@ video {
 .py-5 {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
+}
+
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .pl-5 {
@@ -1062,7 +1113,7 @@ video {
 
 .text-black {
   --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity));
+  color: hsl(0 0% 0% / var(--tw-text-opacity));
 }
 
 .text-darkGrayishBlue {
@@ -1082,7 +1133,7 @@ video {
 
 .text-white {
   --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
+  color: hsl(0 0% 100% / var(--tw-text-opacity));
 }
 
 .underline {
@@ -1161,7 +1212,15 @@ video {
 }
 
 .hover\:fill-black:hover {
-  fill: #000;
+  fill: hsl(0 0% 0%);
+}
+
+.hover\:fill-orange:hover {
+  fill: hsl(26, 100%, 55%);
+}
+
+.hover\:stroke-orange:hover {
+  stroke: hsl(26, 100%, 55%);
 }
 
 .hover\:no-underline:hover {
@@ -1185,7 +1244,27 @@ video {
 }
 
 .focus-visible\:fill-black:focus-visible {
-  fill: #000;
+  fill: hsl(0 0% 0%);
+}
+
+.focus-visible\:fill-orange:focus-visible {
+  fill: hsl(26, 100%, 55%);
+}
+
+.focus-visible\:stroke-orange:focus-visible {
+  stroke: hsl(26, 100%, 55%);
+}
+
+.focus-visible\:outline-2:focus-visible {
+  outline-width: 2px;
+}
+
+.focus-visible\:outline-offset-4:focus-visible {
+  outline-offset: 4px;
+}
+
+.focus-visible\:outline-white:focus-visible {
+  outline-color: hsl(0 0% 100%);
 }
 
 .active\:scale-75:active {
@@ -1198,6 +1277,14 @@ video {
   --tw-scale-x: .95;
   --tw-scale-y: .95;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.group:hover .group-hover\:opacity-60 {
+  opacity: 0.6;
+}
+
+.group:focus-visible .group-focus-visible\:opacity-60 {
+  opacity: 0.6;
 }
 
 @media (min-width: 640px) {
@@ -1232,6 +1319,14 @@ video {
 @media (min-width: 768px) {
   .md\:static {
     position: static;
+  }
+
+  .md\:left-0 {
+    left: 0px;
+  }
+
+  .md\:right-0 {
+    right: 0px;
   }
 
   .md\:my-20 {
@@ -1269,6 +1364,20 @@ video {
 
   .md\:w-full {
     width: 100%;
+  }
+
+  .md\:max-w-none {
+    max-width: none;
+  }
+
+  .md\:-translate-x-1\/2 {
+    --tw-translate-x: -50%;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
+  .md\:translate-x-1\/2 {
+    --tw-translate-x: 50%;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 
   .md\:grid-cols-2 {
@@ -1370,7 +1479,7 @@ video {
 
   .md\:hover\:text-black:hover {
     --tw-text-opacity: 1;
-    color: rgb(0 0 0 / var(--tw-text-opacity));
+    color: hsl(0 0% 0% / var(--tw-text-opacity));
   }
 
   .md\:hover\:before\:absolute:hover::before {
@@ -1412,6 +1521,6 @@ video {
 
   .md\:focus-visible\:text-black:focus-visible {
     --tw-text-opacity: 1;
-    color: rgb(0 0 0 / var(--tw-text-opacity));
+    color: hsl(0 0% 0% / var(--tw-text-opacity));
   }
 }

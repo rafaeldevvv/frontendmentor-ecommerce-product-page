@@ -1,4 +1,5 @@
 import DeleteIcon from "../icons/icon-delete.svg";
+import { announcePolitely } from "./sr-announcer";
 
 export default function Cart({ products, onDeleteProduct }) {
   let contents;
@@ -91,6 +92,7 @@ export function CartItem({ item, onDelete }) {
         onClick={(e) => {
           e.stopPropagation();
           onDelete(item.id);
+          announcePolitely("Item deleted");
         }}
       >
         <DeleteIcon />
