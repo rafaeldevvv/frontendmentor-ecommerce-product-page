@@ -48,13 +48,13 @@ Users should be able to:
 - CSS Grid
 - Mobile-first workflow
 - [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
+- [tailwindcss](https://tailwindcss.com)
+- [Framer Motion](https://www.framer.com/motion/)
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+- [css-unit-converter-js](https://cssunitconverter.vercel.app/blog/css-unit-converter-js-npm-package-release) - Package for converting css units
+- [Framer Motion Navigation menu animation example](https://codesandbox.io/p/sandbox/framer-motion-side-menu-mx2rw?file=%2Fsrc%2FExample.tsx%3A19%2C18&from-embed=)
 
 ## Author
 

@@ -4,6 +4,9 @@ import MenuIconBurguer from "../icons/icon-menu.svg";
 import MenuIconClose from "../icons/icon-close.svg";
 import { useState, useRef, useEffect, useCallback } from "react";
 import Cart from "./Cart";
+import { motion, AnimatePresence } from "framer-motion";
+import { remToPx } from "css-unit-converter-js";
+import useIsMobile from "../hooks/useIsMobile";
 
 export default function Header({ cartProducts, onDeleteProduct }) {
   return (
@@ -70,6 +73,7 @@ export function NavigationMenu() {
       clickHandlerRef.current = handleClick;
     } else {
       window.removeEventListener("click", clickHandlerRef.current);
+      clickHandlerRef.current = null;
     }
   }, [expanded, clickHandlerRef]);
 
@@ -84,20 +88,54 @@ export function NavigationMenu() {
         type="button"
         onClick={onToggleMenu}
         className="relative z-50 md:hidden"
+        id="nav-toggle"
       >
-        {expanded ? <MenuIconClose /> : <MenuIconBurguer />}
+        {expanded ? (
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: [0, 1.2, 1] }}
+            transition={{ duration: 0.3 }}
+            key="close"
+          >
+            <MenuIconClose />
+          </motion.div>
+        ) : (
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: [0, 1.2, 1] }}
+            transition={{ duration: 0.3 }}
+            key="open"
+          >
+            <MenuIconBurguer />
+          </motion.div>
+        )}
       </button>
-      {expanded && (
-        <div className="fixed inset-0 z-30 bg-black opacity-40 md:hidden"></div>
-      )}
-      <ul
+      <AnimatePresence>
+        {expanded && (
+          <motion.div
+            className="fixed inset-0 z-30 bg-black md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.4 }}
+            exit={{ opacity: 0 }}
+          />
+        )}
+      </AnimatePresence>
+      <NavList links={links} expanded={expanded} />
+      {/* <motion.ul
         id="nav-menu"
-        className={`fixed bottom-0 left-0 top-0 z-40 bg-white pl-5 pr-32 pt-20 leading-normal ${
-          expanded ? "flex" : "hidden"
-        } flex-col gap-4 md:static md:flex md:h-full md:flex-row md:items-center md:gap-[clamp(0.8rem,3vw,2rem)] md:p-0 `}
+        className={`fixed bottom-0 left-0 top-0 z-40 w-[60vw] flex-col gap-4 overflow-hidden bg-white pl-5 pt-20 leading-normal md:static md:flex md:h-full md:flex-row md:items-center md:gap-[clamp(0.8rem,3vw,2rem)] md:p-0`}
+        style={{ display: expanded ? "flex" : "none" }}
+        animate={{
+          width: expanded ? "60vw" : 0,
+          height: expanded ? "auto" : 0,
+          borderRadius: expanded ? 0 : "1rem",
+          transitionEnd: {
+            display: expanded ? "flex" : "none",
+          },
+        }}
       >
         {links.map((l) => (
-          <li
+          <motion.li
             key={l}
             className="relative md:flex md:h-full md:place-items-center md:focus-within:before:absolute md:focus-within:before:inset-x-0 md:focus-within:before:top-full md:focus-within:before:block md:focus-within:before:h-0.5 md:focus-within:before:bg-orange md:hover:before:absolute md:hover:before:inset-x-0 md:hover:before:top-full md:hover:before:block md:hover:before:h-0.5 md:hover:before:bg-orange"
           >
@@ -107,11 +145,104 @@ export function NavigationMenu() {
             >
               {l}
             </a>
+          </motion.li>
+        ))}
+      </motion.ul> */}
+    </nav>
+  );
+}
+
+/** @type {import("framer-motion").Variants} */
+const navListVariants = {
+  hidden: (numOfChildren) => ({
+    right: "100vw",
+    transition: {
+      staggerChildren: 0.05,
+      staggerDirection: -1,
+      delay: (numOfChildren + 1) * 0.05,
+    },
+  }),
+  visible: {
+    right: "40vw",
+    transition: {
+      delayChildren: 0.2,
+      staggerChildren: 0.05,
+      ease: "easeOut",
+    },
+  },
+};
+
+/** @type {import("framer-motion").Variants} */
+const navListItemVariants = {
+  hidden: {
+    x: -20,
+    opacity: 0,
+  },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      ease: "easeOut",
+    },
+  },
+};
+
+export function NavList({ links, expanded }) {
+  const isMobile = useIsMobile();
+
+  if (isMobile) {
+    return (
+      <AnimatePresence>
+        {expanded && (
+          <motion.ul
+            id="nav-menu"
+            className="fixed bottom-0 left-0 top-0 z-40 flex flex-col gap-4 overflow-hidden bg-white pl-5 pt-20 leading-normal"
+            custom={links.length}
+            variants={navListVariants}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+          >
+            {links.map((l) => (
+              <motion.li
+                key={l}
+                className="relative md:flex md:h-full md:place-items-center md:focus-within:before:absolute md:focus-within:before:inset-x-0 md:focus-within:before:top-full md:focus-within:before:block md:focus-within:before:h-0.5 md:focus-within:before:bg-orange md:hover:before:absolute md:hover:before:inset-x-0 md:hover:before:top-full md:hover:before:block md:hover:before:h-0.5 md:hover:before:bg-orange"
+                variants={navListItemVariants}
+              >
+                <a
+                  href="https://www.example.com"
+                  className="font-bold md:font-semibold md:text-darkGrayishBlue md:hover:text-black md:focus-visible:text-black"
+                >
+                  {l}
+                </a>
+              </motion.li>
+            ))}
+          </motion.ul>
+        )}
+      </AnimatePresence>
+    );
+  } else {
+    return (
+      <ul
+        id="nav-menu"
+        className={`flex h-full items-center gap-[clamp(0.8rem,3vw,2rem)] leading-normal`}
+      >
+        {links.map((l) => (
+          <li
+            key={l}
+            className="relative flex h-full place-items-center focus-within:before:absolute focus-within:before:inset-x-0 focus-within:before:top-full focus-within:before:block focus-within:before:h-0.5 focus-within:before:bg-orange hover:before:absolute hover:before:inset-x-0 hover:before:top-full hover:before:block hover:before:h-0.5 hover:before:bg-orange"
+          >
+            <a
+              href="https://www.example.com"
+              className="font-semibold text-darkGrayishBlue hover:text-black focus-visible:text-black"
+            >
+              {l}
+            </a>
           </li>
         ))}
       </ul>
-    </nav>
-  );
+    );
+  }
 }
 
 export function CartWidget({ products, onDeleteProduct }) {
@@ -133,8 +264,8 @@ export function CartWidget({ products, onDeleteProduct }) {
       const btn = buttonRef.current,
         wrapper = cartWrapperRef.current;
       if (!wrapper) return;
-      const { x, height, y, width: btnWidth } = btn.getBoundingClientRect(),
-        { width: wrapperWidth } = wrapper.getBoundingClientRect();
+      const { x, height, y, width: btnWidth } = btn.getBoundingClientRect();
+      const wrapperWidth = Math.min(remToPx(21), 0.95 * innerWidth);
       let leftPos = x + btnWidth / 2 - wrapperWidth / 2;
       if (leftPos + wrapperWidth > innerWidth) {
         leftPos = innerWidth - wrapperWidth - 0.025 * innerWidth;
@@ -159,6 +290,8 @@ export function CartWidget({ products, onDeleteProduct }) {
   const btnLabel =
     (expanded ? "Close" : "Open") +
     (products.length > 0 ? `cart (${cartItemCount} items)` : "cart");
+
+  console.log(pos.x);
   return (
     <div className="relative leading-0">
       <button
@@ -181,15 +314,26 @@ export function CartWidget({ products, onDeleteProduct }) {
           </span>
         )}
       </button>
-      {expanded && (
-        <div
-          className="fixed z-40 w-[min(21rem,95vw)] leading-normal"
-          style={{ left: pos.x + "px", top: pos.y + "px" }}
-          ref={cartWrapperRef}
-        >
-          <Cart products={products} onDeleteProduct={onDeleteProduct} />
-        </div>
-      )}
+      <AnimatePresence>
+        {expanded && (
+          <motion.div
+            className="fixed z-40 w-[min(21rem,95vw)] leading-normal"
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            style={{
+              left: pos.x + "px",
+              top: pos.y + "px",
+              originX: 0.5,
+              originY: 0,
+            }}
+            exit={{ opacity: 0, scale: 0 }}
+            transition={{ duration: 0.6 }}
+            ref={cartWrapperRef}
+          >
+            <Cart products={products} onDeleteProduct={onDeleteProduct} />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

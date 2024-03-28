@@ -10,10 +10,10 @@ export default function Lightbox({ onClose, images, open }) {
     const dialog = dialogRef.current;
     if (open) {
       dialog.showModal();
-      document.body.style.overflowY = "hidden";
       /* this is a padding that replaces the scroll so we don't have a layout shift */
       document.body.style.paddingRight =
         innerWidth - document.documentElement.clientWidth + "px";
+      document.body.style.overflowY = "hidden";
     } else {
       dialog.close();
       document.body.style.overflowY = "auto";
