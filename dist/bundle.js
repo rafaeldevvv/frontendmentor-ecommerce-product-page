@@ -9191,12 +9191,22 @@ var host = document.createElement("sr-announcer");
 var shadow = host.attachShadow({
   mode: "open"
 });
+var srStyles = {
+  clip: "rect(1px, 1px, 1px, 1px)",
+  clipPath: "inset(50%)",
+  height: "1px",
+  width: "1px",
+  margin: -"1px",
+  overflow: "hidden",
+  padding: "0",
+  position: "absolute"
+};
 var politeAnnouncer = document.createElement("div");
 politeAnnouncer.ariaLive = "polite";
-politeAnnouncer.className = "sr-only";
+Object.assign(politeAnnouncer.style, srStyles);
 var assertiveAnnouncer = document.createElement("div");
 assertiveAnnouncer.ariaLive = "assertive";
-assertiveAnnouncer.className = "sr-only";
+Object.assign(assertiveAnnouncer.style, srStyles);
 shadow.appendChild(politeAnnouncer);
 shadow.appendChild(assertiveAnnouncer);
 document.body.appendChild(host);
