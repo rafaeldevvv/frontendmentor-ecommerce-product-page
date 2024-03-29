@@ -121,33 +121,6 @@ export function NavigationMenu() {
         )}
       </AnimatePresence>
       <NavList links={links} expanded={expanded} />
-      {/* <motion.ul
-        id="nav-menu"
-        className={`fixed bottom-0 left-0 top-0 z-40 w-[60vw] flex-col gap-4 overflow-hidden bg-white pl-5 pt-20 leading-normal md:static md:flex md:h-full md:flex-row md:items-center md:gap-[clamp(0.8rem,3vw,2rem)] md:p-0`}
-        style={{ display: expanded ? "flex" : "none" }}
-        animate={{
-          width: expanded ? "60vw" : 0,
-          height: expanded ? "auto" : 0,
-          borderRadius: expanded ? 0 : "1rem",
-          transitionEnd: {
-            display: expanded ? "flex" : "none",
-          },
-        }}
-      >
-        {links.map((l) => (
-          <motion.li
-            key={l}
-            className="relative md:flex md:h-full md:place-items-center md:focus-within:before:absolute md:focus-within:before:inset-x-0 md:focus-within:before:top-full md:focus-within:before:block md:focus-within:before:h-0.5 md:focus-within:before:bg-orange md:hover:before:absolute md:hover:before:inset-x-0 md:hover:before:top-full md:hover:before:block md:hover:before:h-0.5 md:hover:before:bg-orange"
-          >
-            <a
-              href="https://www.example.com"
-              className="font-bold md:font-semibold md:text-darkGrayishBlue md:hover:text-black md:focus-visible:text-black"
-            >
-              {l}
-            </a>
-          </motion.li>
-        ))}
-      </motion.ul> */}
     </nav>
   );
 }

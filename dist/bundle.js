@@ -8338,6 +8338,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _components_sr_announcer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/sr-announcer */ "./src/components/sr-announcer.js");
+/* harmony import */ var framer_motion__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! framer-motion */ "./node_modules/framer-motion/dist/es/components/MotionConfig/index.mjs");
 /* provided dependency */ var React = __webpack_require__(/*! ./node_modules/react/index.js */ "./node_modules/react/index.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
@@ -8355,6 +8356,7 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -8408,7 +8410,9 @@ function App() {
     setCartProducts(nextProducts);
     if (nextProducts.length === 0) (0,_components_sr_announcer__WEBPACK_IMPORTED_MODULE_6__.announcePolitely)("Your cart is empty");
   });
-  return /*#__PURE__*/React.createElement(react__WEBPACK_IMPORTED_MODULE_5__.StrictMode, null, /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement(react__WEBPACK_IMPORTED_MODULE_5__.StrictMode, null, /*#__PURE__*/React.createElement(framer_motion__WEBPACK_IMPORTED_MODULE_7__.MotionConfig, {
+    reducedMotion: "user"
+  }, /*#__PURE__*/React.createElement("div", {
     className: "grid min-h-screen content-between"
   }, /*#__PURE__*/React.createElement(_components_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {
     cartProducts: cartProducts,
@@ -8425,7 +8429,7 @@ function App() {
     onClose: function onClose() {
       return setIsLightboxVisible(false);
     }
-  }));
+  })));
 }
 
 /***/ }),
@@ -8889,10 +8893,10 @@ function CartWidget(_ref3) {
 
 /***/ }),
 
-/***/ "./src/components/ImageViewer.jsx":
-/*!****************************************!*\
-  !*** ./src/components/ImageViewer.jsx ***!
-  \****************************************/
+/***/ "./src/components/ImageCarousel.jsx":
+/*!******************************************!*\
+  !*** ./src/components/ImageCarousel.jsx ***!
+  \******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -8901,13 +8905,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   ClickableThumbnail: () => (/* binding */ ClickableThumbnail),
 /* harmony export */   NextButton: () => (/* binding */ NextButton),
 /* harmony export */   PreviousButton: () => (/* binding */ PreviousButton),
-/* harmony export */   "default": () => (/* binding */ ImageViewer)
+/* harmony export */   "default": () => (/* binding */ ImageCarousel)
 /* harmony export */ });
 /* harmony import */ var _icons_icon_next_svg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../icons/icon-next.svg */ "./src/icons/icon-next.svg");
 /* harmony import */ var _icons_icon_previous_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../icons/icon-previous.svg */ "./src/icons/icon-previous.svg");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _sr_announcer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./sr-announcer */ "./src/components/sr-announcer.js");
+/* harmony import */ var framer_motion__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! framer-motion */ "./node_modules/framer-motion/dist/es/components/AnimatePresence/index.mjs");
+/* harmony import */ var framer_motion__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! framer-motion */ "./node_modules/framer-motion/dist/es/render/dom/motion.mjs");
 /* provided dependency */ var React = __webpack_require__(/*! ./node_modules/react/index.js */ "./node_modules/react/index.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -8920,8 +8926,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 /* images a is an array of tuples of type [src: string, alt: string] */
-function ImageViewer(_ref) {
+function ImageCarousel(_ref) {
   var images = _ref.images,
     onOpenLightbox = _ref.onOpenLightbox,
     _ref$showSideButtonsA = _ref.showSideButtonsAlways,
@@ -8929,15 +8936,27 @@ function ImageViewer(_ref) {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(0),
     _useState2 = _slicedToArray(_useState, 2),
     currentImg = _useState2[0],
-    setCurrentImg = _useState2[1];
-  var changeImg = (0,react__WEBPACK_IMPORTED_MODULE_2__.useCallback)(function (nextImg) {
+    setCurrentImg = _useState2[1],
+    _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(1),
+    _useState4 = _slicedToArray(_useState3, 2),
+    direction = _useState4[0],
+    setDirection = _useState4[1];
+  var changeImg = (0,react__WEBPACK_IMPORTED_MODULE_2__.useCallback)(function (nextImg, nextDirection) {
+    if (nextImg > currentImg) setDirection(-1);else setDirection(1);
+    if (nextDirection) setDirection(nextDirection);
     setCurrentImg(nextImg);
     (0,_sr_announcer__WEBPACK_IMPORTED_MODULE_3__.announcePolitely)("Selected image " + (nextImg + 1));
-  }, []);
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false),
-    _useState4 = _slicedToArray(_useState3, 2),
-    isMobile = _useState4[0],
-    setIsMobile = _useState4[1];
+  }, [currentImg]);
+  var onPrevious = (0,react__WEBPACK_IMPORTED_MODULE_2__.useCallback)(function () {
+      changeImg(currentImg === 0 ? images.length - 1 : currentImg - 1, 1);
+    }, [currentImg]),
+    onNext = (0,react__WEBPACK_IMPORTED_MODULE_2__.useCallback)(function () {
+      changeImg((currentImg + 1) % images.length, -1);
+    }, [currentImg]);
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false),
+    _useState6 = _slicedToArray(_useState5, 2),
+    isMobile = _useState6[0],
+    setIsMobile = _useState6[1];
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
     var mql = matchMedia("(max-width:768px)");
     setIsMobile(mql.matches);
@@ -8951,41 +8970,40 @@ function ImageViewer(_ref) {
   var imagesIds = images.map(function (_ref2) {
     var _ref3 = _slicedToArray(_ref2, 1),
       src = _ref3[0];
-    return src.replace(/\W/, "-").replace(/^-+/, "");
+    return src.replace(/[\W.]/, "-").replace(/^-+/, "");
+  });
+  var currentImageData = images.find(function (_, i) {
+    return i === currentImg;
   });
   return /*#__PURE__*/React.createElement("div", {
     className: "select-none"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "relative mx-auto w-fit md:w-full"
-  }, /*#__PURE__*/React.createElement("ul", null, images.map(function (img, index) {
-    var _img = _slicedToArray(img, 2),
-      src = _img[0],
-      alt = _img[1];
-    return /*#__PURE__*/React.createElement("li", {
-      key: src,
-      className: "".concat(index === currentImg ? "" : "hidden"),
-      id: imagesIds[index]
-    }, /*#__PURE__*/React.createElement(BigImage, {
-      src: src,
-      alt: alt,
-      onOpenLightbox: onOpenLightbox,
-      isMobile: isMobile
-    }));
-  })), /*#__PURE__*/React.createElement(PreviousButton, {
-    onClick: function onClick() {
-      changeImg(currentImg === 0 ? images.length - 1 : currentImg - 1);
-    },
+    className: "relative mx-auto w-full sm:max-w-lg md:max-w-none"
+  }, /*#__PURE__*/React.createElement(BigImage, {
+    src: currentImageData[0],
+    alt: currentImageData[1],
+    onOpenLightbox: onOpenLightbox,
+    isMobile: isMobile,
+    id: imagesIds[currentImg],
+    direction: direction,
+    onSwipe: function onSwipe(d) {
+      if (d === 1) {
+        onNext();
+      } else {
+        onPrevious();
+      }
+    }
+  }), /*#__PURE__*/React.createElement(PreviousButton, {
+    onClick: onPrevious,
     showAlways: showSideButtonsAlways
   }), /*#__PURE__*/React.createElement(NextButton, {
-    onClick: function onClick() {
-      changeImg((currentImg + 1) % images.length);
-    },
+    onClick: onNext,
     showAlways: showSideButtonsAlways
   })), /*#__PURE__*/React.createElement("ul", {
     className: "mt-8 hidden justify-center gap-x-8 md:flex"
   }, images.map(function (img, index) {
-    var _img2 = _slicedToArray(img, 1),
-      src = _img2[0];
+    var _img = _slicedToArray(img, 1),
+      src = _img[0];
     return /*#__PURE__*/React.createElement("li", {
       key: src
     }, /*#__PURE__*/React.createElement(ClickableThumbnail, {
@@ -9006,7 +9024,7 @@ function PreviousButton(_ref4) {
   return /*#__PURE__*/React.createElement("button", {
     type: "button",
     "aria-label": "Previous image",
-    className: "stroke-darkGray absolute left-6 top-1/2 aspect-square -translate-y-1/2 rounded-full bg-white px-4 leading-0 hover:stroke-orange focus-visible:stroke-orange ".concat(showAlways ? "md:left-0 md:-translate-x-1/2" : "md:hidden", " "),
+    className: "absolute left-6 top-1/2 z-20 aspect-square -translate-y-1/2 rounded-full bg-white stroke-darkGray px-4 leading-0 hover:stroke-orange focus-visible:stroke-orange ".concat(showAlways ? "md:left-0 md:-translate-x-1/2" : "md:hidden"),
     onClick: onClick
   }, /*#__PURE__*/React.createElement(_icons_icon_previous_svg__WEBPACK_IMPORTED_MODULE_1__["default"], null));
 }
@@ -9017,38 +9035,106 @@ function NextButton(_ref5) {
   return /*#__PURE__*/React.createElement("button", {
     type: "button",
     "aria-label": "Next image",
-    className: "stroke-darkGray absolute right-6 top-1/2 aspect-square -translate-y-1/2 rounded-full bg-white px-4 leading-0 hover:stroke-orange focus-visible:stroke-orange ".concat(showAlways ? "md:right-0 md:translate-x-1/2" : "md:hidden", " "),
+    className: "absolute right-6 top-1/2 z-20 aspect-square -translate-y-1/2 rounded-full bg-white stroke-darkGray px-4 leading-0 hover:stroke-orange focus-visible:stroke-orange ".concat(showAlways ? "md:right-0 md:translate-x-1/2" : "md:hidden"),
     onClick: onClick
   }, /*#__PURE__*/React.createElement(_icons_icon_next_svg__WEBPACK_IMPORTED_MODULE_0__["default"], null));
+}
+
+/** @type {import("framer-motion").Variant} */
+var bigImageVariants = {
+  enter: function enter(direction) {
+    return {
+      opacity: 0,
+      x: direction === 1 ? -500 : 500,
+      zIndex: 0
+    };
+  },
+  center: {
+    opacity: 1,
+    x: 0,
+    zIndex: 1
+  },
+  exit: function exit(direction) {
+    return {
+      opacity: 0,
+      x: direction === 1 ? 500 : -500,
+      zIndex: 0
+    };
+  },
+  transition: {
+    duration: 0.8,
+    x: {
+      type: "spring",
+      stiffness: 300,
+      damping: 40
+    }
+  }
+};
+var swipeConfidenceThreshold = 9000;
+function swipePower(offset, velocity) {
+  return Math.abs(offset) * velocity;
 }
 function BigImage(_ref6) {
   var isMobile = _ref6.isMobile,
     onOpenLightbox = _ref6.onOpenLightbox,
     src = _ref6.src,
-    alt = _ref6.alt;
-  return onOpenLightbox !== undefined && !isMobile ? /*#__PURE__*/React.createElement("button", {
+    alt = _ref6.alt,
+    id = _ref6.id,
+    direction = _ref6.direction,
+    onSwipe = _ref6.onSwipe;
+  return /*#__PURE__*/React.createElement("div", {
+    className: "relative aspect-[4/3] w-full sm:mx-auto sm:aspect-square"
+  }, /*#__PURE__*/React.createElement(framer_motion__WEBPACK_IMPORTED_MODULE_4__.AnimatePresence, {
+    initial: false,
+    custom: direction
+  }, onOpenLightbox !== undefined && !isMobile ? /*#__PURE__*/React.createElement(framer_motion__WEBPACK_IMPORTED_MODULE_5__.motion.button, {
     type: "button",
-    className: "block",
-    onClick: onOpenLightbox
+    className: "absolute block size-full",
+    onClick: onOpenLightbox,
+    custom: direction,
+    variants: bigImageVariants,
+    initial: "enter",
+    animate: "center",
+    exit: "exit",
+    key: src
   }, /*#__PURE__*/React.createElement("span", {
     className: "sr-only"
   }, "Open lightbox"), /*#__PURE__*/React.createElement("img", {
     src: src,
     alt: alt,
-    className: "aspect-[4/3] w-full object-cover object-center sm:mx-auto sm:aspect-square sm:max-w-lg md:max-w-none sm:rounded-xl"
-  })) : /*#__PURE__*/React.createElement("img", {
+    className: "size-full object-cover object-center sm:rounded-xl",
+    id: id
+  })) : /*#__PURE__*/React.createElement(framer_motion__WEBPACK_IMPORTED_MODULE_5__.motion.img, {
     src: src,
     alt: alt,
-    className: "aspect-[4/3] w-full object-cover object-center sm:mx-auto sm:aspect-square sm:max-w-lg md:max-w-none sm:rounded-xl"
-  });
+    className: "absolute size-full object-cover object-center sm:rounded-xl",
+    id: id,
+    custom: direction,
+    variants: bigImageVariants,
+    initial: "enter",
+    animate: "center",
+    exit: "exit",
+    drag: "x",
+    dragConstraints: {
+      left: 0,
+      right: 0
+    },
+    onDragEnd: function onDragEnd(e, _ref7) {
+      var offset = _ref7.offset,
+        velocity = _ref7.velocity;
+      var power = swipePower(offset.x, velocity.x);
+      if (power > swipeConfidenceThreshold) onSwipe(-1);else if (power < -swipeConfidenceThreshold) onSwipe(1);
+    },
+    key: src
+  })));
 }
 var activeThumbnailStyles = "outline outline-2 outline-orange";
-function ClickableThumbnail(_ref7) {
-  var imageNumber = _ref7.imageNumber,
-    src = _ref7.src,
-    active = _ref7.active,
-    onClick = _ref7.onClick,
-    controls = _ref7.controls;
+function ClickableThumbnail(_ref8) {
+  var imageNumber = _ref8.imageNumber,
+    src = _ref8.src,
+    active = _ref8.active,
+    onClick = _ref8.onClick,
+    controls = _ref8.controls;
   return /*#__PURE__*/React.createElement("button", {
     type: "button",
     "aria-label": "Switch to image ".concat(imageNumber),
@@ -9076,7 +9162,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Lightbox)
 /* harmony export */ });
-/* harmony import */ var _ImageViewer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ImageViewer */ "./src/components/ImageViewer.jsx");
+/* harmony import */ var _ImageCarousel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ImageCarousel */ "./src/components/ImageCarousel.jsx");
 /* harmony import */ var _icons_icon_close_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../icons/icon-close.svg */ "./src/icons/icon-close.svg");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
@@ -9103,7 +9189,7 @@ function Lightbox(_ref) {
     }
   }, [open]);
   return /*#__PURE__*/React.createElement("dialog", {
-    className: "inset-0 m-0 h-screen max-h-none w-screen max-w-none bg-black bg-opacity-60",
+    className: "inset-0 m-0 h-screen max-h-none w-screen max-w-none overflow-x-hidden bg-black bg-opacity-60",
     ref: dialogRef,
     onClick: onClose
   }, /*#__PURE__*/React.createElement("div", {
@@ -9112,7 +9198,8 @@ function Lightbox(_ref) {
     className: "mx-auto max-w-xl py-8",
     onClick: function onClick(e) {
       return e.stopPropagation();
-    }
+    },
+    key: open.toString()
   }, /*#__PURE__*/React.createElement("div", {
     className: "mb-6"
   }, /*#__PURE__*/React.createElement("button", {
@@ -9123,7 +9210,7 @@ function Lightbox(_ref) {
     onClick: onClose
   }, /*#__PURE__*/React.createElement(_icons_icon_close_svg__WEBPACK_IMPORTED_MODULE_1__["default"], null)), /*#__PURE__*/React.createElement("span", {
     className: "clear-right block"
-  })), /*#__PURE__*/React.createElement(_ImageViewer__WEBPACK_IMPORTED_MODULE_0__["default"], {
+  })), /*#__PURE__*/React.createElement(_ImageCarousel__WEBPACK_IMPORTED_MODULE_0__["default"], {
     images: images,
     showSideButtonsAlways: true
   }))));
@@ -9141,7 +9228,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ ProductArticle)
 /* harmony export */ });
-/* harmony import */ var _ImageViewer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ImageViewer */ "./src/components/ImageViewer.jsx");
+/* harmony import */ var _ImageCarousel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ImageCarousel */ "./src/components/ImageCarousel.jsx");
 /* harmony import */ var _ProductInfo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProductInfo */ "./src/components/ProductInfo.jsx");
 /* harmony import */ var _QuantityControl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./QuantityControl */ "./src/components/QuantityControl.jsx");
 /* harmony import */ var _icons_icon_cart_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../icons/icon-cart.svg */ "./src/icons/icon-cart.svg");
@@ -9184,7 +9271,7 @@ function ProductArticle(_ref) {
     }, [quantity]);
   return /*#__PURE__*/React.createElement("article", {
     className: "items-center gap-x-[clamp(1rem,5vw,6rem)] md:container sm:my-10 md:my-20 md:grid md:grid-cols-2"
-  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(_ImageViewer__WEBPACK_IMPORTED_MODULE_0__["default"], {
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(_ImageCarousel__WEBPACK_IMPORTED_MODULE_0__["default"], {
     images: images,
     onOpenLightbox: onOpenLightbox
   })), /*#__PURE__*/React.createElement("div", {
@@ -9848,6 +9935,35 @@ video {
   display: none;
 }
 
+dialog {
+  opacity: 0;
+  transition:
+         opacity 700ms,
+         display 700ms allow-discrete,
+         overlay 700ms allow-discrete;
+}
+
+dialog[open] {
+  opacity: 1;
+}
+
+@starting-style {
+  dialog[open] {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+      *::before,
+      *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
@@ -10022,6 +10138,10 @@ video {
   top: 50%;
 }
 
+.z-20 {
+  z-index: 20;
+}
+
 .z-30 {
   z-index: 30;
 }
@@ -10095,6 +10215,11 @@ video {
   aspect-ratio: 1 / 1;
 }
 
+.size-full {
+  width: 100%;
+  height: 100%;
+}
+
 .h-0 {
   height: 0px;
 }
@@ -10136,21 +10261,12 @@ video {
   min-height: 100vh;
 }
 
-.w-\\[60vw\\] {
-  width: 60vw;
-}
-
 .w-\\[clamp\\(1\\.6rem\\2c 6vw\\2c 3rem\\)\\] {
   width: clamp(1.6rem,6vw,3rem);
 }
 
 .w-\\[min\\(21rem\\2c 95vw\\)\\] {
   width: min(21rem,95vw);
-}
-
-.w-fit {
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
 .w-full {
@@ -10297,6 +10413,10 @@ video {
 
 .overflow-y-auto {
   overflow-y: auto;
+}
+
+.overflow-x-hidden {
+  overflow-x: hidden;
 }
 
 .rounded {
@@ -10817,10 +10937,6 @@ video {
 }
 
 @media (min-width: 768px) {
-  .md\\:static {
-    position: static;
-  }
-
   .md\\:left-0 {
     left: 0px;
   }
@@ -10884,24 +11000,12 @@ video {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .md\\:flex-row {
-    flex-direction: row;
-  }
-
   .md\\:flex-row-reverse {
     flex-direction: row-reverse;
   }
 
   .md\\:place-items-center {
     place-items: center;
-  }
-
-  .md\\:items-center {
-    align-items: center;
-  }
-
-  .md\\:gap-\\[clamp\\(0\\.8rem\\2c 3vw\\2c 2rem\\)\\] {
-    gap: clamp(0.8rem,3vw,2rem);
   }
 
   .md\\:border-0 {
@@ -11023,8 +11127,7 @@ video {
     --tw-text-opacity: 1;
     color: hsl(0 0% 0% / var(--tw-text-opacity));
   }
-}
-`, ""]);
+}`, ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -14224,6 +14327,67 @@ function useIsPresent() {
 }
 function isPresent(context) {
     return context === null ? true : context.isPresent;
+}
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/framer-motion/dist/es/components/MotionConfig/index.mjs":
+/*!******************************************************************************!*\
+  !*** ./node_modules/framer-motion/dist/es/components/MotionConfig/index.mjs ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   MotionConfig: () => (/* binding */ MotionConfig)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _context_MotionConfigContext_mjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../context/MotionConfigContext.mjs */ "./node_modules/framer-motion/dist/es/context/MotionConfigContext.mjs");
+/* harmony import */ var _render_dom_utils_filter_props_mjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../render/dom/utils/filter-props.mjs */ "./node_modules/framer-motion/dist/es/render/dom/utils/filter-props.mjs");
+/* harmony import */ var _utils_use_constant_mjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/use-constant.mjs */ "./node_modules/framer-motion/dist/es/utils/use-constant.mjs");
+
+
+
+
+
+
+/**
+ * `MotionConfig` is used to set configuration options for all children `motion` components.
+ *
+ * ```jsx
+ * import { motion, MotionConfig } from "framer-motion"
+ *
+ * export function App() {
+ *   return (
+ *     <MotionConfig transition={{ type: "spring" }}>
+ *       <motion.div animate={{ x: 100 }} />
+ *     </MotionConfig>
+ *   )
+ * }
+ * ```
+ *
+ * @public
+ */
+function MotionConfig({ children, isValidProp, ...config }) {
+    isValidProp && (0,_render_dom_utils_filter_props_mjs__WEBPACK_IMPORTED_MODULE_1__.loadExternalIsValidProp)(isValidProp);
+    /**
+     * Inherit props from any parent MotionConfig components
+     */
+    config = { ...(0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_MotionConfigContext_mjs__WEBPACK_IMPORTED_MODULE_2__.MotionConfigContext), ...config };
+    /**
+     * Don't allow isStatic to change between renders as it affects how many hooks
+     * motion components fire.
+     */
+    config.isStatic = (0,_utils_use_constant_mjs__WEBPACK_IMPORTED_MODULE_3__.useConstant)(() => config.isStatic);
+    /**
+     * Creating a new config context object will re-render every `motion` component
+     * every time it renders. So we only want to create a new one sparingly.
+     */
+    const context = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => config, [JSON.stringify(config.transition), config.transformPagePoint, config.reducedMotion]);
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(_context_MotionConfigContext_mjs__WEBPACK_IMPORTED_MODULE_2__.MotionConfigContext.Provider, { value: context }, children));
 }
 
 

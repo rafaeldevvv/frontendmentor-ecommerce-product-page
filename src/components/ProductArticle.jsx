@@ -1,4 +1,4 @@
-import ImageViewer from "./ImageViewer";
+import ImageViewer from "./ImageCarousel";
 import ProductInfo from "./ProductInfo";
 import QuantityControl from "./QuantityControl";
 import CartIcon from "../icons/icon-cart.svg";

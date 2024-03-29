@@ -1,4 +1,4 @@
-import ImageViewer from "./ImageViewer";
+import ImageViewer from "./ImageCarousel";
 import CloseIcon from "../icons/icon-close.svg";
 
 import { useEffect, useRef } from "react";
@@ -23,7 +23,7 @@ export default function Lightbox({ onClose, images, open }) {
 
   return (
     <dialog
-      className="inset-0 m-0 h-screen max-h-none w-screen max-w-none bg-black bg-opacity-60"
+      className="inset-0 m-0 h-screen max-h-none w-screen max-w-none overflow-x-hidden bg-black bg-opacity-60"
       ref={dialogRef}
       onClick={onClose}
     >
@@ -31,6 +31,7 @@ export default function Lightbox({ onClose, images, open }) {
         <div
           className="mx-auto max-w-xl py-8"
           onClick={(e) => e.stopPropagation()}
+          key={open.toString()}
         >
           <div className="mb-6">
             <button

@@ -6,6 +6,7 @@ import Lightbox from "./components/Lightbox";
 import ProductArticle from "./components/ProductArticle";
 import { useCallback, useState, StrictMode } from "react";
 import { announcePolitely } from "./components/sr-announcer";
+import { MotionConfig } from "framer-motion";
 
 const sneakers = {
   name: "Fall Limited Edition Sneakers",
@@ -68,22 +69,24 @@ export default function App() {
 
   return (
     <StrictMode>
-      <div className="grid min-h-screen content-between">
-        <Header cartProducts={cartProducts} onDeleteProduct={onDeleteProduct} />
-        <main>
-          <ProductArticle
-            product={sneakers}
-            onAddProduct={onAddProduct}
-            onOpenLightbox={() => setIsLightboxVisible(true)}
-          />
-        </main>
-        <Footer />
-      </div>
-      <Lightbox
-        open={isLightboxVisible}
-        images={sneakers.images}
-        onClose={() => setIsLightboxVisible(false)}
-      />
+      <MotionConfig reducedMotion="user">
+        <div className="grid min-h-screen content-between">
+          <Header cartProducts={cartProducts} onDeleteProduct={onDeleteProduct} />
+          <main>
+            <ProductArticle
+              product={sneakers}
+              onAddProduct={onAddProduct}
+              onOpenLightbox={() => setIsLightboxVisible(true)}
+            />
+          </main>
+          <Footer />
+        </div>
+        <Lightbox
+          open={isLightboxVisible}
+          images={sneakers.images}
+          onClose={() => setIsLightboxVisible(false)}
+        />
+      </MotionConfig>
     </StrictMode>
   );
 }
