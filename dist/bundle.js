@@ -9349,7 +9349,7 @@ function ProductArticle(_ref) {
       });
     }, []);
   return /*#__PURE__*/React.createElement("article", {
-    className: "items-center gap-x-[clamp(2rem,8vw,9rem)] md:container sm:my-10 md:my-20 md:grid md:grid-cols-2"
+    className: "items-center gap-x-[clamp(2rem,8vw,9rem)] md:container md:px-[max(0px,_2rem_-_2vw)] sm:my-10 md:my-20 md:grid md:grid-cols-2"
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(_ImageCarousel__WEBPACK_IMPORTED_MODULE_0__["default"], {
     images: images,
     onOpenLightbox: onOpenLightbox
@@ -12096,6 +12096,11 @@ dialog[open] {
   .md\\:px-4 {
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+
+  .md\\:px-\\[max\\(0px\\2c _2rem_-_2vw\\)\\] {
+    padding-left: max(0px, 2rem - 2vw);
+    padding-right: max(0px, 2rem - 2vw);
   }
 
   .md\\:text-sm {
