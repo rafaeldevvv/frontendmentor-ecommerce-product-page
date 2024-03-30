@@ -9316,14 +9316,14 @@ function ProductArticle(_ref) {
     price: price,
     discount: discount
   }), /*#__PURE__*/React.createElement("div", {
-    className: "mt-8 grid-cols-[2fr_3fr] gap-x-4 md:grid"
+    className: "mt-8 grid grid-rows-2 gap-x-4 gap-y-4 md:grid-cols-[2fr_3fr] md:grid-rows-1"
   }, /*#__PURE__*/React.createElement(_QuantityControl__WEBPACK_IMPORTED_MODULE_2__["default"], {
     quantity: quantity,
     onLess: onLess,
     onMore: onMore
   }), /*#__PURE__*/React.createElement("button", {
     type: "button",
-    className: "mt-4 flex w-full items-center justify-center gap-x-4 rounded-md bg-orange fill-white py-4 text-white shadow-[0_15px_60px_-15px_theme(colors.orange)] transition-opacity hover:opacity-60 active:scale-95 md:mt-0",
+    className: "flex w-full items-center justify-center gap-x-4 rounded-md bg-orange fill-white py-4 text-white shadow-[0_15px_60px_-15px_theme(colors.orange)] transition-opacity hover:opacity-60 active:scale-95 md:mt-0",
     onClick: function onClick() {
       if (quantity === 0) {
         alert("Select the amount you want first");
@@ -9402,7 +9402,7 @@ function QuantityControl(_ref) {
     className: "flex items-center justify-between rounded-lg bg-lightGrayishBlue md:w-full"
   }, /*#__PURE__*/React.createElement("button", {
     type: "button",
-    className: "block aspect-square rounded-lg px-4 text-2xl font-extrabold text-orange transition-opacity hover:opacity-60 active:scale-75 md:h-full md:px-0",
+    className: "block aspect-square h-full rounded-lg text-2xl font-extrabold text-orange transition-opacity hover:opacity-60 active:scale-75",
     onClick: onLess,
     "aria-label": "less items"
   }, "-"), /*#__PURE__*/React.createElement("p", {
@@ -9412,7 +9412,7 @@ function QuantityControl(_ref) {
     className: "sr-only"
   }, quantity === 1 ? "item" : "items")), /*#__PURE__*/React.createElement("button", {
     type: "button",
-    className: "block aspect-square rounded-lg px-4 text-2xl font-extrabold text-orange transition-opacity hover:opacity-60 active:scale-75 md:h-full md:px-0",
+    className: "block aspect-square h-full rounded-lg text-2xl font-extrabold text-orange transition-opacity hover:opacity-60 active:scale-75",
     onClick: onMore,
     "aria-label": "more items"
   }, "+"));
@@ -10497,8 +10497,8 @@ dialog[open] {
   resize: both;
 }
 
-.grid-cols-\\[2fr_3fr\\] {
-  grid-template-columns: 2fr 3fr;
+.grid-rows-2 {
+  grid-template-rows: repeat(2, minmax(0, 1fr));
 }
 
 .grid-rows-\\[max-content_min-content\\] {
@@ -10564,6 +10564,10 @@ dialog[open] {
 .gap-x-\\[clamp\\(1rem\\2c 5vw\\2c 6rem\\)\\] {
   -moz-column-gap: clamp(1rem,5vw,6rem);
        column-gap: clamp(1rem,5vw,6rem);
+}
+
+.gap-y-4 {
+  row-gap: 1rem;
 }
 
 .space-y-4 > :not([hidden]) ~ :not([hidden]) {
@@ -11179,6 +11183,14 @@ dialog[open] {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .md\\:grid-cols-\\[2fr_3fr\\] {
+    grid-template-columns: 2fr 3fr;
+  }
+
+  .md\\:grid-rows-1 {
+    grid-template-rows: repeat(1, minmax(0, 1fr));
+  }
+
   .md\\:flex-row-reverse {
     flex-direction: row-reverse;
   }
@@ -11197,11 +11209,6 @@ dialog[open] {
 
   .md\\:p-0 {
     padding: 0px;
-  }
-
-  .md\\:px-0 {
-    padding-left: 0px;
-    padding-right: 0px;
   }
 
   .md\\:px-4 {

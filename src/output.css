@@ -835,8 +835,8 @@ dialog[open] {
   resize: both;
 }
 
-.grid-cols-\[2fr_3fr\] {
-  grid-template-columns: 2fr 3fr;
+.grid-rows-2 {
+  grid-template-rows: repeat(2, minmax(0, 1fr));
 }
 
 .grid-rows-\[max-content_min-content\] {
@@ -902,6 +902,10 @@ dialog[open] {
 .gap-x-\[clamp\(1rem\2c 5vw\2c 6rem\)\] {
   -moz-column-gap: clamp(1rem,5vw,6rem);
        column-gap: clamp(1rem,5vw,6rem);
+}
+
+.gap-y-4 {
+  row-gap: 1rem;
 }
 
 .space-y-4 > :not([hidden]) ~ :not([hidden]) {
@@ -1517,6 +1521,14 @@ dialog[open] {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .md\:grid-cols-\[2fr_3fr\] {
+    grid-template-columns: 2fr 3fr;
+  }
+
+  .md\:grid-rows-1 {
+    grid-template-rows: repeat(1, minmax(0, 1fr));
+  }
+
   .md\:flex-row-reverse {
     flex-direction: row-reverse;
   }
@@ -1535,11 +1547,6 @@ dialog[open] {
 
   .md\:p-0 {
     padding: 0px;
-  }
-
-  .md\:px-0 {
-    padding-left: 0px;
-    padding-right: 0px;
   }
 
   .md\:px-4 {

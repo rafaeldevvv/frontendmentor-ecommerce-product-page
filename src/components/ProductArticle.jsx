@@ -32,7 +32,7 @@ export default function ProductArticle({
           price={price}
           discount={discount}
         />
-        <div className="mt-8 grid-cols-[2fr_3fr] gap-x-4 md:grid">
+        <div className="mt-8 grid grid-rows-2 gap-x-4 gap-y-4 md:grid-cols-[2fr_3fr] md:grid-rows-1">
           <QuantityControl
             quantity={quantity}
             onLess={onLess}
@@ -40,7 +40,7 @@ export default function ProductArticle({
           />
           <button
             type="button"
-            className="mt-4 flex w-full items-center justify-center gap-x-4 rounded-md bg-orange fill-white py-4 text-white shadow-[0_15px_60px_-15px_theme(colors.orange)] transition-opacity hover:opacity-60 active:scale-95 md:mt-0"
+            className="flex w-full items-center justify-center gap-x-4 rounded-md bg-orange fill-white py-4 text-white shadow-[0_15px_60px_-15px_theme(colors.orange)] transition-opacity hover:opacity-60 active:scale-95 md:mt-0"
             onClick={() => {
               if (quantity === 0) {
                 alert("Select the amount you want first");
