@@ -8,83 +8,57 @@ import { useCallback, useState, StrictMode } from "react";
 import { announcePolitely } from "./components/sr-announcer";
 import { MotionConfig } from "framer-motion";
 
-const sneakers = {
-  name: "Fall Limited Edition Sneakers",
-  id: 0,
-  company: "Sneaker Company",
-  description:
-    "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
-  price: 250,
-  discount: 50,
-  images: [
-    [
-      "images/image-product-1.jpg",
-      "A pair of white and beige sneakers against an orange background",
-    ],
-    [
-      "images/image-product-2.jpg",
-      "A pair of light grey sneakers with white soles and orange accents, placed on top of two white rocks.",
-    ],
-    [
-      "images/image-product-3.jpg",
-      "A sneaker with white soles and orange and beige accents, placed on top of two white rocks.",
-    ],
-    [
-      "images/image-product-4.jpg",
-      "A stylish sneaker on white stones against an orange background.",
-    ],
-  ],
-};
-
-export default function App() {
-  const [cartProducts, setCartProducts] = useState([]);
-  const [isLightboxVisible, setIsLightboxVisible] = useState(false);
+export default function App({ initialCart, product }) {
+  const [cart, setCartProducts] = useState(initialCart);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
   const onAddProduct = useCallback(
     (id, quantity) => {
-      const productIndex = cartProducts.findIndex((p) => p.id === id);
+      let nextCart;
+      const productIndex = cart.findIndex((p) => p.id === id);
       if (productIndex >= 0) {
-        setCartProducts(
-          cartProducts.map((p) => {
-            if (p.id === id) {
-              return { ...p, quantity: p.quantity + quantity };
-            } else {
-              return p;
-            }
-          }),
-        );
+        nextCart = cart.map((p) => {
+          if (p.id === id) {
+            return { ...p, quantity: p.quantity + quantity };
+          } else {
+            return p;
+          }
+        });
       } else {
         /* I know this isn't ideal for a real ecommerce site, but we have only one product any way */
-        setCartProducts([...cartProducts, { ...sneakers, quantity }]);
+        nextCart = [...cart, { ...product, quantity }];
       }
+      setCartProducts(nextCart);
+      localStorage.setItem("cart", JSON.stringify(nextCart));
     },
-    [cartProducts],
+    [cart],
   );
 
   const onDeleteProduct = useCallback((id) => {
-    const nextProducts = cartProducts.filter((p) => p.id !== id);
-    setCartProducts(nextProducts);
-    if (nextProducts.length === 0) announcePolitely("Your cart is empty");
+    const nextCart = cart.filter((p) => p.id !== id);
+    setCartProducts(nextCart);
+    localStorage.setItem("cart", JSON.stringify(nextCart));
+    if (nextCart.length === 0) announcePolitely("Your cart is empty");
   });
 
   return (
     <StrictMode>
       <MotionConfig reducedMotion="user">
         <div className="grid min-h-screen content-between">
-          <Header cartProducts={cartProducts} onDeleteProduct={onDeleteProduct} />
+          <Header cartProducts={cart} onDeleteProduct={onDeleteProduct} />
           <main>
             <ProductArticle
-              product={sneakers}
+              product={product}
               onAddProduct={onAddProduct}
-              onOpenLightbox={() => setIsLightboxVisible(true)}
+              onOpenLightbox={() => setIsLightboxOpen(true)}
             />
           </main>
           <Footer />
         </div>
         <Lightbox
-          open={isLightboxVisible}
-          images={sneakers.images}
-          onClose={() => setIsLightboxVisible(false)}
+          open={isLightboxOpen}
+          images={product.images}
+          onClose={() => setIsLightboxOpen(false)}
         />
       </MotionConfig>
     </StrictMode>

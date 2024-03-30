@@ -8364,30 +8364,24 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var sneakers = {
-  name: "Fall Limited Edition Sneakers",
-  id: 0,
-  company: "Sneaker Company",
-  description: "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
-  price: 250,
-  discount: 50,
-  images: [["images/image-product-1.jpg", "A pair of white and beige sneakers against an orange background"], ["images/image-product-2.jpg", "A pair of light grey sneakers with white soles and orange accents, placed on top of two white rocks."], ["images/image-product-3.jpg", "A sneaker with white soles and orange and beige accents, placed on top of two white rocks."], ["images/image-product-4.jpg", "A stylish sneaker on white stones against an orange background."]]
-};
-function App() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)([]),
+function App(_ref) {
+  var initialCart = _ref.initialCart,
+    product = _ref.product;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)(initialCart),
     _useState2 = _slicedToArray(_useState, 2),
-    cartProducts = _useState2[0],
+    cart = _useState2[0],
     setCartProducts = _useState2[1];
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)(false),
     _useState4 = _slicedToArray(_useState3, 2),
-    isLightboxVisible = _useState4[0],
-    setIsLightboxVisible = _useState4[1];
+    isLightboxOpen = _useState4[0],
+    setIsLightboxOpen = _useState4[1];
   var onAddProduct = (0,react__WEBPACK_IMPORTED_MODULE_5__.useCallback)(function (id, quantity) {
-    var productIndex = cartProducts.findIndex(function (p) {
+    var nextCart;
+    var productIndex = cart.findIndex(function (p) {
       return p.id === id;
     });
     if (productIndex >= 0) {
-      setCartProducts(cartProducts.map(function (p) {
+      nextCart = cart.map(function (p) {
         if (p.id === id) {
           return _objectSpread(_objectSpread({}, p), {}, {
             quantity: p.quantity + quantity
@@ -8395,39 +8389,42 @@ function App() {
         } else {
           return p;
         }
-      }));
+      });
     } else {
       /* I know this isn't ideal for a real ecommerce site, but we have only one product any way */
-      setCartProducts([].concat(_toConsumableArray(cartProducts), [_objectSpread(_objectSpread({}, sneakers), {}, {
+      nextCart = [].concat(_toConsumableArray(cart), [_objectSpread(_objectSpread({}, product), {}, {
         quantity: quantity
-      })]));
+      })]);
     }
-  }, [cartProducts]);
+    setCartProducts(nextCart);
+    localStorage.setItem("cart", JSON.stringify(nextCart));
+  }, [cart]);
   var onDeleteProduct = (0,react__WEBPACK_IMPORTED_MODULE_5__.useCallback)(function (id) {
-    var nextProducts = cartProducts.filter(function (p) {
+    var nextCart = cart.filter(function (p) {
       return p.id !== id;
     });
-    setCartProducts(nextProducts);
-    if (nextProducts.length === 0) (0,_components_sr_announcer__WEBPACK_IMPORTED_MODULE_6__.announcePolitely)("Your cart is empty");
+    setCartProducts(nextCart);
+    localStorage.setItem("cart", JSON.stringify(nextCart));
+    if (nextCart.length === 0) (0,_components_sr_announcer__WEBPACK_IMPORTED_MODULE_6__.announcePolitely)("Your cart is empty");
   });
   return /*#__PURE__*/React.createElement(react__WEBPACK_IMPORTED_MODULE_5__.StrictMode, null, /*#__PURE__*/React.createElement(framer_motion__WEBPACK_IMPORTED_MODULE_7__.MotionConfig, {
     reducedMotion: "user"
   }, /*#__PURE__*/React.createElement("div", {
     className: "grid min-h-screen content-between"
   }, /*#__PURE__*/React.createElement(_components_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    cartProducts: cartProducts,
+    cartProducts: cart,
     onDeleteProduct: onDeleteProduct
   }), /*#__PURE__*/React.createElement("main", null, /*#__PURE__*/React.createElement(_components_ProductArticle__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    product: sneakers,
+    product: product,
     onAddProduct: onAddProduct,
     onOpenLightbox: function onOpenLightbox() {
-      return setIsLightboxVisible(true);
+      return setIsLightboxOpen(true);
     }
   })), /*#__PURE__*/React.createElement(_components_Footer__WEBPACK_IMPORTED_MODULE_1__["default"], null)), /*#__PURE__*/React.createElement(_components_Lightbox__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    open: isLightboxVisible,
-    images: sneakers.images,
+    open: isLightboxOpen,
+    images: product.images,
     onClose: function onClose() {
-      return setIsLightboxVisible(false);
+      return setIsLightboxOpen(false);
     }
   })));
 }
@@ -26303,8 +26300,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var initialCart = JSON.parse(localStorage.getItem("cart"));
+var sneakers = {
+  name: "Fall Limited Edition Sneakers",
+  id: 0,
+  company: "Sneaker Company",
+  description: "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
+  price: 250,
+  discount: 50,
+  images: [["images/image-product-1.jpg", "A pair of white and beige sneakers against an orange background"], ["images/image-product-2.jpg", "A pair of light grey sneakers with white soles and orange accents, placed on top of two white rocks."], ["images/image-product-3.jpg", "A sneaker with white soles and orange and beige accents, placed on top of two white rocks."], ["images/image-product-4.jpg", "A stylish sneaker on white stones against an orange background."]]
+};
 var root = document.querySelector("#root");
-react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot(root).render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_App__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot(root).render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_App__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  initialCart: initialCart || [],
+  product: sneakers
+}));
 })();
 
 /******/ })()
