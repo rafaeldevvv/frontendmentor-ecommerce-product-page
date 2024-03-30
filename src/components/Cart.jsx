@@ -1,6 +1,11 @@
 import DeleteIcon from "../icons/icon-delete.svg";
 import { announcePolitely } from "./sr-announcer";
+import formatPrice from "../utils/formatPrice";
+import getThumbnailSrc from "../utils/getThumbnailSrc";
 
+/**
+ * The list of products itself. It should be inside the `<CartWidget />` component.
+ */
 export default function Cart({ products, onDeleteProduct }) {
   let contents;
   if (!products || products.length === 0) {
@@ -46,19 +51,6 @@ export default function Cart({ products, onDeleteProduct }) {
   );
 }
 
-function formatPrice(price) {
-  if (Number.isInteger(price)) {
-    return "$" + price.toLocaleString("en") + ".00";
-  } else {
-    const priceStr = price.toString(),
-      decimalIndex = priceStr.indexOf("."),
-      decimal = priceStr.slice(decimalIndex, decimalIndex + 3);
-    return (
-      "$" + Math.floor(price).toLocaleString("en") + decimal.padEnd(3, "0")
-    );
-  }
-}
-
 export function CartItem({ item, onDelete }) {
   const { price, images, name, quantity } = item;
   const formattedPrice = formatPrice(price),
@@ -68,7 +60,7 @@ export function CartItem({ item, onDelete }) {
     <div className="flex items-center gap-x-4">
       <div>
         <img
-          src={images[0][0].replace(/\.(\w+)$/, "-thumbnail.$1")}
+          src={getThumbnailSrc(images[0][0])}
           alt={images[0][1]}
           className="max-w-12 rounded"
         />

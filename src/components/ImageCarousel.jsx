@@ -7,6 +7,7 @@ import { announcePolitely } from "./sr-announcer";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { Tab, TabList } from "./TabbedInterface";
+import getThumbnailSrc from "../utils/getThumbnailSrc";
 
 /* images a is an array of tuples of type [src: string, alt: string] */
 export default function ImageCarousel({
@@ -170,7 +171,7 @@ export function BigImage({
     aria.tabIndex = 0;
     aria.labelled = labelledby;
   }
-  
+
   return (
     <div className="relative aspect-[4/3] w-full sm:mx-auto sm:aspect-square">
       <AnimatePresence initial={false} custom={direction}>
@@ -255,7 +256,7 @@ export function ClickableThumbnail({
       >
         <span className="sr-only">{`Image ${imageNumber} of product`}</span>
         <img
-          src={src.replace(/(\.\w+)$/, "-thumbnail$1")}
+          src={getThumbnailSrc(src)}
           alt=""
           className={
             active ? "opacity-60" : "transition-opacity group-hover:opacity-60"

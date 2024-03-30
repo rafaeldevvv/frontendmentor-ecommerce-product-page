@@ -50,6 +50,7 @@ Users should be able to:
 - [React](https://reactjs.org/) - JS library
 - [tailwindcss](https://tailwindcss.com)
 - [Framer Motion](https://www.framer.com/motion/)
+- [react-toastify](https://github.com/fkhadra/react-toastify)
 
 ### Useful resources
 

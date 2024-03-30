@@ -1,3 +1,5 @@
+import formatPrice from "../utils/formatPrice";
+
 export default function ProductInfo({ company, name, desc, price, discount }) {
   const actualPrice = price * (discount / 100);
   return (
@@ -21,14 +23,14 @@ export default function ProductInfo({ company, name, desc, price, discount }) {
         >
           <span className="flex items-center gap-x-4">
             <span className="text-3xl font-extrabold">
-              ${actualPrice.toFixed(2)}
+              {formatPrice(actualPrice)}
             </span>
             <span className="text-md block rounded bg-paleOrange px-1 font-bold text-orange">
               {discount}%
             </span>
           </span>
           <span className="block font-semibold text-grayishBlue line-through">
-            ${price.toFixed(2)}
+            {formatPrice(price)}
           </span>
         </span>
       </p>
