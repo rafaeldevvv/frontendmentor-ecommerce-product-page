@@ -10,11 +10,9 @@ This is a solution to the [E-commerce product page challenge on Frontend Mentor]
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
+- [donate](#donate)
 
 ## Overview
 
@@ -31,12 +29,12 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![A white-orange themed page featuring sneakers](./images/screenshot.png)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [https://github.com/rafaeldevvv/frontendmentor-ecommerce-product-page](https://github.com/rafaeldevvv/frontendmentor-ecommerce-product-page)
+- Live Site URL: [https://rafaeldevvv.github.io/frontendmentor-ecommerce-product-page/](https://rafaeldevvv.github.io/frontendmentor-ecommerce-product-page/)
 
 ## My process
 
@@ -56,6 +54,8 @@ Users should be able to:
 
 - [css-unit-converter-js](https://cssunitconverter.vercel.app/blog/css-unit-converter-js-npm-package-release) - Package for converting css units
 - [Framer Motion Navigation menu animation example](https://codesandbox.io/p/sandbox/framer-motion-side-menu-mx2rw?file=%2Fsrc%2FExample.tsx%3A19%2C18&from-embed=)
+- [Calc of max, or max of calc in CSS](<https://stackoverflow.com/questions/16617248/calc-of-max-or-max-of-calc-in-css#:~:text=min()%20and%20max()%20may%20be%20nested.,calc()%20when%20using%20them.>)
+- [max()](https://developer.mozilla.org/en-US/docs/Web/CSS/max) - The try it section allowed me to realize that you have to put px after zero (`0px`) for the function to work properly.
 
 ## Author
 
