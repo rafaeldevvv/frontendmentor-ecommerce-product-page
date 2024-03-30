@@ -29,7 +29,7 @@ export default function Lightbox({ onClose, images, open }) {
     >
       <div className="flex min-h-screen items-center">
         <div
-          className="mx-auto max-w-xl py-8"
+          className="mx-auto w-full max-w-xl py-8"
           onClick={(e) => e.stopPropagation()}
           key={open.toString()}
         >

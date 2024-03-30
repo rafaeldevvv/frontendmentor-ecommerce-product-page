@@ -8518,12 +8518,12 @@ function CartItem(_ref2) {
     className: "text-sm"
   }, /*#__PURE__*/React.createElement("p", null, name), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("span", {
     className: "sr-only"
-  }, quantity, " items for ", formattedPrice, " each, totalling ", formattedTotal), /*#__PURE__*/React.createElement("span", {
+  }, quantity, " items for ", formattedPrice, " each, totalling", " ", formattedTotal), /*#__PURE__*/React.createElement("span", {
     "aria-hidden": "true"
   }, formattedPrice, " x ", quantity), " ", /*#__PURE__*/React.createElement("strong", null, formattedTotal))), /*#__PURE__*/React.createElement("button", {
     type: "button",
     "aria-label": "delete",
-    className: "fill-lightGray h-min w-min leading-0 outline-offset-2 hover:fill-black focus-visible:fill-black",
+    className: "h-min w-min fill-lightGray leading-0 outline-offset-2 hover:fill-black focus-visible:fill-black",
     onClick: function onClick(e) {
       e.stopPropagation();
       onDelete(item.id);
@@ -8573,6 +8573,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   CartWidget: () => (/* binding */ CartWidget),
 /* harmony export */   NavList: () => (/* binding */ NavList),
 /* harmony export */   NavigationMenu: () => (/* binding */ NavigationMenu),
+/* harmony export */   Profile: () => (/* binding */ Profile),
 /* harmony export */   "default": () => (/* binding */ Header)
 /* harmony export */ });
 /* harmony import */ var _icons_logo_svg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../icons/logo.svg */ "./src/icons/logo.svg");
@@ -8585,7 +8586,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var framer_motion__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! framer-motion */ "./node_modules/framer-motion/dist/es/render/dom/motion.mjs");
 /* harmony import */ var framer_motion__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! framer-motion */ "./node_modules/framer-motion/dist/es/components/AnimatePresence/index.mjs");
 /* harmony import */ var css_unit_converter_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! css-unit-converter-js */ "./node_modules/css-unit-converter-js/dist/index.mjs");
-/* harmony import */ var _hooks_useIsMobile__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../hooks/useIsMobile */ "./src/hooks/useIsMobile.js");
+/* harmony import */ var _hooks_useMedia__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../hooks/useMedia */ "./src/hooks/useMedia.js");
 /* provided dependency */ var React = __webpack_require__(/*! ./node_modules/react/index.js */ "./node_modules/react/index.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -8616,17 +8617,27 @@ function Header(_ref) {
   }, /*#__PURE__*/React.createElement(CartWidget, {
     products: cartProducts,
     onDeleteProduct: onDeleteProduct
-  }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("a", {
-    href: "https://rafaeldevvv.github.io/portfolio",
-    target: "_blank",
-    className: "block rounded-full hover:outline hover:outline-2 hover:outline-orange"
-  }, /*#__PURE__*/React.createElement("img", {
+  }), /*#__PURE__*/React.createElement(Profile, {
     src: "images/image-avatar.png",
     alt: "Avatar",
+    profileLink: "https://rafaeldevvv.github.io/portfolio"
+  }))));
+}
+function Profile(_ref2) {
+  var src = _ref2.src,
+    alt = _ref2.alt,
+    profileLink = _ref2.profileLink;
+  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("a", {
+    href: profileLink,
+    target: "_blank",
+    className: "focus block rounded-full outline outline-0 outline-offset-0 outline-orange hover:outline-2 focus-visible:outline-2"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: src,
+    alt: alt,
     className: "aspect-square w-[clamp(1.6rem,6vw,3rem)] min-w-4"
   }), /*#__PURE__*/React.createElement("span", {
     className: "sr-only"
-  }, "Profile"))))));
+  }, "Profile")));
 }
 function NavigationMenu() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(false),
@@ -8705,7 +8716,10 @@ function NavigationMenu() {
       opacity: 0.4
     },
     exit: {
-      opacity: 0
+      opacity: 0,
+      transition: {
+        delay: links.length * 0.05
+      }
     }
   })), /*#__PURE__*/React.createElement(NavList, {
     links: links,
@@ -8749,10 +8763,10 @@ var navListItemVariants = {
     }
   }
 };
-function NavList(_ref2) {
-  var links = _ref2.links,
-    expanded = _ref2.expanded;
-  var isMobile = (0,_hooks_useIsMobile__WEBPACK_IMPORTED_MODULE_7__["default"])();
+function NavList(_ref3) {
+  var links = _ref3.links,
+    expanded = _ref3.expanded;
+  var isMobile = (0,_hooks_useMedia__WEBPACK_IMPORTED_MODULE_7__["default"])("(max-width: 767px)");
   if (isMobile) {
     return /*#__PURE__*/React.createElement(framer_motion__WEBPACK_IMPORTED_MODULE_9__.AnimatePresence, null, expanded && /*#__PURE__*/React.createElement(framer_motion__WEBPACK_IMPORTED_MODULE_8__.motion.ul, {
       id: "nav-menu",
@@ -8787,9 +8801,9 @@ function NavList(_ref2) {
     }));
   }
 }
-function CartWidget(_ref3) {
-  var products = _ref3.products,
-    onDeleteProduct = _ref3.onDeleteProduct;
+function CartWidget(_ref4) {
+  var products = _ref4.products,
+    onDeleteProduct = _ref4.onDeleteProduct;
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(false),
     _useState4 = _slicedToArray(_useState3, 2),
     expanded = _useState4[0],
@@ -8844,7 +8858,6 @@ function CartWidget(_ref3) {
     return count + product.quantity;
   }, 0);
   var btnLabel = (expanded ? "Close" : "Open") + (products.length > 0 ? "cart (".concat(cartItemCount, " items)") : "cart");
-  console.log(pos.x);
   return /*#__PURE__*/React.createElement("div", {
     className: "relative leading-0"
   }, /*#__PURE__*/React.createElement("button", {
@@ -8857,7 +8870,7 @@ function CartWidget(_ref3) {
       e.stopPropagation();
       setExpanded(!expanded);
     },
-    className: "relative h-min fill-gray hover:fill-black",
+    className: "relative h-min fill-gray outline-offset-2 hover:fill-black focus-visible:outline-orange",
     ref: buttonRef
   }, /*#__PURE__*/React.createElement(_icons_icon_cart_svg__WEBPACK_IMPORTED_MODULE_1__["default"], null), products.length > 0 && /*#__PURE__*/React.createElement("span", {
     className: "absolute right-0 top-0 block -translate-y-1/2 translate-x-1/2 rounded-xl bg-orange px-1 py-0.5 text-[0.5rem] leading-none text-white"
@@ -8911,16 +8924,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _icons_icon_previous_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../icons/icon-previous.svg */ "./src/icons/icon-previous.svg");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _sr_announcer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./sr-announcer */ "./src/components/sr-announcer.js");
-/* harmony import */ var framer_motion__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! framer-motion */ "./node_modules/framer-motion/dist/es/components/AnimatePresence/index.mjs");
-/* harmony import */ var framer_motion__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! framer-motion */ "./node_modules/framer-motion/dist/es/render/dom/motion.mjs");
+/* harmony import */ var _hooks_useMedia__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../hooks/useMedia */ "./src/hooks/useMedia.js");
+/* harmony import */ var _sr_announcer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./sr-announcer */ "./src/components/sr-announcer.js");
+/* harmony import */ var framer_motion__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! framer-motion */ "./node_modules/framer-motion/dist/es/components/AnimatePresence/index.mjs");
+/* harmony import */ var framer_motion__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! framer-motion */ "./node_modules/framer-motion/dist/es/render/dom/motion.mjs");
+/* harmony import */ var _TabbedInterface__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./TabbedInterface */ "./src/components/TabbedInterface.jsx");
 /* provided dependency */ var React = __webpack_require__(/*! ./node_modules/react/index.js */ "./node_modules/react/index.js");
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
 
 
 
@@ -8945,7 +8963,7 @@ function ImageCarousel(_ref) {
     if (nextImg > currentImg) setDirection(-1);else setDirection(1);
     if (nextDirection) setDirection(nextDirection);
     setCurrentImg(nextImg);
-    (0,_sr_announcer__WEBPACK_IMPORTED_MODULE_3__.announcePolitely)("Selected image " + (nextImg + 1));
+    (0,_sr_announcer__WEBPACK_IMPORTED_MODULE_4__.announcePolitely)("Selected image " + (nextImg + 1));
   }, [currentImg]);
   var onPrevious = (0,react__WEBPACK_IMPORTED_MODULE_2__.useCallback)(function () {
       changeImg(currentImg === 0 ? images.length - 1 : currentImg - 1, 1);
@@ -8953,25 +8971,15 @@ function ImageCarousel(_ref) {
     onNext = (0,react__WEBPACK_IMPORTED_MODULE_2__.useCallback)(function () {
       changeImg((currentImg + 1) % images.length, -1);
     }, [currentImg]);
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false),
-    _useState6 = _slicedToArray(_useState5, 2),
-    isMobile = _useState6[0],
-    setIsMobile = _useState6[1];
-  (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
-    var mql = matchMedia("(max-width:768px)");
-    setIsMobile(mql.matches);
-    mql.onchange = function (e) {
-      setIsMobile(e.matches);
-    };
-    return function () {
-      mql.onchange = null;
-    };
-  }, []);
+  var isMobile = (0,_hooks_useMedia__WEBPACK_IMPORTED_MODULE_3__["default"])("(max-width: 768px)");
   var imagesIds = images.map(function (_ref2) {
-    var _ref3 = _slicedToArray(_ref2, 1),
-      src = _ref3[0];
-    return src.replace(/[\W.]/, "-").replace(/^-+/, "");
-  });
+      var _ref3 = _slicedToArray(_ref2, 1),
+        src = _ref3[0];
+      return src.replace(/[\W.]/, "-").replace(/^-+/, "");
+    }),
+    tabsIds = imagesIds.map(function (id) {
+      return id + "-tab";
+    });
   var currentImageData = images.find(function (_, i) {
     return i === currentImg;
   });
@@ -8992,29 +9000,35 @@ function ImageCarousel(_ref) {
       } else {
         onPrevious();
       }
-    }
+    },
+    labelledby: tabsIds[currentImg]
   }), /*#__PURE__*/React.createElement(PreviousButton, {
     onClick: onPrevious,
     showAlways: showSideButtonsAlways
   }), /*#__PURE__*/React.createElement(NextButton, {
     onClick: onNext,
     showAlways: showSideButtonsAlways
-  })), /*#__PURE__*/React.createElement("ul", {
-    className: "mt-8 hidden justify-center gap-x-8 md:flex"
+  })), /*#__PURE__*/React.createElement(_TabbedInterface__WEBPACK_IMPORTED_MODULE_5__.TabList, {
+    label: "Images",
+    className: "mt-8 hidden justify-center gap-x-8 md:flex",
+    tabSetSize: images.length,
+    currentIndex: currentImg,
+    setIndex: changeImg
   }, images.map(function (img, index) {
     var _img = _slicedToArray(img, 1),
       src = _img[0];
-    return /*#__PURE__*/React.createElement("li", {
-      key: src
-    }, /*#__PURE__*/React.createElement(ClickableThumbnail, {
+    return /*#__PURE__*/React.createElement(ClickableThumbnail, {
       imageNumber: index + 1,
       src: src,
       active: index === currentImg,
       onClick: function onClick() {
         return changeImg(index);
       },
-      controls: imagesIds[index]
-    }));
+      controls: imagesIds[index],
+      numOfImgs: images.length,
+      id: tabsIds[index],
+      key: src
+    });
   })));
 }
 function PreviousButton(_ref4) {
@@ -9081,22 +9095,33 @@ function BigImage(_ref6) {
     alt = _ref6.alt,
     id = _ref6.id,
     direction = _ref6.direction,
-    onSwipe = _ref6.onSwipe;
+    onSwipe = _ref6.onSwipe,
+    labelledby = _ref6.labelledby;
+  var aria = {};
+  if (!isMobile) {
+    aria.role = "tabpanel";
+    aria.tabIndex = 0;
+    aria.labelled = labelledby;
+  }
   return /*#__PURE__*/React.createElement("div", {
     className: "relative aspect-[4/3] w-full sm:mx-auto sm:aspect-square"
-  }, /*#__PURE__*/React.createElement(framer_motion__WEBPACK_IMPORTED_MODULE_4__.AnimatePresence, {
+  }, /*#__PURE__*/React.createElement(framer_motion__WEBPACK_IMPORTED_MODULE_6__.AnimatePresence, {
     initial: false,
     custom: direction
-  }, onOpenLightbox !== undefined && !isMobile ? /*#__PURE__*/React.createElement(framer_motion__WEBPACK_IMPORTED_MODULE_5__.motion.button, {
-    type: "button",
+  }, onOpenLightbox !== undefined && !isMobile ? /*#__PURE__*/React.createElement(framer_motion__WEBPACK_IMPORTED_MODULE_7__.motion.div, {
+    role: "tabpanel",
+    "aria-labelledby": labelledby,
     className: "absolute block size-full",
-    onClick: onOpenLightbox,
     custom: direction,
     variants: bigImageVariants,
     initial: "enter",
     animate: "center",
     exit: "exit",
     key: src
+  }, /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "block size-full",
+    onClick: onOpenLightbox
   }, /*#__PURE__*/React.createElement("span", {
     className: "sr-only"
   }, "Open lightbox"), /*#__PURE__*/React.createElement("img", {
@@ -9104,11 +9129,8 @@ function BigImage(_ref6) {
     alt: alt,
     className: "size-full object-cover object-center sm:rounded-xl",
     id: id
-  })) : /*#__PURE__*/React.createElement(framer_motion__WEBPACK_IMPORTED_MODULE_5__.motion.img, {
-    src: src,
-    alt: alt,
-    className: "absolute size-full object-cover object-center sm:rounded-xl",
-    id: id,
+  }))) : /*#__PURE__*/React.createElement(framer_motion__WEBPACK_IMPORTED_MODULE_7__.motion.div, _extends({}, aria, {
+    className: "absolute size-full",
     custom: direction,
     variants: bigImageVariants,
     initial: "enter",
@@ -9126,28 +9148,38 @@ function BigImage(_ref6) {
       if (power > swipeConfidenceThreshold) onSwipe(-1);else if (power < -swipeConfidenceThreshold) onSwipe(1);
     },
     key: src
-  })));
+  }), /*#__PURE__*/React.createElement("img", {
+    src: src,
+    alt: alt,
+    className: "size-full object-cover object-center sm:rounded-xl",
+    id: id
+  }))));
 }
-var activeThumbnailStyles = "outline outline-2 outline-orange";
 function ClickableThumbnail(_ref8) {
   var imageNumber = _ref8.imageNumber,
+    numOfImgs = _ref8.numOfImgs,
     src = _ref8.src,
     active = _ref8.active,
     onClick = _ref8.onClick,
-    controls = _ref8.controls;
-  return /*#__PURE__*/React.createElement("button", {
-    type: "button",
-    "aria-label": "Switch to image ".concat(imageNumber),
-    className: "group block aspect-square w-full max-w-24 overflow-hidden rounded-lg bg-white ".concat(active ? activeThumbnailStyles : ""),
+    controls = _ref8.controls,
+    id = _ref8.id;
+  return /*#__PURE__*/React.createElement(_TabbedInterface__WEBPACK_IMPORTED_MODULE_5__.Tab, {
+    className: "group relative block aspect-square w-full max-w-24 rounded-lg bg-white outline outline-0 outline-offset-8 outline-orange focus-visible:outline-[3px]",
     onClick: onClick,
-    "aria-controls": controls,
-    "aria-expanded": active,
-    tabIndex: active ? -1 : 0
-  }, /*#__PURE__*/React.createElement("img", {
+    controls: controls,
+    pos: imageNumber,
+    setsize: numOfImgs,
+    active: active,
+    id: id
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "overflow-hidden rounded-lg ".concat(active ? "outline outline-2 outline-orange" : "")
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "sr-only"
+  }, "Image ".concat(imageNumber, " of product")), /*#__PURE__*/React.createElement("img", {
     src: src.replace(/(\.\w+)$/, "-thumbnail$1"),
-    alt: "Image ".concat(imageNumber, " of product"),
-    className: active ? "opacity-60" : "transition-opacity group-hover:opacity-60 group-focus-visible:opacity-60"
-  }));
+    alt: "",
+    className: active ? "opacity-60" : "transition-opacity group-hover:opacity-60"
+  })));
 }
 
 /***/ }),
@@ -9195,7 +9227,7 @@ function Lightbox(_ref) {
   }, /*#__PURE__*/React.createElement("div", {
     className: "flex min-h-screen items-center"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "mx-auto max-w-xl py-8",
+    className: "mx-auto w-full max-w-xl py-8",
     onClick: function onClick(e) {
       return e.stopPropagation();
     },
@@ -9334,7 +9366,7 @@ function ProductInfo(_ref) {
     className: "text-md leading-relaxed text-darkGrayishBlue"
   }, desc), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("span", {
     className: "sr-only"
-  }, "$\xA0", actualPrice, " with a discount of $", discount, "%"), /*#__PURE__*/React.createElement("span", {
+  }, "$\xA0", actualPrice, " with a discount of ", discount, "%"), /*#__PURE__*/React.createElement("span", {
     "aria-hidden": "true",
     className: "flex items-center justify-between md:block"
   }, /*#__PURE__*/React.createElement("span", {
@@ -9388,6 +9420,145 @@ function QuantityControl(_ref) {
 
 /***/ }),
 
+/***/ "./src/components/TabContext.js":
+/*!**************************************!*\
+  !*** ./src/components/TabContext.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   TabFocusContext: () => (/* binding */ TabFocusContext)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/* this is to decide whether you can focus a tab inside tablist */
+var TabFocusContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)(false);
+
+/***/ }),
+
+/***/ "./src/components/TabbedInterface.jsx":
+/*!********************************************!*\
+  !*** ./src/components/TabbedInterface.jsx ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Tab: () => (/* binding */ Tab),
+/* harmony export */   TabList: () => (/* binding */ TabList),
+/* harmony export */   TabPanel: () => (/* binding */ TabPanel)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _TabContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TabContext */ "./src/components/TabContext.js");
+/* provided dependency */ var React = __webpack_require__(/*! ./node_modules/react/index.js */ "./node_modules/react/index.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+function Tab(_ref) {
+  var children = _ref.children,
+    active = _ref.active,
+    pos = _ref.pos,
+    setsize = _ref.setsize,
+    controls = _ref.controls,
+    onClick = _ref.onClick,
+    id = _ref.id,
+    _ref$className = _ref.className,
+    className = _ref$className === void 0 ? "" : _ref$className,
+    _ref$activeClassname = _ref.activeClassname,
+    activeClassname = _ref$activeClassname === void 0 ? "active" : _ref$activeClassname;
+  var tabCanFocus = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_TabContext__WEBPACK_IMPORTED_MODULE_1__.TabFocusContext);
+  var tabRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (active && tabCanFocus) {
+      tabRef.current.focus();
+    }
+  }, [active, tabCanFocus]);
+  if (active) className += " " + activeClassname;
+  return /*#__PURE__*/React.createElement("button", {
+    role: "tab",
+    ref: tabRef,
+    id: id,
+    className: className,
+    "aria-selected": active,
+    "aria-posinset": pos,
+    "aria-setsize": setsize,
+    "aria-controls": controls,
+    tabIndex: active ? 0 : -1,
+    onClick: onClick
+  }, children);
+}
+function TabList(_ref2) {
+  var _ref2$className = _ref2.className,
+    className = _ref2$className === void 0 ? "" : _ref2$className,
+    children = _ref2.children,
+    label = _ref2.label,
+    _ref2$orientation = _ref2.orientation,
+    orientation = _ref2$orientation === void 0 ? "horizontal" : _ref2$orientation,
+    _ref2$style = _ref2.style,
+    style = _ref2$style === void 0 ? {} : _ref2$style,
+    tabSetSize = _ref2.tabSetSize,
+    currentIndex = _ref2.currentIndex,
+    setIndex = _ref2.setIndex;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    canFocus = _useState2[0],
+    setCanFocus = _useState2[1];
+  return /*#__PURE__*/React.createElement("div", {
+    role: "tablist",
+    className: className,
+    "aria-label": label,
+    onFocus: function onFocus() {
+      return setCanFocus(true);
+    },
+    onKeyDown: function onKeyDown(e) {
+      var key = e.key;
+
+      /* we need to prevent default in some situations */
+      if ((key === "ArrowUp" || key === "ArrowDown") && orientation === "vertical" || key === "Home" || key === "End") {
+        e.preventDefault();
+      }
+      if (key === "ArrowRight" && orientation === "horizontal" || key === "ArrowDown" && orientation === "vertical") {
+        setIndex(currentIndex === tabSetSize - 1 ? 0 : currentIndex + 1);
+      } else if (key === "ArrowLeft" && orientation === "horizontal" || key === "ArrowUp" && orientation === "vertical") {
+        setIndex(currentIndex === 0 ? tabSetSize - 1 : currentIndex - 1);
+      }
+      if (key === "Home") setIndex(0);
+      if (key === "End") setIndex(tabSetSize - 1);
+    },
+    "aria-orientation": orientation,
+    style: style
+  }, /*#__PURE__*/React.createElement(_TabContext__WEBPACK_IMPORTED_MODULE_1__.TabFocusContext.Provider, {
+    value: canFocus
+  }, children));
+}
+function TabPanel(_ref3) {
+  var _ref3$className = _ref3.className,
+    className = _ref3$className === void 0 ? "" : _ref3$className,
+    id = _ref3.id,
+    labelledBy = _ref3.labelledBy,
+    children = _ref3.children,
+    active = _ref3.active;
+  return /*#__PURE__*/React.createElement("div", {
+    role: "tabpanel",
+    tabIndex: 0,
+    className: className,
+    id: id,
+    "aria-labelledby": labelledBy,
+    hidden: !active
+  }, children);
+}
+
+/***/ }),
+
 /***/ "./src/components/sr-announcer.js":
 /*!****************************************!*\
   !*** ./src/components/sr-announcer.js ***!
@@ -9431,15 +9602,15 @@ function announceAssertively(msg) {
 
 /***/ }),
 
-/***/ "./src/hooks/useIsMobile.js":
-/*!**********************************!*\
-  !*** ./src/hooks/useIsMobile.js ***!
-  \**********************************/
+/***/ "./src/hooks/useMedia.js":
+/*!*******************************!*\
+  !*** ./src/hooks/useMedia.js ***!
+  \*******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ useIsMobile)
+/* harmony export */   "default": () => (/* binding */ useMedia)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
@@ -9450,22 +9621,22 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-function useIsMobile() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+function useMedia(query) {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
-    isMobile = _useState2[0],
-    setIsMobile = _useState2[1];
+    matches = _useState2[0],
+    setMatches = _useState2[1];
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    var mql = matchMedia("(max-width:767px)");
-    setIsMobile(mql.matches);
+    var mql = matchMedia(query);
+    setMatches(mql.matches);
     mql.onchange = function (e) {
-      setIsMobile(e.matches);
+      setMatches(e.matches);
     };
     return function () {
       mql.onchange = null;
     };
-  }, []);
-  return isMobile;
+  });
+  return matches;
 }
 
 /***/ }),
@@ -10696,12 +10867,24 @@ dialog[open] {
   outline-style: solid;
 }
 
+.outline-0 {
+  outline-width: 0px;
+}
+
 .outline-2 {
   outline-width: 2px;
 }
 
+.outline-offset-0 {
+  outline-offset: 0px;
+}
+
 .outline-offset-2 {
   outline-offset: 2px;
+}
+
+.outline-offset-8 {
+  outline-offset: 8px;
 }
 
 .outline-orange {
@@ -10809,16 +10992,8 @@ dialog[open] {
   opacity: 0.6;
 }
 
-.hover\\:outline:hover {
-  outline-style: solid;
-}
-
 .hover\\:outline-2:hover {
   outline-width: 2px;
-}
-
-.hover\\:outline-orange:hover {
-  outline-color: hsl(26, 100%, 55%);
 }
 
 .hover\\:before\\:absolute:hover::before {
@@ -10879,8 +11054,16 @@ dialog[open] {
   outline-width: 2px;
 }
 
+.focus-visible\\:outline-\\[3px\\]:focus-visible {
+  outline-width: 3px;
+}
+
 .focus-visible\\:outline-offset-4:focus-visible {
   outline-offset: 4px;
+}
+
+.focus-visible\\:outline-orange:focus-visible {
+  outline-color: hsl(26, 100%, 55%);
 }
 
 .focus-visible\\:outline-white:focus-visible {
@@ -10900,10 +11083,6 @@ dialog[open] {
 }
 
 .group:hover .group-hover\\:opacity-60 {
-  opacity: 0.6;
-}
-
-.group:focus-visible .group-focus-visible\\:opacity-60 {
   opacity: 0.6;
 }
 

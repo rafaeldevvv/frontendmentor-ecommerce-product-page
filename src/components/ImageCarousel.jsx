@@ -1,9 +1,12 @@
 import NextIcon from "../icons/icon-next.svg";
 import PreviousIcon from "../icons/icon-previous.svg";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
+import useMedia from "../hooks/useMedia";
 import { announcePolitely } from "./sr-announcer";
 import { motion, AnimatePresence } from "framer-motion";
+
+import { Tab, TabList } from "./TabbedInterface";
 
 /* images a is an array of tuples of type [src: string, alt: string] */
 export default function ImageCarousel({
@@ -33,22 +36,12 @@ export default function ImageCarousel({
       changeImg((currentImg + 1) % images.length, -1);
     }, [currentImg]);
 
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    const mql = matchMedia("(max-width:768px)");
-    setIsMobile(mql.matches);
-
-    mql.onchange = function (e) {
-      setIsMobile(e.matches);
-    };
-    return () => {
-      mql.onchange = null;
-    };
-  }, []);
+  const isMobile = useMedia("(max-width: 768px)");
 
   const imagesIds = images.map(([src]) =>
-    src.replace(/[\W.]/, "-").replace(/^-+/, ""),
-  );
+      src.replace(/[\W.]/, "-").replace(/^-+/, ""),
+    ),
+    tabsIds = imagesIds.map((id) => id + "-tab");
 
   const currentImageData = images.find((_, i) => i === currentImg);
 
@@ -69,6 +62,7 @@ export default function ImageCarousel({
               onPrevious();
             }
           }}
+          labelledby={tabsIds[currentImg]}
         />
         <PreviousButton
           onClick={onPrevious}
@@ -76,22 +70,29 @@ export default function ImageCarousel({
         />
         <NextButton onClick={onNext} showAlways={showSideButtonsAlways} />
       </div>
-      <ul className="mt-8 hidden justify-center gap-x-8 md:flex">
+      <TabList
+        label="Images"
+        className="mt-8 hidden justify-center gap-x-8 md:flex"
+        tabSetSize={images.length}
+        currentIndex={currentImg}
+        setIndex={changeImg}
+      >
         {images.map((img, index) => {
           const [src] = img;
           return (
-            <li key={src}>
-              <ClickableThumbnail
-                imageNumber={index + 1}
-                src={src}
-                active={index === currentImg}
-                onClick={() => changeImg(index)}
-                controls={imagesIds[index]}
-              />
-            </li>
+            <ClickableThumbnail
+              imageNumber={index + 1}
+              src={src}
+              active={index === currentImg}
+              onClick={() => changeImg(index)}
+              controls={imagesIds[index]}
+              numOfImgs={images.length}
+              id={tabsIds[index]}
+              key={src}
+            />
           );
         })}
-      </ul>
+      </TabList>
     </div>
   );
 }
@@ -161,15 +162,23 @@ export function BigImage({
   id,
   direction,
   onSwipe,
+  labelledby,
 }) {
+  const aria = {};
+  if (!isMobile) {
+    aria.role = "tabpanel";
+    aria.tabIndex = 0;
+    aria.labelled = labelledby;
+  }
+  
   return (
     <div className="relative aspect-[4/3] w-full sm:mx-auto sm:aspect-square">
       <AnimatePresence initial={false} custom={direction}>
         {onOpenLightbox !== undefined && !isMobile ? (
-          <motion.button
-            type="button"
+          <motion.div
+            role="tabpanel"
+            aria-labelledby={labelledby}
             className="absolute block size-full"
-            onClick={onOpenLightbox}
             custom={direction}
             variants={bigImageVariants}
             initial="enter"
@@ -177,20 +186,24 @@ export function BigImage({
             exit="exit"
             key={src}
           >
-            <span className="sr-only">Open lightbox</span>
-            <img
-              src={src}
-              alt={alt}
-              className="size-full object-cover object-center sm:rounded-xl"
-              id={id}
-            />
-          </motion.button>
+            <button
+              type="button"
+              className="block size-full"
+              onClick={onOpenLightbox}
+            >
+              <span className="sr-only">Open lightbox</span>
+              <img
+                src={src}
+                alt={alt}
+                className="size-full object-cover object-center sm:rounded-xl"
+                id={id}
+              />
+            </button>
+          </motion.div>
         ) : (
-          <motion.img
-            src={src}
-            alt={alt}
-            className="absolute size-full object-cover object-center sm:rounded-xl"
-            id={id}
+          <motion.div
+            {...aria}
+            className="absolute size-full"
             custom={direction}
             variants={bigImageVariants}
             initial="enter"
@@ -204,40 +217,51 @@ export function BigImage({
               else if (power < -swipeConfidenceThreshold) onSwipe(1);
             }}
             key={src}
-          />
+          >
+            <img
+              src={src}
+              alt={alt}
+              className="size-full object-cover object-center sm:rounded-xl"
+              id={id}
+            />
+          </motion.div>
         )}
       </AnimatePresence>
     </div>
   );
 }
 
-const activeThumbnailStyles = "outline outline-2 outline-orange";
 export function ClickableThumbnail({
   imageNumber,
+  numOfImgs,
   src,
   active,
   onClick,
   controls,
+  id,
 }) {
   return (
-    <button
-      type="button"
-      aria-label={`Switch to image ${imageNumber}`}
-      className={`group block aspect-square w-full max-w-24 overflow-hidden rounded-lg bg-white ${active ? activeThumbnailStyles : ""}`}
+    <Tab
+      className="group relative block aspect-square w-full max-w-24 rounded-lg bg-white outline outline-0 outline-offset-8 outline-orange focus-visible:outline-[3px]"
       onClick={onClick}
-      aria-controls={controls}
-      aria-expanded={active}
-      tabIndex={active ? -1 : 0}
+      controls={controls}
+      pos={imageNumber}
+      setsize={numOfImgs}
+      active={active}
+      id={id}
     >
-      <img
-        src={src.replace(/(\.\w+)$/, "-thumbnail$1")}
-        alt={`Image ${imageNumber} of product`}
-        className={
-          active
-            ? "opacity-60"
-            : "transition-opacity group-hover:opacity-60 group-focus-visible:opacity-60"
-        }
-      />
-    </button>
+      <div
+        className={`overflow-hidden rounded-lg ${active ? "outline outline-2 outline-orange" : ""}`}
+      >
+        <span className="sr-only">{`Image ${imageNumber} of product`}</span>
+        <img
+          src={src.replace(/(\.\w+)$/, "-thumbnail$1")}
+          alt=""
+          className={
+            active ? "opacity-60" : "transition-opacity group-hover:opacity-60"
+          }
+        />
+      </div>
+    </Tab>
   );
 }

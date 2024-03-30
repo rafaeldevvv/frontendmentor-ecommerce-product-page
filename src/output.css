@@ -1205,12 +1205,24 @@ dialog[open] {
   outline-style: solid;
 }
 
+.outline-0 {
+  outline-width: 0px;
+}
+
 .outline-2 {
   outline-width: 2px;
 }
 
+.outline-offset-0 {
+  outline-offset: 0px;
+}
+
 .outline-offset-2 {
   outline-offset: 2px;
+}
+
+.outline-offset-8 {
+  outline-offset: 8px;
 }
 
 .outline-orange {
@@ -1318,16 +1330,8 @@ dialog[open] {
   opacity: 0.6;
 }
 
-.hover\:outline:hover {
-  outline-style: solid;
-}
-
 .hover\:outline-2:hover {
   outline-width: 2px;
-}
-
-.hover\:outline-orange:hover {
-  outline-color: hsl(26, 100%, 55%);
 }
 
 .hover\:before\:absolute:hover::before {
@@ -1388,8 +1392,16 @@ dialog[open] {
   outline-width: 2px;
 }
 
+.focus-visible\:outline-\[3px\]:focus-visible {
+  outline-width: 3px;
+}
+
 .focus-visible\:outline-offset-4:focus-visible {
   outline-offset: 4px;
+}
+
+.focus-visible\:outline-orange:focus-visible {
+  outline-color: hsl(26, 100%, 55%);
 }
 
 .focus-visible\:outline-white:focus-visible {
@@ -1409,10 +1421,6 @@ dialog[open] {
 }
 
 .group:hover .group-hover\:opacity-60 {
-  opacity: 0.6;
-}
-
-.group:focus-visible .group-focus-visible\:opacity-60 {
   opacity: 0.6;
 }
 

@@ -6,7 +6,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import Cart from "./Cart";
 import { motion, AnimatePresence } from "framer-motion";
 import { remToPx } from "css-unit-converter-js";
-import useIsMobile from "../hooks/useIsMobile";
+import useMedia from "../hooks/useMedia";
 
 export default function Header({ cartProducts, onDeleteProduct }) {
   return (
@@ -24,23 +24,33 @@ export default function Header({ cartProducts, onDeleteProduct }) {
             products={cartProducts}
             onDeleteProduct={onDeleteProduct}
           />
-          <div>
-            <a
-              href="https://rafaeldevvv.github.io/portfolio"
-              target="_blank"
-              className="block rounded-full hover:outline hover:outline-2 hover:outline-orange"
-            >
-              <img
-                src="images/image-avatar.png"
-                alt="Avatar"
-                className="aspect-square w-[clamp(1.6rem,6vw,3rem)] min-w-4"
-              />
-              <span className="sr-only">Profile</span>
-            </a>
-          </div>
+          <Profile
+            src="images/image-avatar.png"
+            alt="Avatar"
+            profileLink="https://rafaeldevvv.github.io/portfolio"
+          />
         </div>
       </div>
     </header>
+  );
+}
+
+export function Profile({ src, alt, profileLink }) {
+  return (
+    <div>
+      <a
+        href={profileLink}
+        target="_blank"
+        className="focus block rounded-full outline outline-0 outline-offset-0 outline-orange hover:outline-2 focus-visible:outline-2"
+      >
+        <img
+          src={src}
+          alt={alt}
+          className="aspect-square w-[clamp(1.6rem,6vw,3rem)] min-w-4"
+        />
+        <span className="sr-only">Profile</span>
+      </a>
+    </div>
   );
 }
 
@@ -116,7 +126,12 @@ export function NavigationMenu() {
             className="fixed inset-0 z-30 bg-black md:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.4 }}
-            exit={{ opacity: 0 }}
+            exit={{
+              opacity: 0,
+              transition: {
+                delay: links.length * 0.05,
+              },
+            }}
           />
         )}
       </AnimatePresence>
@@ -127,14 +142,16 @@ export function NavigationMenu() {
 
 /** @type {import("framer-motion").Variants} */
 const navListVariants = {
-  hidden: (numOfChildren) => ({
-    right: "100vw",
-    transition: {
-      staggerChildren: 0.05,
-      staggerDirection: -1,
-      delay: (numOfChildren + 1) * 0.05,
-    },
-  }),
+  hidden(numOfChildren) {
+    return {
+      right: "100vw",
+      transition: {
+        staggerChildren: 0.05,
+        staggerDirection: -1,
+        delay: (numOfChildren + 1) * 0.05,
+      },
+    };
+  },
   visible: {
     right: "40vw",
     transition: {
@@ -161,7 +178,7 @@ const navListItemVariants = {
 };
 
 export function NavList({ links, expanded }) {
-  const isMobile = useIsMobile();
+  const isMobile = useMedia("(max-width: 767px)");
 
   if (isMobile) {
     return (
@@ -264,7 +281,6 @@ export function CartWidget({ products, onDeleteProduct }) {
     (expanded ? "Close" : "Open") +
     (products.length > 0 ? `cart (${cartItemCount} items)` : "cart");
 
-  console.log(pos.x);
   return (
     <div className="relative leading-0">
       <button
@@ -277,7 +293,7 @@ export function CartWidget({ products, onDeleteProduct }) {
           e.stopPropagation();
           setExpanded(!expanded);
         }}
-        className="relative h-min fill-gray hover:fill-black"
+        className="relative h-min fill-gray outline-offset-2 hover:fill-black focus-visible:outline-orange"
         ref={buttonRef}
       >
         <CartIcon />

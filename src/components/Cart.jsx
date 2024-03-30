@@ -77,7 +77,8 @@ export function CartItem({ item, onDelete }) {
         <p>{name}</p>
         <p>
           <span className="sr-only">
-            {quantity} items for {formattedPrice} each, totalling {formattedTotal}
+            {quantity} items for {formattedPrice} each, totalling{" "}
+            {formattedTotal}
           </span>
           <span aria-hidden="true">
             {formattedPrice} x {quantity}
@@ -88,7 +89,7 @@ export function CartItem({ item, onDelete }) {
       <button
         type="button"
         aria-label="delete"
-        className="fill-lightGray h-min w-min leading-0 outline-offset-2 hover:fill-black focus-visible:fill-black"
+        className="h-min w-min fill-lightGray leading-0 outline-offset-2 hover:fill-black focus-visible:fill-black"
         onClick={(e) => {
           e.stopPropagation();
           onDelete(item.id);

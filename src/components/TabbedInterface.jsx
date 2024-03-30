@@ -13,7 +13,7 @@ export function Tab({
   activeClassname = "active",
 }) {
   const tabCanFocus = useContext(TabFocusContext);
-  const tabRef = (useRef < null) | (HTMLButtonElement > null);
+  const tabRef = useRef(null);
 
   useEffect(() => {
     if (active && tabCanFocus) {

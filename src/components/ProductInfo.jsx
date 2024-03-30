@@ -13,7 +13,7 @@ export default function ProductInfo({ company, name, desc, price, discount }) {
       <p className="text-md leading-relaxed text-darkGrayishBlue">{desc}</p>
       <p>
         <span className="sr-only">
-          $&nbsp;{actualPrice} with a discount of ${discount}%
+          $&nbsp;{actualPrice} with a discount of {discount}%
         </span>
         <span
           aria-hidden="true"
