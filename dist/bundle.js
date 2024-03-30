@@ -9223,7 +9223,8 @@ function Lightbox(_ref) {
   return /*#__PURE__*/React.createElement("dialog", {
     className: "inset-0 m-0 h-screen max-h-none w-screen max-w-none overflow-x-hidden bg-black bg-opacity-60",
     ref: dialogRef,
-    onClick: onClose
+    onClick: onClose,
+    onClose: onClose
   }, /*#__PURE__*/React.createElement("div", {
     className: "flex min-h-screen items-center"
   }, /*#__PURE__*/React.createElement("div", {
@@ -9392,10 +9393,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ QuantityControl)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* provided dependency */ var React = __webpack_require__(/*! ./node_modules/react/index.js */ "./node_modules/react/index.js");
-
 function QuantityControl(_ref) {
   var onMore = _ref.onMore,
     onLess = _ref.onLess,

@@ -26,6 +26,7 @@ export default function Lightbox({ onClose, images, open }) {
       className="inset-0 m-0 h-screen max-h-none w-screen max-w-none overflow-x-hidden bg-black bg-opacity-60"
       ref={dialogRef}
       onClick={onClose}
+      onClose={onClose}
     >
       <div className="flex min-h-screen items-center">
         <div
