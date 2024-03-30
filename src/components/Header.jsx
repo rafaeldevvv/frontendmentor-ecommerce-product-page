@@ -56,7 +56,7 @@ export function Profile({ src, alt, profileLink }) {
 
 export function NavigationMenu() {
   const [expanded, setExpanded] = useState(false);
-  const clickHandlerRef = useRef(null),
+  const clickHandlerRef = useRef({}),
     btnLabel = `${expanded ? "Close" : "Open"} main menu`,
     links = ["Collections", "Men", "Women", "About", "Contact"];
 
@@ -64,13 +64,16 @@ export function NavigationMenu() {
     const nextExpanded = !expanded;
     setExpanded(nextExpanded);
     if (nextExpanded) {
+      /* the first touch is the click to open the menu itself, so we disconsider it */
       let firstTouch = true;
+
       /** @param {Event} e */
       function handleClick(e) {
         if (firstTouch) {
           firstTouch = false;
           return;
         }
+
         e.stopPropagation();
         const nav = document.querySelector("#nav-menu"),
           target = e.target;
@@ -79,13 +82,14 @@ export function NavigationMenu() {
           setExpanded(false);
         }
       }
+
       window.addEventListener("click", handleClick);
       clickHandlerRef.current = handleClick;
     } else {
       window.removeEventListener("click", clickHandlerRef.current);
-      clickHandlerRef.current = null;
+      clickHandlerRef.current = {};
     }
-  }, [expanded, clickHandlerRef]);
+  }, [expanded]);
 
   return (
     <nav className="h-min leading-0 md:flex md:h-full md:place-items-center">
@@ -97,7 +101,7 @@ export function NavigationMenu() {
         aria-controls="nav-menu"
         type="button"
         onClick={onToggleMenu}
-        className="relative z-50 md:hidden"
+        className={`${expanded ? "fixed left-5 top-[1.71rem]" : "relative"} z-50 md:hidden`}
         id="nav-toggle"
       >
         {expanded ? (

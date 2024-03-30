@@ -627,6 +627,10 @@ dialog[open] {
   left: 0px;
 }
 
+.left-5 {
+  left: 1.25rem;
+}
+
 .left-6 {
   left: 1.5rem;
 }
@@ -645,6 +649,10 @@ dialog[open] {
 
 .top-1\/2 {
   top: 50%;
+}
+
+.top-\[1\.71rem\] {
+  top: 1.71rem;
 }
 
 .z-20 {

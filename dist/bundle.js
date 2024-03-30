@@ -8641,7 +8641,7 @@ function NavigationMenu() {
     _useState2 = _slicedToArray(_useState, 2),
     expanded = _useState2[0],
     setExpanded = _useState2[1];
-  var clickHandlerRef = (0,react__WEBPACK_IMPORTED_MODULE_4__.useRef)(null),
+  var clickHandlerRef = (0,react__WEBPACK_IMPORTED_MODULE_4__.useRef)({}),
     btnLabel = "".concat(expanded ? "Close" : "Open", " main menu"),
     links = ["Collections", "Men", "Women", "About", "Contact"];
   var onToggleMenu = (0,react__WEBPACK_IMPORTED_MODULE_4__.useCallback)(function () {
@@ -8662,14 +8662,15 @@ function NavigationMenu() {
           setExpanded(false);
         }
       };
+      /* the first touch is the click to open the menu itself, so we disconsider it */
       var firstTouch = true;
       window.addEventListener("click", handleClick);
       clickHandlerRef.current = handleClick;
     } else {
       window.removeEventListener("click", clickHandlerRef.current);
-      clickHandlerRef.current = null;
+      clickHandlerRef.current = {};
     }
-  }, [expanded, clickHandlerRef]);
+  }, [expanded]);
   return /*#__PURE__*/React.createElement("nav", {
     className: "h-min leading-0 md:flex md:h-full md:place-items-center"
   }, /*#__PURE__*/React.createElement("button", {
@@ -8680,7 +8681,7 @@ function NavigationMenu() {
     "aria-controls": "nav-menu",
     type: "button",
     onClick: onToggleMenu,
-    className: "relative z-50 md:hidden",
+    className: "".concat(expanded ? "fixed left-5 top-[1.71rem]" : "relative", " z-50 md:hidden"),
     id: "nav-toggle"
   }, expanded ? /*#__PURE__*/React.createElement(framer_motion__WEBPACK_IMPORTED_MODULE_8__.motion.div, {
     initial: {
@@ -10286,6 +10287,10 @@ dialog[open] {
   left: 0px;
 }
 
+.left-5 {
+  left: 1.25rem;
+}
+
 .left-6 {
   left: 1.5rem;
 }
@@ -10304,6 +10309,10 @@ dialog[open] {
 
 .top-1\\/2 {
   top: 50%;
+}
+
+.top-\\[1\\.71rem\\] {
+  top: 1.71rem;
 }
 
 .z-20 {
