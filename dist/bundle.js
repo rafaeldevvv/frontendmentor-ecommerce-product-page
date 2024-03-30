@@ -9161,7 +9161,7 @@ function NavigationMenu() {
     }
   }, [expanded]);
   return /*#__PURE__*/React.createElement("nav", {
-    className: "h-min leading-0 md:flex md:h-full md:place-items-center"
+    className: "h-min leading-0 md:flex md:h-full md:place-items-center ".concat(expanded ? "w-4 md:w-max" : "")
   }, /*#__PURE__*/React.createElement("button", {
     "aria-label": btnLabel,
     title: btnLabel,
@@ -11287,6 +11287,10 @@ dialog[open] {
   min-height: 100vh;
 }
 
+.w-4 {
+  width: 1rem;
+}
+
 .w-\\[clamp\\(1\\.6rem\\2c 6vw\\2c 3rem\\)\\] {
   width: clamp(1.6rem,6vw,3rem);
 }
@@ -12036,6 +12040,11 @@ dialog[open] {
 
   .md\\:w-full {
     width: 100%;
+  }
+
+  .md\\:w-max {
+    width: -moz-max-content;
+    width: max-content;
   }
 
   .md\\:max-w-none {

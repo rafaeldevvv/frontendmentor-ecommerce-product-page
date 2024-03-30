@@ -42,7 +42,7 @@ export default function NavigationMenu() {
   }, [expanded]);
 
   return (
-    <nav className="h-min leading-0 md:flex md:h-full md:place-items-center">
+    <nav className={`h-min leading-0 md:flex md:h-full md:place-items-center ${expanded ? "w-4 md:w-max" : ""}`}>
       <button
         aria-label={btnLabel}
         title={btnLabel}
