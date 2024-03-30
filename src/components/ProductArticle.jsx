@@ -4,6 +4,7 @@ import QuantityControl from "./QuantityControl";
 import CartIcon from "../icons/icon-cart.svg";
 import { useState, useCallback } from "react";
 import { announcePolitely } from "./sr-announcer";
+import { toast } from "react-toastify";
 
 export default function ProductArticle({
   product,
@@ -40,7 +41,10 @@ export default function ProductArticle({
             className="flex w-full items-center justify-center gap-x-4 rounded-md bg-orange fill-white py-4 text-white shadow-[0_15px_60px_-15px_theme(colors.orange)] transition-opacity hover:opacity-60 focus-visible:bg-opacity-60 active:scale-95 md:mt-0"
             onClick={() => {
               if (quantity === 0) {
-                alert("Select the amount you want first");
+                toast("Please, choose how many items you want first", {
+                  theme: "colored",
+                  type: "error",
+                });
                 return;
               }
               onAddProduct(id, quantity);

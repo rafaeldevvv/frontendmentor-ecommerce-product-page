@@ -7,6 +7,8 @@ import ProductArticle from "./components/ProductArticle";
 import { useCallback, useState, StrictMode } from "react";
 import { announcePolitely } from "./components/sr-announcer";
 import { MotionConfig } from "framer-motion";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function App({ initialCart, product }) {
   const [cart, setCartProducts] = useState(initialCart);
@@ -59,6 +61,13 @@ export default function App({ initialCart, product }) {
           open={isLightboxOpen}
           images={product.images}
           onClose={() => setIsLightboxOpen(false)}
+        />
+        <ToastContainer
+          position="bottom-left"
+          limit={2}
+          autoClose={5000}
+          hideProgressBar
+          draggable
         />
       </MotionConfig>
     </StrictMode>
