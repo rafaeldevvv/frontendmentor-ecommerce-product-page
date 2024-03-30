@@ -9295,13 +9295,17 @@ function ProductArticle(_ref) {
     quantity = _useState2[0],
     setQuantity = _useState2[1];
   var onMore = (0,react__WEBPACK_IMPORTED_MODULE_4__.useCallback)(function () {
-      return setQuantity(quantity + 1);
-    }, [quantity]),
+      return setQuantity(function (q) {
+        return q + 1;
+      });
+    }, []),
     onLess = (0,react__WEBPACK_IMPORTED_MODULE_4__.useCallback)(function () {
-      return setQuantity(Math.max(0, quantity - 1));
-    }, [quantity]);
+      return setQuantity(function (q) {
+        return Math.max(0, q - 1);
+      });
+    }, []);
   return /*#__PURE__*/React.createElement("article", {
-    className: "items-center gap-x-[clamp(1rem,5vw,6rem)] md:container sm:my-10 md:my-20 md:grid md:grid-cols-2"
+    className: "items-center gap-x-[clamp(2rem,8vw,9rem)] md:container sm:my-10 md:my-20 md:grid md:grid-cols-2"
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(_ImageCarousel__WEBPACK_IMPORTED_MODULE_0__["default"], {
     images: images,
     onOpenLightbox: onOpenLightbox
@@ -9321,7 +9325,7 @@ function ProductArticle(_ref) {
     onMore: onMore
   }), /*#__PURE__*/React.createElement("button", {
     type: "button",
-    className: "flex w-full items-center justify-center gap-x-4 rounded-md bg-orange fill-white py-4 text-white shadow-[0_15px_60px_-15px_theme(colors.orange)] transition-opacity hover:opacity-60 active:scale-95 md:mt-0",
+    className: "flex w-full items-center justify-center gap-x-4 rounded-md bg-orange fill-white py-4 text-white shadow-[0_15px_60px_-15px_theme(colors.orange)] transition-opacity hover:opacity-60 focus-visible:bg-opacity-60 active:scale-95 md:mt-0",
     onClick: function onClick() {
       if (quantity === 0) {
         alert("Select the amount you want first");
@@ -9360,7 +9364,7 @@ function ProductInfo(_ref) {
   }, /*#__PURE__*/React.createElement("header", null, /*#__PURE__*/React.createElement("p", {
     className: "mb-4 text-xs font-bold uppercase tracking-widest text-orange md:text-sm"
   }, company), /*#__PURE__*/React.createElement("h1", {
-    className: "text-[clamp(1.875rem,5vw,3rem)] font-extrabold capitalize leading-none text-black"
+    className: "text-[clamp(1.875rem,5vw,3rem)] font-extrabold capitalize leading-none text-black md:mb-10"
   }, name)), /*#__PURE__*/React.createElement("p", {
     className: "text-md leading-relaxed text-darkGrayishBlue"
   }, desc), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("span", {
@@ -9400,15 +9404,16 @@ function QuantityControl(_ref) {
     className: "flex items-center justify-between rounded-lg bg-lightGrayishBlue md:w-full"
   }, /*#__PURE__*/React.createElement("button", {
     type: "button",
-    className: "block aspect-square h-full rounded-lg text-2xl font-extrabold text-orange transition-opacity hover:opacity-60 active:scale-75",
+    className: "block aspect-square h-full rounded-lg text-2xl font-extrabold text-orange transition-opacity hover:opacity-60 active:scale-75 disabled:scale-100 disabled:opacity-60",
     onClick: onLess,
-    "aria-label": "less items"
+    "aria-label": "less items",
+    disabled: quantity === 0
   }, "-"), /*#__PURE__*/React.createElement("p", {
     "aria-live": "polite",
     className: "font-bold"
   }, quantity, /*#__PURE__*/React.createElement("span", {
     className: "sr-only"
-  }, quantity === 1 ? "item" : "items")), /*#__PURE__*/React.createElement("button", {
+  }, quantity === 1 ? " item" : " items")), /*#__PURE__*/React.createElement("button", {
     type: "button",
     className: "block aspect-square h-full rounded-lg text-2xl font-extrabold text-orange transition-opacity hover:opacity-60 active:scale-75",
     onClick: onMore,
@@ -10567,9 +10572,9 @@ dialog[open] {
        column-gap: clamp(1rem,5vw,3rem);
 }
 
-.gap-x-\\[clamp\\(1rem\\2c 5vw\\2c 6rem\\)\\] {
-  -moz-column-gap: clamp(1rem,5vw,6rem);
-       column-gap: clamp(1rem,5vw,6rem);
+.gap-x-\\[clamp\\(2rem\\2c 8vw\\2c 9rem\\)\\] {
+  -moz-column-gap: clamp(2rem,8vw,9rem);
+       column-gap: clamp(2rem,8vw,9rem);
 }
 
 .gap-y-4 {
@@ -11043,6 +11048,10 @@ dialog[open] {
   background-color: hsl(26 100% 55% / var(--tw-bg-opacity));
 }
 
+.focus-visible\\:bg-opacity-60:focus-visible {
+  --tw-bg-opacity: 0.6;
+}
+
 .focus-visible\\:fill-black:focus-visible {
   fill: hsl(0 0% 0%);
 }
@@ -11092,6 +11101,16 @@ dialog[open] {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.disabled\\:scale-100:disabled {
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.disabled\\:opacity-60:disabled {
+  opacity: 0.6;
+}
+
 .group:hover .group-hover\\:opacity-60 {
   opacity: 0.6;
 }
@@ -11137,6 +11156,10 @@ dialog[open] {
   .md\\:my-20 {
     margin-top: 5rem;
     margin-bottom: 5rem;
+  }
+
+  .md\\:mb-10 {
+    margin-bottom: 2.5rem;
   }
 
   .md\\:mt-0 {

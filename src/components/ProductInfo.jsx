@@ -6,7 +6,7 @@ export default function ProductInfo({ company, name, desc, price, discount }) {
         <p className="mb-4 text-xs font-bold uppercase tracking-widest text-orange md:text-sm">
           {company}
         </p>
-        <h1 className="text-[clamp(1.875rem,5vw,3rem)] font-extrabold capitalize leading-none text-black">
+        <h1 className="text-[clamp(1.875rem,5vw,3rem)] font-extrabold capitalize leading-none text-black md:mb-10">
           {name}
         </h1>
       </header>

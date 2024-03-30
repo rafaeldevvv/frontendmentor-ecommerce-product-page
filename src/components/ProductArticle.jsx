@@ -13,14 +13,11 @@ export default function ProductArticle({
   const { images, name, company, description, price, discount, id } = product;
 
   const [quantity, setQuantity] = useState(0);
-  const onMore = useCallback(() => setQuantity(quantity + 1), [quantity]),
-    onLess = useCallback(
-      () => setQuantity(Math.max(0, quantity - 1)),
-      [quantity],
-    );
+  const onMore = useCallback(() => setQuantity((q) => q + 1), []),
+    onLess = useCallback(() => setQuantity((q) => Math.max(0, q - 1)), []);
 
   return (
-    <article className="items-center gap-x-[clamp(1rem,5vw,6rem)] md:container sm:my-10 md:my-20 md:grid md:grid-cols-2">
+    <article className="items-center gap-x-[clamp(2rem,8vw,9rem)] md:container sm:my-10 md:my-20 md:grid md:grid-cols-2">
       <div>
         <ImageViewer images={images} onOpenLightbox={onOpenLightbox} />
       </div>
@@ -40,7 +37,7 @@ export default function ProductArticle({
           />
           <button
             type="button"
-            className="flex w-full items-center justify-center gap-x-4 rounded-md bg-orange fill-white py-4 text-white shadow-[0_15px_60px_-15px_theme(colors.orange)] transition-opacity hover:opacity-60 active:scale-95 md:mt-0"
+            className="flex w-full items-center justify-center gap-x-4 rounded-md bg-orange fill-white py-4 text-white shadow-[0_15px_60px_-15px_theme(colors.orange)] transition-opacity hover:opacity-60 focus-visible:bg-opacity-60 active:scale-95 md:mt-0"
             onClick={() => {
               if (quantity === 0) {
                 alert("Select the amount you want first");

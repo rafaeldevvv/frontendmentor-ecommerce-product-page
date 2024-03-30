@@ -3,15 +3,16 @@ export default function QuantityControl({ onMore, onLess, quantity }) {
     <div className="flex items-center justify-between rounded-lg bg-lightGrayishBlue md:w-full">
       <button
         type="button"
-        className="block aspect-square h-full rounded-lg text-2xl font-extrabold text-orange transition-opacity hover:opacity-60 active:scale-75"
+        className="block aspect-square h-full rounded-lg text-2xl font-extrabold text-orange transition-opacity hover:opacity-60 active:scale-75 disabled:scale-100 disabled:opacity-60"
         onClick={onLess}
         aria-label="less items"
+        disabled={quantity === 0}
       >
         -
       </button>
       <p aria-live="polite" className="font-bold">
         {quantity}
-        <span className="sr-only">{quantity === 1 ? "item" : "items"}</span>
+        <span className="sr-only">{quantity === 1 ? " item" : " items"}</span>
       </p>
       <button
         type="button"

@@ -907,9 +907,9 @@ dialog[open] {
        column-gap: clamp(1rem,5vw,3rem);
 }
 
-.gap-x-\[clamp\(1rem\2c 5vw\2c 6rem\)\] {
-  -moz-column-gap: clamp(1rem,5vw,6rem);
-       column-gap: clamp(1rem,5vw,6rem);
+.gap-x-\[clamp\(2rem\2c 8vw\2c 9rem\)\] {
+  -moz-column-gap: clamp(2rem,8vw,9rem);
+       column-gap: clamp(2rem,8vw,9rem);
 }
 
 .gap-y-4 {
@@ -1383,6 +1383,10 @@ dialog[open] {
   background-color: hsl(26 100% 55% / var(--tw-bg-opacity));
 }
 
+.focus-visible\:bg-opacity-60:focus-visible {
+  --tw-bg-opacity: 0.6;
+}
+
 .focus-visible\:fill-black:focus-visible {
   fill: hsl(0 0% 0%);
 }
@@ -1432,6 +1436,16 @@ dialog[open] {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.disabled\:scale-100:disabled {
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.disabled\:opacity-60:disabled {
+  opacity: 0.6;
+}
+
 .group:hover .group-hover\:opacity-60 {
   opacity: 0.6;
 }
@@ -1477,6 +1491,10 @@ dialog[open] {
   .md\:my-20 {
     margin-top: 5rem;
     margin-bottom: 5rem;
+  }
+
+  .md\:mb-10 {
+    margin-bottom: 2.5rem;
   }
 
   .md\:mt-0 {
