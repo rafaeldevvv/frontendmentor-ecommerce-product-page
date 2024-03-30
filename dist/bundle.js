@@ -9406,15 +9406,17 @@ function QuantityControl(_ref) {
     type: "button",
     className: "block aspect-square rounded-lg px-4 text-2xl font-extrabold text-orange transition-opacity hover:opacity-60 active:scale-75 md:h-full md:px-0",
     onClick: onLess,
-    "aria-label": "less"
+    "aria-label": "less items"
   }, "-"), /*#__PURE__*/React.createElement("p", {
     "aria-live": "polite",
     className: "font-bold"
-  }, quantity), /*#__PURE__*/React.createElement("button", {
+  }, quantity, /*#__PURE__*/React.createElement("span", {
+    className: "sr-only"
+  }, quantity === 1 ? "item" : "items")), /*#__PURE__*/React.createElement("button", {
     type: "button",
     className: "block aspect-square rounded-lg px-4 text-2xl font-extrabold text-orange transition-opacity hover:opacity-60 active:scale-75 md:h-full md:px-0",
     onClick: onMore,
-    "aria-label": "more"
+    "aria-label": "more items"
   }, "+"));
 }
 
