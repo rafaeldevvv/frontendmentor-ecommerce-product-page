@@ -51,9 +51,10 @@ export default function Cart({ products, onDeleteProduct }) {
 }
 
 export function CartItem({ item, onDelete }) {
-  const { price, images, name, quantity } = item;
-  const formattedPrice = formatPrice(price),
-    formattedTotal = formatPrice(price * quantity);
+  const { price, images, name, quantity, discount } = item;
+  const actualPrice = price * (discount / 100);
+  const formattedPrice = formatPrice(actualPrice),
+    formattedTotal = formatPrice(actualPrice * quantity);
 
   return (
     <div className="flex items-center gap-x-4">

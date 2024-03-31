@@ -8509,9 +8509,11 @@ function CartItem(_ref2) {
   var price = item.price,
     images = item.images,
     name = item.name,
-    quantity = item.quantity;
-  var formattedPrice = (0,_utils_formatPrice__WEBPACK_IMPORTED_MODULE_2__["default"])(price),
-    formattedTotal = (0,_utils_formatPrice__WEBPACK_IMPORTED_MODULE_2__["default"])(price * quantity);
+    quantity = item.quantity,
+    discount = item.discount;
+  var actualPrice = price * (discount / 100);
+  var formattedPrice = (0,_utils_formatPrice__WEBPACK_IMPORTED_MODULE_2__["default"])(actualPrice),
+    formattedTotal = (0,_utils_formatPrice__WEBPACK_IMPORTED_MODULE_2__["default"])(actualPrice * quantity);
   return /*#__PURE__*/React.createElement("div", {
     className: "flex items-center gap-x-4"
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("img", {
@@ -9057,6 +9059,7 @@ function Lightbox(_ref) {
       document.body.style.overflowY = "hidden";
 
       // we need to do this because content outside the dialog is inert while it is shown
+      // and the image carousel needs to announce some changes
       (0,_sr_announcer__WEBPACK_IMPORTED_MODULE_3__.placeAnnouncerTemporarily)(dialogRef.current);
     } else {
       dialog.close();
