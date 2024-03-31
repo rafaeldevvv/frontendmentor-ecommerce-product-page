@@ -4,13 +4,30 @@ import CartIcon from "../icons/icon-cart.svg";
 import Cart from "./Cart";
 import { remToPx } from "css-unit-converter-js";
 
-/** 
- * The component that wraps the {@linkcode Cart | `<Cart />`} component. 
- * It controls when the {@linkcode Cart | `<Cart />`} appears and disappears and where it is. 
+/** @type {import("framer-motion").Variant} */
+const cartVariants = {
+  hidden: {
+    opacity: 0,
+    scale: 0,
+    transitionEnd: {
+      visibility: "hidden",
+    },
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    visibility: "visible",
+  },
+};
+
+/**
+ * The component that wraps the {@linkcode Cart | `<Cart />`} component.
+ * It controls when the {@linkcode Cart | `<Cart />`} appears and disappears and where it is.
  */
 export default function CartWidget({ products, onDeleteProduct }) {
   const [expanded, setExpanded] = useState(false),
-    [pos, setPos] = useState({ x: 0, y: 0 });
+    // the transformOrigin is used to the scale happens from the center of the cart button
+    [posInfo, setPosInfo] = useState({ x: 0, y: 0, transformOrigin: 0.5 });
   const buttonRef = useRef(null),
     cartWrapperRef = useRef(null);
 
@@ -27,13 +44,22 @@ export default function CartWidget({ products, onDeleteProduct }) {
       const btn = buttonRef.current,
         wrapper = cartWrapperRef.current;
       if (!wrapper) return;
-      const { x, height, y, width: btnWidth } = btn.getBoundingClientRect();
+      const {
+        x: btnLeft,
+        height: btnHeight,
+        y: btnTop,
+        width: btnWidth,
+      } = btn.getBoundingClientRect();
       const wrapperWidth = Math.min(remToPx(21), 0.95 * innerWidth);
-      let leftPos = x + btnWidth / 2 - wrapperWidth / 2;
-      if (leftPos + wrapperWidth > innerWidth) {
-        leftPos = innerWidth - wrapperWidth - 0.025 * innerWidth;
+      let wrapperLeft = btnLeft + btnWidth / 2 - wrapperWidth / 2;
+      if (wrapperLeft + wrapperWidth > innerWidth) {
+        wrapperLeft = innerWidth - wrapperWidth - 0.025 * innerWidth;
       }
-      setPos({ x: leftPos, y: y + height + 35 });
+      setPosInfo({
+        x: wrapperLeft,
+        y: btnTop + btnHeight + 35,
+        transformOrigin: (btnLeft - wrapperLeft + btnWidth / 2) / wrapperWidth,
+      });
     }
     updateCartPosition();
     window.addEventListener("scroll", updateCartPosition);
@@ -44,7 +70,7 @@ export default function CartWidget({ products, onDeleteProduct }) {
       window.removeEventListener("resize", updateCartPosition);
       window.removeEventListener("click", handleClick);
     };
-  }, [buttonRef, cartWrapperRef, expanded]);
+  }, [expanded]);
 
   const cartItemCount = products.reduce(
     (count, product) => count + product.quantity,
@@ -76,26 +102,23 @@ export default function CartWidget({ products, onDeleteProduct }) {
           </span>
         )}
       </button>
-      <AnimatePresence>
-        {expanded && (
-          <motion.div
-            className="fixed z-40 w-[min(21rem,95vw)] leading-normal"
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            style={{
-              left: pos.x + "px",
-              top: pos.y + "px",
-              originX: 0.5,
-              originY: 0,
-            }}
-            exit={{ opacity: 0, scale: 0 }}
-            transition={{ duration: 0.6 }}
-            ref={cartWrapperRef}
-          >
-            <Cart products={products} onDeleteProduct={onDeleteProduct} />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <motion.div
+        className="fixed z-40 w-[min(21rem,95vw)] leading-normal"
+        variants={cartVariants}
+        initial="hidden"
+        animate={expanded ? "visible" : "hidden"}
+        style={{
+          left: posInfo.x + "px",
+          top: posInfo.y + "px",
+          originX: posInfo.transformOrigin,
+          originY: 0,
+        }}
+        transition={{ duration: 0.5 }}
+        ref={cartWrapperRef}
+        aria-hidden={!expanded}
+      >
+        <Cart products={products} onDeleteProduct={onDeleteProduct} />
+      </motion.div>
     </div>
   );
 }

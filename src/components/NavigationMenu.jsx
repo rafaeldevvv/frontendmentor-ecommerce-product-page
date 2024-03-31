@@ -101,6 +101,7 @@ const navListVariants = {
   hidden(numOfChildren) {
     return {
       right: "100vw",
+      paddingLeft: 0,
       transition: {
         staggerChildren: 0.05,
         staggerDirection: -1,
@@ -110,6 +111,7 @@ const navListVariants = {
   },
   visible: {
     right: "40vw",
+    paddingLeft: "1.25rem",
     transition: {
       delayChildren: 0.2,
       staggerChildren: 0.05,
@@ -121,7 +123,7 @@ const navListVariants = {
 /** @type {import("framer-motion").Variants} */
 const navListItemVariants = {
   hidden: {
-    x: -20,
+    x: -30,
     opacity: 0,
   },
   visible: {
@@ -138,34 +140,31 @@ export function NavList({ links, expanded }) {
 
   if (isMobile) {
     return (
-      <AnimatePresence>
-        {expanded && (
-          <motion.ul
-            id="nav-menu"
-            className="fixed bottom-0 left-0 top-0 z-40 flex flex-col gap-4 overflow-hidden bg-white pl-5 pt-20 leading-normal"
-            custom={links.length}
-            variants={navListVariants}
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
+      <motion.ul
+        id="nav-menu"
+        className="fixed bottom-0 left-0 top-0 z-40 flex flex-col gap-4 overflow-hidden bg-white pt-20 leading-normal"
+        custom={links.length}
+        variants={navListVariants}
+        initial="hidden"
+        animate={expanded ? "visible" : "hidden"}
+        aria-hidden={!expanded}
+      >
+        {links.map((l) => (
+          <motion.li
+            key={l}
+            className="relative md:flex md:h-full md:place-items-center md:focus-within:before:absolute md:focus-within:before:inset-x-0 md:focus-within:before:top-full md:focus-within:before:block md:focus-within:before:h-0.5 md:focus-within:before:bg-orange md:hover:before:absolute md:hover:before:inset-x-0 md:hover:before:top-full md:hover:before:block md:hover:before:h-0.5 md:hover:before:bg-orange"
+            variants={navListItemVariants}
           >
-            {links.map((l) => (
-              <motion.li
-                key={l}
-                className="relative md:flex md:h-full md:place-items-center md:focus-within:before:absolute md:focus-within:before:inset-x-0 md:focus-within:before:top-full md:focus-within:before:block md:focus-within:before:h-0.5 md:focus-within:before:bg-orange md:hover:before:absolute md:hover:before:inset-x-0 md:hover:before:top-full md:hover:before:block md:hover:before:h-0.5 md:hover:before:bg-orange"
-                variants={navListItemVariants}
-              >
-                <a
-                  href="https://www.example.com"
-                  className="font-bold md:font-semibold md:text-darkGrayishBlue md:hover:text-black md:focus-visible:text-black"
-                >
-                  {l}
-                </a>
-              </motion.li>
-            ))}
-          </motion.ul>
-        )}
-      </AnimatePresence>
+            <a
+              href="https://www.example.com"
+              className="font-bold md:font-semibold md:text-darkGrayishBlue md:hover:text-black md:focus-visible:text-black"
+              tabIndex={expanded ? 0 : -1}
+            >
+              {l}
+            </a>
+          </motion.li>
+        ))}
+      </motion.ul>
     );
   } else {
     return (

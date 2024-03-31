@@ -8488,7 +8488,6 @@ function Cart(_ref) {
         onDelete: onDeleteProduct
       }));
     })), /*#__PURE__*/React.createElement("a", {
-      type: "button",
       className: "mt-4 block w-full rounded-md bg-orange py-4 text-center text-white transition-opacity hover:opacity-60 md:mt-0",
       href: "https://www.example.com/"
     }, "Checkout"));
@@ -8551,8 +8550,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var framer_motion__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! framer-motion */ "./node_modules/framer-motion/dist/es/components/AnimatePresence/index.mjs");
-/* harmony import */ var framer_motion__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! framer-motion */ "./node_modules/framer-motion/dist/es/render/dom/motion.mjs");
+/* harmony import */ var framer_motion__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! framer-motion */ "./node_modules/framer-motion/dist/es/render/dom/motion.mjs");
 /* harmony import */ var _icons_icon_cart_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../icons/icon-cart.svg */ "./src/icons/icon-cart.svg");
 /* harmony import */ var _Cart__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Cart */ "./src/components/Cart.jsx");
 /* harmony import */ var css_unit_converter_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! css-unit-converter-js */ "./node_modules/css-unit-converter-js/dist/index.mjs");
@@ -8569,9 +8567,25 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-/** 
- * The component that wraps the {@linkcode Cart | `<Cart />`} component. 
- * It controls when the {@linkcode Cart | `<Cart />`} appears and disappears and where it is. 
+/** @type {import("framer-motion").Variant} */
+var cartVariants = {
+  hidden: {
+    opacity: 0,
+    scale: 0,
+    transitionEnd: {
+      visibility: "hidden"
+    }
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    visibility: "visible"
+  }
+};
+
+/**
+ * The component that wraps the {@linkcode Cart | `<Cart />`} component.
+ * It controls when the {@linkcode Cart | `<Cart />`} appears and disappears and where it is.
  */
 function CartWidget(_ref) {
   var products = _ref.products,
@@ -8582,11 +8596,12 @@ function CartWidget(_ref) {
     setExpanded = _useState2[1],
     _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
       x: 0,
-      y: 0
+      y: 0,
+      transformOrigin: 0.5
     }),
     _useState4 = _slicedToArray(_useState3, 2),
-    pos = _useState4[0],
-    setPos = _useState4[1];
+    posInfo = _useState4[0],
+    setPosInfo = _useState4[1];
   var buttonRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null),
     cartWrapperRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
@@ -8602,18 +8617,19 @@ function CartWidget(_ref) {
         wrapper = cartWrapperRef.current;
       if (!wrapper) return;
       var _btn$getBoundingClien = btn.getBoundingClientRect(),
-        x = _btn$getBoundingClien.x,
-        height = _btn$getBoundingClien.height,
-        y = _btn$getBoundingClien.y,
+        btnLeft = _btn$getBoundingClien.x,
+        btnHeight = _btn$getBoundingClien.height,
+        btnTop = _btn$getBoundingClien.y,
         btnWidth = _btn$getBoundingClien.width;
       var wrapperWidth = Math.min((0,css_unit_converter_js__WEBPACK_IMPORTED_MODULE_3__.remToPx)(21), 0.95 * innerWidth);
-      var leftPos = x + btnWidth / 2 - wrapperWidth / 2;
-      if (leftPos + wrapperWidth > innerWidth) {
-        leftPos = innerWidth - wrapperWidth - 0.025 * innerWidth;
+      var wrapperLeft = btnLeft + btnWidth / 2 - wrapperWidth / 2;
+      if (wrapperLeft + wrapperWidth > innerWidth) {
+        wrapperLeft = innerWidth - wrapperWidth - 0.025 * innerWidth;
       }
-      setPos({
-        x: leftPos,
-        y: y + height + 35
+      setPosInfo({
+        x: wrapperLeft,
+        y: btnTop + btnHeight + 35,
+        transformOrigin: (btnLeft - wrapperLeft + btnWidth / 2) / wrapperWidth
       });
     }
     updateCartPosition();
@@ -8625,7 +8641,7 @@ function CartWidget(_ref) {
       window.removeEventListener("resize", updateCartPosition);
       window.removeEventListener("click", handleClick);
     };
-  }, [buttonRef, cartWrapperRef, expanded]);
+  }, [expanded]);
   var cartItemCount = products.reduce(function (count, product) {
     return count + product.quantity;
   }, 0);
@@ -8646,34 +8662,26 @@ function CartWidget(_ref) {
     ref: buttonRef
   }, /*#__PURE__*/React.createElement(_icons_icon_cart_svg__WEBPACK_IMPORTED_MODULE_1__["default"], null), products.length > 0 && /*#__PURE__*/React.createElement("span", {
     className: "absolute right-0 top-0 block -translate-y-1/2 translate-x-1/2 rounded-xl bg-orange px-1 py-0.5 text-[0.5rem] leading-none text-white"
-  }, cartItemCount)), /*#__PURE__*/React.createElement(framer_motion__WEBPACK_IMPORTED_MODULE_4__.AnimatePresence, null, expanded && /*#__PURE__*/React.createElement(framer_motion__WEBPACK_IMPORTED_MODULE_5__.motion.div, {
+  }, cartItemCount)), /*#__PURE__*/React.createElement(framer_motion__WEBPACK_IMPORTED_MODULE_4__.motion.div, {
     className: "fixed z-40 w-[min(21rem,95vw)] leading-normal",
-    initial: {
-      opacity: 0,
-      scale: 0
-    },
-    animate: {
-      opacity: 1,
-      scale: 1
-    },
+    variants: cartVariants,
+    initial: "hidden",
+    animate: expanded ? "visible" : "hidden",
     style: {
-      left: pos.x + "px",
-      top: pos.y + "px",
-      originX: 0.5,
+      left: posInfo.x + "px",
+      top: posInfo.y + "px",
+      originX: posInfo.transformOrigin,
       originY: 0
     },
-    exit: {
-      opacity: 0,
-      scale: 0
-    },
     transition: {
-      duration: 0.6
+      duration: 0.5
     },
-    ref: cartWrapperRef
+    ref: cartWrapperRef,
+    "aria-hidden": !expanded
   }, /*#__PURE__*/React.createElement(_Cart__WEBPACK_IMPORTED_MODULE_2__["default"], {
     products: products,
     onDeleteProduct: onDeleteProduct
-  }))));
+  })));
 }
 
 /***/ }),
@@ -8879,7 +8887,6 @@ function ImageCarousel(_ref) {
         return changeImg(index);
       },
       controls: imagesIds[index],
-      numOfImgs: images.length,
       id: tabsIds[index],
       key: src
     });
@@ -8992,7 +8999,6 @@ function ImagePanel(_ref8) {
 }
 function ClickableThumbnail(_ref9) {
   var imageNumber = _ref9.imageNumber,
-    numOfImgs = _ref9.numOfImgs,
     src = _ref9.src,
     active = _ref9.active,
     onClick = _ref9.onClick,
@@ -9208,6 +9214,7 @@ var navListVariants = {
   hidden: function hidden(numOfChildren) {
     return {
       right: "100vw",
+      paddingLeft: 0,
       transition: {
         staggerChildren: 0.05,
         staggerDirection: -1,
@@ -9217,6 +9224,7 @@ var navListVariants = {
   },
   visible: {
     right: "40vw",
+    paddingLeft: "1.25rem",
     transition: {
       delayChildren: 0.2,
       staggerChildren: 0.05,
@@ -9228,7 +9236,7 @@ var navListVariants = {
 /** @type {import("framer-motion").Variants} */
 var navListItemVariants = {
   hidden: {
-    x: -20,
+    x: -30,
     opacity: 0
   },
   visible: {
@@ -9244,14 +9252,14 @@ function NavList(_ref) {
     expanded = _ref.expanded;
   var isMobile = (0,_hooks_useMedia__WEBPACK_IMPORTED_MODULE_3__["default"])("(max-width: 767px)");
   if (isMobile) {
-    return /*#__PURE__*/React.createElement(framer_motion__WEBPACK_IMPORTED_MODULE_5__.AnimatePresence, null, expanded && /*#__PURE__*/React.createElement(framer_motion__WEBPACK_IMPORTED_MODULE_4__.motion.ul, {
+    return /*#__PURE__*/React.createElement(framer_motion__WEBPACK_IMPORTED_MODULE_4__.motion.ul, {
       id: "nav-menu",
-      className: "fixed bottom-0 left-0 top-0 z-40 flex flex-col gap-4 overflow-hidden bg-white pl-5 pt-20 leading-normal",
+      className: "fixed bottom-0 left-0 top-0 z-40 flex flex-col gap-4 overflow-hidden bg-white pt-20 leading-normal",
       custom: links.length,
       variants: navListVariants,
       initial: "hidden",
-      animate: "visible",
-      exit: "hidden"
+      animate: expanded ? "visible" : "hidden",
+      "aria-hidden": !expanded
     }, links.map(function (l) {
       return /*#__PURE__*/React.createElement(framer_motion__WEBPACK_IMPORTED_MODULE_4__.motion.li, {
         key: l,
@@ -9259,9 +9267,10 @@ function NavList(_ref) {
         variants: navListItemVariants
       }, /*#__PURE__*/React.createElement("a", {
         href: "https://www.example.com",
-        className: "font-bold md:font-semibold md:text-darkGrayishBlue md:hover:text-black md:focus-visible:text-black"
+        className: "font-bold md:font-semibold md:text-darkGrayishBlue md:hover:text-black md:focus-visible:text-black",
+        tabIndex: expanded ? 0 : -1
       }, l));
-    })));
+    }));
   } else {
     return /*#__PURE__*/React.createElement("ul", {
       id: "nav-menu",

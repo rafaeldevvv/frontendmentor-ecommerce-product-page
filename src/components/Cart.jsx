@@ -27,7 +27,6 @@ export default function Cart({ products, onDeleteProduct }) {
           })}
         </ul>
         <a
-          type="button"
           className="mt-4 block w-full rounded-md bg-orange py-4 text-center text-white transition-opacity hover:opacity-60 md:mt-0"
           href="https://www.example.com/"
         >
