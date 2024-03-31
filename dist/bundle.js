@@ -9037,7 +9037,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _icons_icon_close_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../icons/icon-close.svg */ "./src/icons/icon-close.svg");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _sr_announcer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./sr-announcer */ "./src/components/sr-announcer.js");
 /* provided dependency */ var React = __webpack_require__(/*! ./node_modules/react/index.js */ "./node_modules/react/index.js");
+
 
 
 
@@ -9053,10 +9055,14 @@ function Lightbox(_ref) {
       /* this is a padding that replaces the scroll so we don't have a layout shift */
       document.body.style.paddingRight = innerWidth - document.documentElement.clientWidth + "px";
       document.body.style.overflowY = "hidden";
+
+      // we need to do this because content outside the dialog is inert while it is shown
+      (0,_sr_announcer__WEBPACK_IMPORTED_MODULE_3__.placeAnnouncerTemporarily)(dialogRef.current);
     } else {
       dialog.close();
       document.body.style.overflowY = "auto";
       document.body.style.paddingRight = "0";
+      (0,_sr_announcer__WEBPACK_IMPORTED_MODULE_3__.placeAnnouncerBack)();
     }
   }, [open]);
   return /*#__PURE__*/React.createElement("dialog", {
@@ -9644,7 +9650,9 @@ function TabPanel(_ref3) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   announceAssertively: () => (/* binding */ announceAssertively),
-/* harmony export */   announcePolitely: () => (/* binding */ announcePolitely)
+/* harmony export */   announcePolitely: () => (/* binding */ announcePolitely),
+/* harmony export */   placeAnnouncerBack: () => (/* binding */ placeAnnouncerBack),
+/* harmony export */   placeAnnouncerTemporarily: () => (/* binding */ placeAnnouncerTemporarily)
 /* harmony export */ });
 var host = document.createElement("sr-announcer");
 var shadow = host.attachShadow({
@@ -9674,6 +9682,12 @@ function announcePolitely(msg) {
 }
 function announceAssertively(msg) {
   assertiveAnnouncer.textContent = msg;
+}
+function placeAnnouncerTemporarily(parent) {
+  parent.appendChild(host);
+}
+function placeAnnouncerBack() {
+  document.body.appendChild(host);
 }
 
 /***/ }),

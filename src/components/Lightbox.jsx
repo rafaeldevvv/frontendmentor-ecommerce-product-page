@@ -2,6 +2,7 @@ import ImageViewer from "./ImageCarousel";
 import CloseIcon from "../icons/icon-close.svg";
 
 import { useEffect, useRef } from "react";
+import { placeAnnouncerTemporarily, placeAnnouncerBack } from "./sr-announcer";
 
 export default function Lightbox({ onClose, images, open }) {
   const dialogRef = useRef(null);
@@ -14,10 +15,15 @@ export default function Lightbox({ onClose, images, open }) {
       document.body.style.paddingRight =
         innerWidth - document.documentElement.clientWidth + "px";
       document.body.style.overflowY = "hidden";
+
+      // we need to do this because content outside the dialog is inert while it is shown
+      // and the image carousel needs to announce some changes
+      placeAnnouncerTemporarily(dialogRef.current);
     } else {
       dialog.close();
       document.body.style.overflowY = "auto";
       document.body.style.paddingRight = "0";
+      placeAnnouncerBack();
     }
   }, [open]);
 
@@ -45,7 +51,11 @@ export default function Lightbox({ onClose, images, open }) {
             </button>
             <span className="clear-right block" />
           </div>
-          <ImageViewer images={images} showSideButtonsAlways idPrefix="lightbox-" />
+          <ImageViewer
+            images={images}
+            showSideButtonsAlways
+            idPrefix="lightbox-"
+          />
         </div>
       </div>
     </dialog>

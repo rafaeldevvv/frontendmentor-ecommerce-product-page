@@ -31,3 +31,11 @@ export function announcePolitely(msg) {
 export function announceAssertively(msg) {
    assertiveAnnouncer.textContent = msg;
 }
+
+export function placeAnnouncerTemporarily(parent) {
+   parent.appendChild(host);
+}
+
+export function placeAnnouncerBack() {
+   document.body.appendChild(host);
+}
