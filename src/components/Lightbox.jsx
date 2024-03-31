@@ -46,7 +46,7 @@ export default function Lightbox({ onClose, images, open }) {
             </button>
             <span className="clear-right block" />
           </div>
-          <ImageViewer images={images} showSideButtonsAlways />
+          <ImageViewer images={images} showSideButtonsAlways idPrefix="lightbox-" />
         </div>
       </div>
     </dialog>

@@ -14,6 +14,7 @@ export default function ImageCarousel({
   images,
   onOpenLightbox,
   showSideButtonsAlways = false,
+  idPrefix = ""
 }) {
   const [currentImg, setCurrentImg] = useState(0),
     [direction, setDirection] = useState(1);
@@ -40,7 +41,7 @@ export default function ImageCarousel({
   const isMobile = useMedia("(max-width: 768px)");
 
   const imagesIds = images.map(([src]) =>
-      src.replace(/[\W.]/, "-").replace(/^-+/, ""),
+      idPrefix + src.replace(/[\W]/g, "-").replace(/^-+/g, ""),
     ),
     tabsIds = imagesIds.map((id) => id + "-tab");
 
@@ -169,7 +170,7 @@ export function BigImage({
   if (!isMobile) {
     aria.role = "tabpanel";
     aria.tabIndex = 0;
-    aria.labelled = labelledby;
+    aria["aria-labelledby"] = labelledby;
   }
 
   return (
@@ -251,8 +252,8 @@ export function ClickableThumbnail({
       active={active}
       id={id}
     >
-      <div
-        className={`overflow-hidden rounded-lg ${active ? "outline outline-2 outline-orange" : ""}`}
+      <span
+        className={`block overflow-hidden rounded-lg ${active ? "outline outline-2 outline-orange" : ""}`}
       >
         <span className="sr-only">{`Image ${imageNumber} of product`}</span>
         <img
@@ -262,7 +263,7 @@ export function ClickableThumbnail({
             active ? "opacity-60" : "transition-opacity group-hover:opacity-60"
           }
         />
-      </div>
+      </span>
     </Tab>
   );
 }

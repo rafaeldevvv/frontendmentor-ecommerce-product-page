@@ -1589,11 +1589,6 @@ dialog[open] {
     padding-right: 1rem;
   }
 
-  .md\:px-\[max\(0px\2c _2rem_-_2vw\)\] {
-    padding-left: max(0px, 2rem - 2vw);
-    padding-right: max(0px, 2rem - 2vw);
-  }
-
   .md\:text-sm {
     font-size: 0.875rem;
     line-height: 1.25rem;

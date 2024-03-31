@@ -18,7 +18,7 @@ export default function ProductArticle({
     onLess = useCallback(() => setQuantity((q) => Math.max(0, q - 1)), []);
 
   return (
-    <article className="items-center gap-x-[clamp(2rem,8vw,9rem)] md:container md:px-[max(0px,_2rem_-_2vw)] sm:my-10 md:my-20 md:grid md:grid-cols-2">
+    <article className="items-center gap-x-[clamp(2rem,8vw,9rem)] md:container sm:my-10 md:my-20 md:grid md:grid-cols-2">
       <div>
         <ImageViewer images={images} onOpenLightbox={onOpenLightbox} />
       </div>

@@ -8794,7 +8794,9 @@ function ImageCarousel(_ref) {
   var images = _ref.images,
     onOpenLightbox = _ref.onOpenLightbox,
     _ref$showSideButtonsA = _ref.showSideButtonsAlways,
-    showSideButtonsAlways = _ref$showSideButtonsA === void 0 ? false : _ref$showSideButtonsA;
+    showSideButtonsAlways = _ref$showSideButtonsA === void 0 ? false : _ref$showSideButtonsA,
+    _ref$idPrefix = _ref.idPrefix,
+    idPrefix = _ref$idPrefix === void 0 ? "" : _ref$idPrefix;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(0),
     _useState2 = _slicedToArray(_useState, 2),
     currentImg = _useState2[0],
@@ -8819,7 +8821,7 @@ function ImageCarousel(_ref) {
   var imagesIds = images.map(function (_ref2) {
       var _ref3 = _slicedToArray(_ref2, 1),
         src = _ref3[0];
-      return src.replace(/[\W.]/, "-").replace(/^-+/, "");
+      return idPrefix + src.replace(/[\W]/g, "-").replace(/^-+/g, "");
     }),
     tabsIds = imagesIds.map(function (id) {
       return id + "-tab";
@@ -8945,7 +8947,7 @@ function BigImage(_ref6) {
   if (!isMobile) {
     aria.role = "tabpanel";
     aria.tabIndex = 0;
-    aria.labelled = labelledby;
+    aria["aria-labelledby"] = labelledby;
   }
   return /*#__PURE__*/React.createElement("div", {
     className: "relative aspect-[4/3] w-full sm:mx-auto sm:aspect-square"
@@ -9015,8 +9017,8 @@ function ClickableThumbnail(_ref8) {
     setsize: numOfImgs,
     active: active,
     id: id
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "overflow-hidden rounded-lg ".concat(active ? "outline outline-2 outline-orange" : "")
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "block overflow-hidden rounded-lg ".concat(active ? "outline outline-2 outline-orange" : "")
   }, /*#__PURE__*/React.createElement("span", {
     className: "sr-only"
   }, "Image ".concat(imageNumber, " of product")), /*#__PURE__*/React.createElement("img", {
@@ -9089,7 +9091,8 @@ function Lightbox(_ref) {
     className: "clear-right block"
   })), /*#__PURE__*/React.createElement(_ImageCarousel__WEBPACK_IMPORTED_MODULE_0__["default"], {
     images: images,
-    showSideButtonsAlways: true
+    showSideButtonsAlways: true,
+    idPrefix: "lightbox-"
   }))));
 }
 
@@ -9172,7 +9175,7 @@ function NavigationMenu() {
     onClick: onToggleMenu,
     className: "".concat(expanded ? "fixed left-5 top-[1.71rem]" : "relative", " z-50 md:hidden"),
     id: "nav-toggle"
-  }, expanded ? /*#__PURE__*/React.createElement(framer_motion__WEBPACK_IMPORTED_MODULE_4__.motion.div, {
+  }, expanded ? /*#__PURE__*/React.createElement(framer_motion__WEBPACK_IMPORTED_MODULE_4__.motion.span, {
     initial: {
       scale: 0
     },
@@ -9183,7 +9186,7 @@ function NavigationMenu() {
       duration: 0.3
     },
     key: "close"
-  }, /*#__PURE__*/React.createElement(_icons_icon_close_svg__WEBPACK_IMPORTED_MODULE_2__["default"], null)) : /*#__PURE__*/React.createElement(framer_motion__WEBPACK_IMPORTED_MODULE_4__.motion.div, {
+  }, /*#__PURE__*/React.createElement(_icons_icon_close_svg__WEBPACK_IMPORTED_MODULE_2__["default"], null)) : /*#__PURE__*/React.createElement(framer_motion__WEBPACK_IMPORTED_MODULE_4__.motion.span, {
     initial: {
       scale: 0
     },

@@ -42,7 +42,9 @@ export default function NavigationMenu() {
   }, [expanded]);
 
   return (
-    <nav className={`h-min leading-0 md:flex md:h-full md:place-items-center ${expanded ? "w-4 md:w-max" : ""}`}>
+    <nav
+      className={`h-min leading-0 md:flex md:h-full md:place-items-center ${expanded ? "w-4 md:w-max" : ""}`}
+    >
       <button
         aria-label={btnLabel}
         title={btnLabel}
@@ -55,23 +57,23 @@ export default function NavigationMenu() {
         id="nav-toggle"
       >
         {expanded ? (
-          <motion.div
+          <motion.span
             initial={{ scale: 0 }}
             animate={{ scale: [0, 1.2, 1] }}
             transition={{ duration: 0.3 }}
             key="close"
           >
             <MenuIconClose />
-          </motion.div>
+          </motion.span>
         ) : (
-          <motion.div
+          <motion.span
             initial={{ scale: 0 }}
             animate={{ scale: [0, 1.2, 1] }}
             transition={{ duration: 0.3 }}
             key="open"
           >
             <MenuIconBurguer />
-          </motion.div>
+          </motion.span>
         )}
       </button>
       <AnimatePresence>

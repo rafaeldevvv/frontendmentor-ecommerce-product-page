@@ -52,7 +52,7 @@ export default function CartWidget({ products, onDeleteProduct }) {
   );
   const btnLabel =
     (expanded ? "Close" : "Open") +
-    (products.length > 0 ? `cart (${cartItemCount} items)` : "cart");
+    (products.length > 0 ? ` cart (${cartItemCount} items)` : " cart");
 
   return (
     <div className="relative leading-0">
