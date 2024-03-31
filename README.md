@@ -57,6 +57,8 @@ Users should be able to:
 - [Calc of max, or max of calc in CSS](<https://stackoverflow.com/questions/16617248/calc-of-max-or-max-of-calc-in-css#:~:text=min()%20and%20max()%20may%20be%20nested.,calc()%20when%20using%20them.>)
 - [max()](https://developer.mozilla.org/en-US/docs/Web/CSS/max) - The try it section allowed me to realize that you have to put px after zero (`0px`) for the function to work properly.
 - [The “aria-controls” attribute must point to an element in the same document.](https://rocketvalidator.com/html-validation/the-aria-controls-attribute-must-point-to-an-element-in-the-same-document)
+- [aria-controls should only point to visible elements](https://github.com/w3c/aria/issues/531)
+- [Does aria-hidden=true mean you don't have to use display:none?](https://stackoverflow.com/questions/31383115/does-aria-hidden-true-mean-you-dont-have-to-use-displaynone)
 
 ## Author
 

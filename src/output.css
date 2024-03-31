@@ -599,6 +599,10 @@ dialog[open] {
   border-width: 0;
 }
 
+.\!visible {
+  visibility: visible !important;
+}
+
 .visible {
   visibility: visible;
 }
@@ -1455,11 +1459,6 @@ dialog[open] {
 }
 
 @media (min-width: 640px) {
-  .sm\:mx-auto {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
   .sm\:my-10 {
     margin-top: 2.5rem;
     margin-bottom: 2.5rem;
@@ -1473,8 +1472,8 @@ dialog[open] {
     max-width: 32rem;
   }
 
-  .sm\:rounded-xl {
-    border-radius: 0.75rem;
+  .sm\:rounded-lg {
+    border-radius: 0.5rem;
   }
 
   .sm\:px-0 {

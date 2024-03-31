@@ -8629,7 +8629,7 @@ function CartWidget(_ref) {
   var cartItemCount = products.reduce(function (count, product) {
     return count + product.quantity;
   }, 0);
-  var btnLabel = (expanded ? "Close" : "Open") + (products.length > 0 ? "cart (".concat(cartItemCount, " items)") : "cart");
+  var btnLabel = (expanded ? "Close" : "Open") + (products.length > 0 ? " cart (".concat(cartItemCount, " items)") : " cart");
   return /*#__PURE__*/React.createElement("div", {
     className: "relative leading-0"
   }, /*#__PURE__*/React.createElement("button", {
@@ -8756,8 +8756,9 @@ function Header(_ref) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   BigImage: () => (/* binding */ BigImage),
 /* harmony export */   ClickableThumbnail: () => (/* binding */ ClickableThumbnail),
+/* harmony export */   ImagePanel: () => (/* binding */ ImagePanel),
+/* harmony export */   ImagePanelSwipeWrapper: () => (/* binding */ ImagePanelSwipeWrapper),
 /* harmony export */   NextButton: () => (/* binding */ NextButton),
 /* harmony export */   PreviousButton: () => (/* binding */ PreviousButton),
 /* harmony export */   "default": () => (/* binding */ ImageCarousel)
@@ -8768,12 +8769,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _hooks_useMedia__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../hooks/useMedia */ "./src/hooks/useMedia.js");
 /* harmony import */ var _sr_announcer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./sr-announcer */ "./src/components/sr-announcer.js");
-/* harmony import */ var framer_motion__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! framer-motion */ "./node_modules/framer-motion/dist/es/components/AnimatePresence/index.mjs");
-/* harmony import */ var framer_motion__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! framer-motion */ "./node_modules/framer-motion/dist/es/render/dom/motion.mjs");
+/* harmony import */ var framer_motion__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! framer-motion */ "./node_modules/framer-motion/dist/es/render/dom/motion.mjs");
 /* harmony import */ var _TabbedInterface__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./TabbedInterface */ "./src/components/TabbedInterface.jsx");
 /* harmony import */ var _utils_getThumbnailSrc__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/getThumbnailSrc */ "./src/utils/getThumbnailSrc.js");
 /* provided dependency */ var React = __webpack_require__(/*! ./node_modules/react/index.js */ "./node_modules/react/index.js");
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -8832,23 +8831,32 @@ function ImageCarousel(_ref) {
   return /*#__PURE__*/React.createElement("div", {
     className: "select-none"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "relative mx-auto w-full sm:max-w-lg md:max-w-none"
-  }, /*#__PURE__*/React.createElement(BigImage, {
-    src: currentImageData[0],
-    alt: currentImageData[1],
-    onOpenLightbox: onOpenLightbox,
-    isMobile: isMobile,
-    id: imagesIds[currentImg],
-    direction: direction,
+    className: "relative"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "relative mx-auto aspect-[4/3] w-full overflow-hidden sm:aspect-square sm:max-w-lg md:max-w-none"
+  }, /*#__PURE__*/React.createElement(ImagePanelSwipeWrapper, {
     onSwipe: function onSwipe(d) {
+      // if swiped right
       if (d === 1) {
         onNext();
       } else {
+        // if swiped left
         onPrevious();
       }
     },
-    labelledby: tabsIds[currentImg]
-  }), /*#__PURE__*/React.createElement(PreviousButton, {
+    isMobile: isMobile
+  }, images.map(function (img, index) {
+    return /*#__PURE__*/React.createElement(ImagePanel, {
+      src: img[0],
+      alt: img[1],
+      id: imagesIds[index],
+      isMobile: isMobile,
+      onOpenLightbox: onOpenLightbox,
+      visible: index === currentImg,
+      direction: direction,
+      key: imagesIds[index]
+    });
+  }))), /*#__PURE__*/React.createElement(PreviousButton, {
     onClick: onPrevious,
     showAlways: showSideButtonsAlways
   }), /*#__PURE__*/React.createElement(NextButton, {
@@ -8885,7 +8893,8 @@ function PreviousButton(_ref4) {
     type: "button",
     "aria-label": "Previous image",
     className: "absolute left-6 top-1/2 z-20 aspect-square -translate-y-1/2 rounded-full bg-white stroke-darkGray px-4 leading-0 hover:stroke-orange focus-visible:stroke-orange ".concat(showAlways ? "md:left-0 md:-translate-x-1/2" : "md:hidden"),
-    onClick: onClick
+    onClick: onClick,
+    title: "Previous image"
   }, /*#__PURE__*/React.createElement(_icons_icon_previous_svg__WEBPACK_IMPORTED_MODULE_1__["default"], null));
 }
 function NextButton(_ref5) {
@@ -8896,93 +8905,21 @@ function NextButton(_ref5) {
     type: "button",
     "aria-label": "Next image",
     className: "absolute right-6 top-1/2 z-20 aspect-square -translate-y-1/2 rounded-full bg-white stroke-darkGray px-4 leading-0 hover:stroke-orange focus-visible:stroke-orange ".concat(showAlways ? "md:right-0 md:translate-x-1/2" : "md:hidden"),
-    onClick: onClick
+    onClick: onClick,
+    title: "Next image"
   }, /*#__PURE__*/React.createElement(_icons_icon_next_svg__WEBPACK_IMPORTED_MODULE_0__["default"], null));
 }
-
-/** @type {import("framer-motion").Variant} */
-var bigImageVariants = {
-  enter: function enter(direction) {
-    return {
-      opacity: 0,
-      x: direction === 1 ? -500 : 500,
-      zIndex: 0
-    };
-  },
-  center: {
-    opacity: 1,
-    x: 0,
-    zIndex: 1
-  },
-  exit: function exit(direction) {
-    return {
-      opacity: 0,
-      x: direction === 1 ? 500 : -500,
-      zIndex: 0
-    };
-  },
-  transition: {
-    duration: 0.8,
-    x: {
-      type: "spring",
-      stiffness: 300,
-      damping: 40
-    }
-  }
-};
 var swipeConfidenceThreshold = 9000;
 function swipePower(offset, velocity) {
   return Math.abs(offset) * velocity;
 }
-function BigImage(_ref6) {
-  var isMobile = _ref6.isMobile,
-    onOpenLightbox = _ref6.onOpenLightbox,
-    src = _ref6.src,
-    alt = _ref6.alt,
-    id = _ref6.id,
-    direction = _ref6.direction,
+function ImagePanelSwipeWrapper(_ref6) {
+  var children = _ref6.children,
     onSwipe = _ref6.onSwipe,
-    labelledby = _ref6.labelledby;
-  var aria = {};
-  if (!isMobile) {
-    aria.role = "tabpanel";
-    aria.tabIndex = 0;
-    aria["aria-labelledby"] = labelledby;
-  }
-  return /*#__PURE__*/React.createElement("div", {
-    className: "relative aspect-[4/3] w-full sm:mx-auto sm:aspect-square"
-  }, /*#__PURE__*/React.createElement(framer_motion__WEBPACK_IMPORTED_MODULE_7__.AnimatePresence, {
-    initial: false,
-    custom: direction
-  }, onOpenLightbox !== undefined && !isMobile ? /*#__PURE__*/React.createElement(framer_motion__WEBPACK_IMPORTED_MODULE_8__.motion.div, {
-    role: "tabpanel",
-    "aria-labelledby": labelledby,
-    className: "absolute block size-full",
-    custom: direction,
-    variants: bigImageVariants,
-    initial: "enter",
-    animate: "center",
-    exit: "exit",
-    key: src
-  }, /*#__PURE__*/React.createElement("button", {
-    type: "button",
-    className: "block size-full",
-    onClick: onOpenLightbox
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "sr-only"
-  }, "Open lightbox"), /*#__PURE__*/React.createElement("img", {
-    src: src,
-    alt: alt,
-    className: "size-full object-cover object-center sm:rounded-xl",
-    id: id
-  }))) : /*#__PURE__*/React.createElement(framer_motion__WEBPACK_IMPORTED_MODULE_8__.motion.div, _extends({}, aria, {
-    className: "absolute size-full",
-    custom: direction,
-    variants: bigImageVariants,
-    initial: "enter",
-    animate: "center",
-    exit: "exit",
-    drag: "x",
+    isMobile = _ref6.isMobile;
+  return /*#__PURE__*/React.createElement(framer_motion__WEBPACK_IMPORTED_MODULE_7__.motion.div, {
+    className: "absolute flex h-full w-full",
+    drag: isMobile ? "x" : false,
     dragConstraints: {
       left: 0,
       right: 0
@@ -8991,30 +8928,80 @@ function BigImage(_ref6) {
       var offset = _ref7.offset,
         velocity = _ref7.velocity;
       var power = swipePower(offset.x, velocity.x);
-      if (power > swipeConfidenceThreshold) onSwipe(-1);else if (power < -swipeConfidenceThreshold) onSwipe(1);
-    },
-    key: src
-  }), /*#__PURE__*/React.createElement("img", {
+      // swiping right
+      if (power > swipeConfidenceThreshold) onSwipe(-1); // previous image
+      // swiping left
+      else if (power < -swipeConfidenceThreshold) onSwipe(1); // next image
+    }
+  }, children);
+}
+
+/** @type {import("framer-motion").Variant} */
+var imagePanelVariants = {
+  hidden: function hidden(direction) {
+    return {
+      opacity: 0,
+      x: [0, direction * 600]
+    };
+  },
+  visible: function visible(direction) {
+    return {
+      opacity: 1,
+      x: [-direction * 600, 0]
+    };
+  }
+};
+function ImagePanel(_ref8) {
+  var id = _ref8.id,
+    src = _ref8.src,
+    alt = _ref8.alt,
+    isMobile = _ref8.isMobile,
+    onOpenLightbox = _ref8.onOpenLightbox,
+    labelledby = _ref8.labelledby,
+    visible = _ref8.visible,
+    direction = _ref8.direction;
+  var shouldIncludeButton = onOpenLightbox !== undefined && !isMobile;
+  return /*#__PURE__*/React.createElement(framer_motion__WEBPACK_IMPORTED_MODULE_7__.motion.div, {
+    role: "tabpanel",
+    "aria-labelledby": labelledby,
+    id: id,
+    className: "absolute size-full",
+    tabIndex: !visible ? -1 : shouldIncludeButton ? -1 : 0,
+    "aria-hidden": !visible,
+    variants: imagePanelVariants,
+    custom: direction,
+    initial: false,
+    animate: visible ? "visible" : "hidden"
+  }, shouldIncludeButton ? /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    title: "Open lightbox",
+    className: "block size-full rounded-lg",
+    onClick: onOpenLightbox,
+    tabIndex: visible ? 0 : -1
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "sr-only"
+  }, "Open lightbox"), /*#__PURE__*/React.createElement("img", {
     src: src,
     alt: alt,
-    className: "size-full object-cover object-center sm:rounded-xl",
-    id: id
-  }))));
+    className: "size-full object-cover object-center sm:rounded-lg"
+  })) : /*#__PURE__*/React.createElement("img", {
+    src: src,
+    alt: alt,
+    className: "size-full object-cover object-center sm:rounded-lg"
+  }));
 }
-function ClickableThumbnail(_ref8) {
-  var imageNumber = _ref8.imageNumber,
-    numOfImgs = _ref8.numOfImgs,
-    src = _ref8.src,
-    active = _ref8.active,
-    onClick = _ref8.onClick,
-    controls = _ref8.controls,
-    id = _ref8.id;
+function ClickableThumbnail(_ref9) {
+  var imageNumber = _ref9.imageNumber,
+    numOfImgs = _ref9.numOfImgs,
+    src = _ref9.src,
+    active = _ref9.active,
+    onClick = _ref9.onClick,
+    controls = _ref9.controls,
+    id = _ref9.id;
   return /*#__PURE__*/React.createElement(_TabbedInterface__WEBPACK_IMPORTED_MODULE_5__.Tab, {
     className: "group relative block aspect-square w-full max-w-24 rounded-lg bg-white outline outline-0 outline-offset-8 outline-orange focus-visible:outline-[3px]",
     onClick: onClick,
     controls: controls,
-    pos: imageNumber,
-    setsize: numOfImgs,
     active: active,
     id: id
   }, /*#__PURE__*/React.createElement("span", {
@@ -9077,8 +9064,7 @@ function Lightbox(_ref) {
     className: "mx-auto w-full max-w-xl py-8",
     onClick: function onClick(e) {
       return e.stopPropagation();
-    },
-    key: open.toString()
+    }
   }, /*#__PURE__*/React.createElement("div", {
     className: "mb-6"
   }, /*#__PURE__*/React.createElement("button", {
@@ -9352,7 +9338,7 @@ function ProductArticle(_ref) {
       });
     }, []);
   return /*#__PURE__*/React.createElement("article", {
-    className: "items-center gap-x-[clamp(2rem,8vw,9rem)] md:container md:px-[max(0px,_2rem_-_2vw)] sm:my-10 md:my-20 md:grid md:grid-cols-2"
+    className: "items-center gap-x-[clamp(2rem,8vw,9rem)] md:container sm:my-10 md:my-20 md:grid md:grid-cols-2"
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(_ImageCarousel__WEBPACK_IMPORTED_MODULE_0__["default"], {
     images: images,
     onOpenLightbox: onOpenLightbox
@@ -9551,8 +9537,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function Tab(_ref) {
   var children = _ref.children,
     active = _ref.active,
-    pos = _ref.pos,
-    setsize = _ref.setsize,
     controls = _ref.controls,
     onClick = _ref.onClick,
     id = _ref.id,
@@ -9574,8 +9558,6 @@ function Tab(_ref) {
     id: id,
     className: className,
     "aria-selected": active,
-    "aria-posinset": pos,
-    "aria-setsize": setsize,
     "aria-controls": controls,
     tabIndex: active ? 0 : -1,
     onClick: onClick
@@ -11111,6 +11093,10 @@ dialog[open] {
   border-width: 0;
 }
 
+.\\!visible {
+  visibility: visible !important;
+}
+
 .visible {
   visibility: visible;
 }
@@ -11967,11 +11953,6 @@ dialog[open] {
 }
 
 @media (min-width: 640px) {
-  .sm\\:mx-auto {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
   .sm\\:my-10 {
     margin-top: 2.5rem;
     margin-bottom: 2.5rem;
@@ -11985,8 +11966,8 @@ dialog[open] {
     max-width: 32rem;
   }
 
-  .sm\\:rounded-xl {
-    border-radius: 0.75rem;
+  .sm\\:rounded-lg {
+    border-radius: 0.5rem;
   }
 
   .sm\\:px-0 {
@@ -12099,11 +12080,6 @@ dialog[open] {
   .md\\:px-4 {
     padding-left: 1rem;
     padding-right: 1rem;
-  }
-
-  .md\\:px-\\[max\\(0px\\2c _2rem_-_2vw\\)\\] {
-    padding-left: max(0px, 2rem - 2vw);
-    padding-right: max(0px, 2rem - 2vw);
   }
 
   .md\\:text-sm {

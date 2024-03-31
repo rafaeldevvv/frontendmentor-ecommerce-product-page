@@ -32,7 +32,6 @@ export default function Lightbox({ onClose, images, open }) {
         <div
           className="mx-auto w-full max-w-xl py-8"
           onClick={(e) => e.stopPropagation()}
-          key={open.toString()}
         >
           <div className="mb-6">
             <button

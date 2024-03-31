@@ -4,13 +4,11 @@ import { TabFocusContext } from "./TabContext";
 export function Tab({
   children,
   active,
-  pos,
-  setsize,
   controls,
   onClick,
   id,
   className = "",
-  activeClassname = "active",
+  activeClassname = "active"
 }) {
   const tabCanFocus = useContext(TabFocusContext);
   const tabRef = useRef(null);
@@ -30,8 +28,6 @@ export function Tab({
       id={id}
       className={className}
       aria-selected={active}
-      aria-posinset={pos}
-      aria-setsize={setsize}
       aria-controls={controls}
       tabIndex={active ? 0 : -1}
       onClick={onClick}
